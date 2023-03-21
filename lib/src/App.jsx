@@ -1,12 +1,23 @@
 import './App.css';
 
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider
+} from 'react-router-dom'
+import { Home, Layout } from './Pages'
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Layout />}>
+      <Route index element={<Home />} />
+    </Route>
+  )
+)
 
 export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>hello world</p>
-      </header>
-    </div>
+    <RouterProvider router={router} />
   );
 }
