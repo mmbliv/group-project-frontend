@@ -8,7 +8,9 @@ export default function RecipeCard() {
         <div className="recipe-card--container">
             <RCHeader />
             <div className="recipe-card--content">
-                <p>Rc content test</p>
+                <div className="recipe-card--img__container">
+                    <img src="#" alt="" className="recipe-card--img" />
+                </div>
             </div>
             <RCFooter />
         </div>
