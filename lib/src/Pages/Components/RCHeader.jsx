@@ -1,7 +1,7 @@
 import React from 'react';
 import './RCHeader.css'
 
-export default  function RCHeader() {
+export default function RCHeader() {
     return ( 
         <div className="RCH--container">
             <p>rch test</p>
