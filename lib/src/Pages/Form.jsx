@@ -16,20 +16,18 @@ export default function Form() {
       });
     }
     if (e.target.name === "description") {
-      console.log(e.target.name);
       setBodyData((preData) => {
         return { ...preData, description: e.target.value };
       });
     }
     if (e.target.name === "ingredients") {
-      console.log(e.target.value.split(","));
       setBodyData((preData) => {
         return { ...preData, components: e.target.value.split(",") };
       });
     }
     if (e.target.name === "instrunction") {
       setBodyData((preData) => {
-        if (preData.instruction.length) {
+        if (preData.instruction) {
           return {
             ...preData,
             instruction: [
