@@ -3,17 +3,21 @@ import "./Header.css";
 import HeaderIconBtn from "./HeaderIconBtn";
 import { BsFillBasketFill } from "react-icons/bs";
 import { MdPlaylistAddCircle } from "react-icons/md";
+import { CiShoppingCart, CiSquarePlus } from "react-icons/ci"
 
 export default function Header() {
   return (
     <div className="header--container">
       <div className="header--content">
-        <p className="header--text">Recipe</p>
+        <div className="header--logo__container">
+            <img src={require("./img/HeaderLogo.jpg")} alt="" className="header--logo" />
+            <p className="header--logo--text">Platefuls</p>
+        </div>
         <div className="header--btns">
             <div className="icon--container">
                 <div className="groceries--container" id="show--text">
                     <HeaderIconBtn
-                      icon={BsFillBasketFill}
+                      icon={CiShoppingCart}
                       text=""
                       link="groceries"
                     />
@@ -21,7 +25,7 @@ export default function Header() {
                 </div>
                 <div className="add-recipe--container" id="show--text">
                     <HeaderIconBtn
-                      icon={MdPlaylistAddCircle}
+                      icon={CiSquarePlus}
                       text=""
                       link="form"
                     />
