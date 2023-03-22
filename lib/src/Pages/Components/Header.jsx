@@ -3,12 +3,15 @@ import "./Header.css";
 import HeaderIconBtn from "./HeaderIconBtn";
 import { BsFillBasketFill } from "react-icons/bs";
 import { MdPlaylistAddCircle } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     <div className="header--container">
       <div className="header--content">
-        <p className="header--text">Recipe</p>
+        <Link className="header--text" to="/">
+          Recipe
+        </Link>
         <div className="header--btns">
           <HeaderIconBtn
             icon={BsFillBasketFill}

@@ -10,38 +10,50 @@ export default function Form() {
   //   console.log(params);
 
   return (
-    <div className="from--container">
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="">
+    <div className="form--container">
+      <form onSubmit={(e) => e.preventDefault()} className="form--content">
+        <label htmlFor="" className="form--label">
           Recipe Name:
-          <input type="text" name="name" />
+          <input type="text" name="name" className="form--input" />
         </label>
-        <label htmlFor="">
+        <label htmlFor="" className="form--label">
           Description:
-          <input type="text" name="description" />
+          <input type="text" name="description" className="form--input" />
         </label>
-        <label htmlFor="">
+        <label htmlFor="" className="form--label">
           Ingredients:
-          <input type="text" name="ingredients" />
+          <input type="text" name="ingredients" className="form--input" />
         </label>
-        <label htmlFor="">
+        <label htmlFor="" className="form--label">
           Instruction:
-          <button
+          {/* <button
             onClick={() => setIntructionItemNumber(instructionItemNumber + 1)}
           >
             Add Instruction
-          </button>
-          {Array(instructionItemNumber)
-            .fill(null)
-            .map((d, i) => {
-              return (
-                <input type="text" key={i} name={`instrunction-${i + 1}`} />
-              );
-            })}
+          </button> */}
+          <div className="form--instructions__container">
+            {Array(instructionItemNumber)
+              .fill(null)
+              .map((d, i) => {
+                return (
+                  <input
+                    type="text"
+                    key={i}
+                    name={`instrunction-${i + 1}`}
+                    className="form--input"
+                  />
+                );
+              })}
+            <button
+              onClick={() => setIntructionItemNumber(instructionItemNumber + 1)}
+            >
+              Add Instruction
+            </button>
+          </div>
         </label>
-        <label htmlFor="">
+        <label htmlFor="" className="form--label">
           Image:
-          <input type="file" name="image" />
+          <input type="file" name="image" className="form--input" />
         </label>
         <button type="submit">Submit</button>
       </form>
