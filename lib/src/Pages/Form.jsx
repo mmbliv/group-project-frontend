@@ -22,19 +22,29 @@ export default function Form() {
       });
     }
     if (e.target.name === "ingredients") {
+      console.log(e.target.value.split(","));
       setBodyData((preData) => {
         return { ...preData, components: e.target.value.split(",") };
       });
     }
     if (e.target.name === "instrunction") {
       setBodyData((preData) => {
-        return {
-          ...preData,
-          instruction: [
-            ...preData.instruction,
-            { position: e.target.id, display_text: e.target.value },
-          ],
-        };
+        if (preData.instruction.length) {
+          return {
+            ...preData,
+            instruction: [
+              ...preData.instruction,
+              { position: e.target.id, display_text: e.target.value },
+            ],
+          };
+        } else {
+          return {
+            ...preData,
+            instruction: [
+              { position: e.target.id, display_text: e.target.value },
+            ],
+          };
+        }
       });
     }
     if (e.target.name === "cook_time") {
@@ -79,7 +89,12 @@ export default function Form() {
 
         <label htmlFor="" className="form--label">
           Ingredients:
-          <input type="text" name="ingredients" className="form--input" />
+          <input
+            type="text"
+            name="ingredients"
+            className="form--input"
+            onChange={(e) => handleChange(e)}
+          />
         </label>
 
         <label htmlFor="" className="form--label">
