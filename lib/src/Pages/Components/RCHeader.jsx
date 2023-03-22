@@ -4,7 +4,7 @@ import './RCHeader.css'
 export default function RCHeader() {
     return ( 
         <div className="RCH--container">
-            <p>rch test</p>
+            <p className="RCH--title">Lorem Ipsum</p>
         </div>
      );
 }
