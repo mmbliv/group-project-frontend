@@ -1,7 +1,9 @@
 .like-btn--container {
+    margin: 7px;
     border-right: 1px solid grey;
     border-bottom: 1px solid grey;
     color: black;
+    background-color: white;
     border-radius: 50%;
     padding: 5px;
     display: flex;
