@@ -1,15 +1,20 @@
 .footer--container {
   border: 1px solid black;
   /* height: 5rem; */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
 }
+
 .footer--content__title {
   margin: 0;
   margin-bottom: 0.2rem;
 }
+
 .footer--content__lists {
   display: flex;
   flex-direction: column;
@@ -17,6 +22,7 @@
   justify-content: center;
   /* border: 1px solid red; */
 }
+
 .footer--content__link {
   color: black;
   display: flex;
