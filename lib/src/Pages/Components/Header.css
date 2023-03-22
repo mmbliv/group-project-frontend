@@ -1,6 +1,6 @@
 .header--container {
   padding: 0.5rem 2rem;
-  border: 2px grey solid;
+  background-color: lightgrey;
 }
 
 .header--content {
@@ -17,3 +17,4 @@
   flex-direction: row;
   gap: 3rem;
 }
+
