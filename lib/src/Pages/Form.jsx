@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { GrAdd } from "react-icons/gr";
 import "./Form.css";
 
 export default function Form() {
@@ -46,7 +47,9 @@ export default function Form() {
               })}
             <button
               onClick={() => setIntructionItemNumber(instructionItemNumber + 1)}
+              className="form--btn form--btn__add"
             >
+              <GrAdd />
               Add Instruction
             </button>
           </div>
@@ -55,7 +58,9 @@ export default function Form() {
           Image:
           <input type="file" name="image" className="form--input" />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit" className="form--btn form--btn__submit">
+          Submit
+        </button>
       </form>
     </div>
   );
