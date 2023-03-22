@@ -35,10 +35,10 @@
 }
 
 .footer--content__link p {
-    margin: 0px;
+  margin: 0px;
 }
 
 .footer--content__link:hover {
-    cursor: pointer;
-    color: #080ed1;
+  cursor: pointer;
+  color: #080ed1;
 }

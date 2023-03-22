@@ -12,11 +12,19 @@ export default function Header() {
         <div className="header--btns">
             <div className="icon--container">
                 <div className="groceries--container" id="show--text">
-                    <HeaderIconBtn icon={BsFillBasketFill} text="" />
+                    <HeaderIconBtn
+                      icon={BsFillBasketFill}
+                      text=""
+                      link="groceries"
+                    />
                     <p className="groceries--text" id="hidden--text-1">Groceries</p>
                 </div>
                 <div className="add-recipe--container" id="show--text">
-                    <HeaderIconBtn icon={MdPlaylistAddCircle} text="" />
+                    <HeaderIconBtn
+                      icon={MdPlaylistAddCircle}
+                      text=""
+                      link="form"
+                    />
                     <p className="add-recipe--text" id="hidden--text-2">+ Recipe</p>
                 </div>
             </div>
