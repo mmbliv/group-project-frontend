@@ -5,13 +5,15 @@ import { BiSearch } from "react-icons/bi"
 export default function Search() {
 const [search, setSearch] = useState('')
 
+//uses set value to communicate with database
 
 const handleSubmit = (e) => {
     e.preventDefault()
     console.log(search)
 }
 
-const handleSearch = (e) => {
+//set value
+const handleChange = (e) => {
     setSearch(e.target.value)
 }
 
@@ -23,7 +25,7 @@ const handleSearch = (e) => {
             <div className="search--icon">
                 <BiSearch />
             </div>
-            <input type="search" value={search} onChange={handleSearch} placeholder="Search..." id="search--input"/>
+            <input type="search" value={search} onChange={handleChange} placeholder="Search..." id="search--input"/>
         </div>
      );
 }
