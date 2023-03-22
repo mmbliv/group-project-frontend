@@ -10,8 +10,16 @@ export default function Header() {
       <div className="header--content">
         <p className="header--text">Recipe</p>
         <div className="header--btns">
-          <HeaderIconBtn icon={BsFillBasketFill} text="Groceries" />
-          <HeaderIconBtn icon={MdPlaylistAddCircle} text="Add Recipe" />
+            <div className="icon--container">
+                <div className="groceries--container" id="show--text">
+                    <HeaderIconBtn icon={BsFillBasketFill} text="" />
+                    <p className="groceries--text" id="hidden--text-1">Groceries</p>
+                </div>
+                <div className="add-recipe--container" id="show--text">
+                    <HeaderIconBtn icon={MdPlaylistAddCircle} text="" />
+                    <p className="add-recipe--text" id="hidden--text-2">+ Recipe</p>
+                </div>
+            </div>
         </div>
       </div>
     </div>
