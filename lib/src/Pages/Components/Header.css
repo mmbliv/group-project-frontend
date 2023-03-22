@@ -1,20 +1,71 @@
 .header--container {
-  padding: 0.5rem 2rem;
-  background-color: lightgrey;
+    padding: 0.5rem 2rem 0.5rem 0rem;
+    font-family: 'League Script', cursive;
+}
+
+.header--logo__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header--logo {
+    height: 100px;
+}
+
+.header--logo--text {
+    margin-top: 66px;
+    font-family: 'League Script', cursive;
 }
 
 .header--content {
-  height: 50px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
 }
 
 .header--btns {
-  display: flex;
-  flex-direction: row;
-  gap: 3rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+.icon--container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 60px;
+    width: 90px;
+}
+
+.groceries--container {
+    margin-right: 10px;
+}
+
+.groceries--text {
+    margin: 0;
+    font-size: 0px;
+    font-weight: 800;
+}
+
+.add-recipe--text {
+    margin: 0;
+    font-size: 0px;
+    font-weight: 800;
+}
+
+#show--text:hover #hidden--text-1 {
+    font-size: 12px;
+    transition: 0.5s;
+}
+
+#show--text:hover #hidden--text-2 {
+    font-size: 12px;
+    transition: 0.5s;
 }
 
