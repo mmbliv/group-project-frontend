@@ -5,7 +5,7 @@ import { RecipeCard } from './Components'
 export default function Home() {
     return ( 
         <div className="home--container">
-            <RecipeCard />
+            <p>home test</p>
         </div>
      );
 }
