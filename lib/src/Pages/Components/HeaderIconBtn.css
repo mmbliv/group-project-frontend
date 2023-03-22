@@ -8,4 +8,9 @@
 }
 .header--btn {
   transition: all 0.2s;
+  /* color: green; */
+}
+.header--btn__link {
+  color: green;
+  text-decoration: none;
 }
