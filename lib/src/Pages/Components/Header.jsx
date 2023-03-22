@@ -18,7 +18,7 @@ export default function Header() {
           <HeaderIconBtn
             icon={MdPlaylistAddCircle}
             text="Add Recipe"
-            link="form"
+            link="form/:post"
           />
         </div>
       </div>
