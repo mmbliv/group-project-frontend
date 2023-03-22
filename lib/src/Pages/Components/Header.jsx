@@ -1,9 +1,8 @@
 import React from "react";
+import "./Header.css";
 import HeaderIconBtn from "./HeaderIconBtn";
 import { BsFillBasketFill } from "react-icons/bs";
 import { MdPlaylistAddCircle } from "react-icons/md";
-
-import "./Header.css";
 
 export default function Header() {
   return (
