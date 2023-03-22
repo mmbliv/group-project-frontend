@@ -1,0 +1,25 @@
+.search--container {
+    border: 2px dotted grey;
+    width: 85px;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: black;
+}
+
+#search--input {
+    width: 0px;
+    border: none;
+    transition: 1s;
+}
+
+#search--input:hover {
+    width: 70px;
+    transition: 1s;
+}
+
+.search--icon:hover ~ #search--input {
+    width: 70px;
+    transition: 2s;
+}
