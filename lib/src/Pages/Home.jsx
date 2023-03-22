@@ -7,6 +7,10 @@ export default function Home() {
     return ( 
         <div className="home--container">
             <RecipeCard />
+            <RecipeCard />
+            <RecipeCard />
+            <RecipeCard />
+            <RecipeCard />
         </div>
      );
 }
