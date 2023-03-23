@@ -4,11 +4,17 @@ import { GrAdd } from "react-icons/gr";
 import "./Form.css";
 
 export default function Form() {
-  const params = useParams();
-  const [instructionItemNumber, setIntructionItemNumber] = useState(0);
+  // This state is used to add more instruction item, when click Add Instruction Button,
+  // this state will be incresed by one, and one more line of instruction input will be added
+  const [instructionItemNumber, setIntructionItemNumber] = useState(1);
+
+  // This state is used to store body data that will be sent in request body
   const [bodyData, setBodyData] = useState({});
 
-  //   const body = {};
+  // This state is used to store the instruction input when the Add Instruciton button is hitted
+  const [instructionInput, setInstructionInput] = useState({});
+
+  //
   function handleChange(e) {
     if (e.target.name === "name") {
       setBodyData((preData) => {
@@ -26,23 +32,9 @@ export default function Form() {
       });
     }
     if (e.target.name === "instrunction") {
-      setBodyData((preData) => {
-        if (preData.instruction) {
-          return {
-            ...preData,
-            instruction: [
-              ...preData.instruction,
-              { position: e.target.id, display_text: e.target.value },
-            ],
-          };
-        } else {
-          return {
-            ...preData,
-            instruction: [
-              { position: e.target.id, display_text: e.target.value },
-            ],
-          };
-        }
+      setInstructionInput({
+        position: e.target.id,
+        display_text: e.target.value,
       });
     }
     if (e.target.name === "cook_time") {
@@ -52,18 +44,24 @@ export default function Form() {
     }
   }
 
+  function handleAdd() {
+    setIntructionItemNumber(instructionItemNumber + 1);
+    setBodyData((preData) => {
+      if (preData.instruction) {
+        return {
+          ...preData,
+          instruction: [...preData.instruction, instructionInput],
+        };
+      } else {
+        return {
+          ...preData,
+          instruction: [instructionInput],
+        };
+      }
+    });
+  }
+
   function handleSubmit() {
-    // const tempData = [];
-
-    // const filteredInstructionData = bodyData.instruction.map((d) => {
-    //   if (!tempData.includes(d.position)) {
-    //     tempData.push(d.position);
-    //     return d;
-    //   }
-    //   if (tempData.includes(d.position)) {
-
-    //   }
-    // });
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -124,7 +122,7 @@ export default function Form() {
                 );
               })}
             <button
-              onClick={() => setIntructionItemNumber(instructionItemNumber + 1)}
+              onClick={() => handleAdd()}
               className="form--btn form--btn__add"
             >
               <GrAdd />
