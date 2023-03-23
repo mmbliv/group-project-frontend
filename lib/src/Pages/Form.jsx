@@ -14,7 +14,7 @@ export default function Form() {
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
 
-  //
+  //This function is used to handle the input change
   function handleChange(e) {
     if (e.target.name === "name") {
       setBodyData((preData) => {
@@ -31,6 +31,10 @@ export default function Form() {
         return { ...preData, components: e.target.value.split(",") };
       });
     }
+    // set the data of instruction is slightly different from other input data,
+    // cuz instruction data has a nested object (hard to explain).
+    // I created a instructionInput state to store the instruction data first, and
+    // then use handleAdd()  function to set it into bodyData
     if (e.target.name === "instrunction") {
       setInstructionInput({
         position: e.target.id,
@@ -44,6 +48,9 @@ export default function Form() {
     }
   }
 
+  // When the Add Instruction button is hitted, this function will be excuted.
+  //  This will add one more line of instruction input, and also set the instruction data
+  // into bodyData
   function handleAdd() {
     setIntructionItemNumber(instructionItemNumber + 1);
     setBodyData((preData) => {
@@ -61,6 +68,7 @@ export default function Form() {
     });
   }
 
+  // Handle submit
   function handleSubmit() {
     const reqOptions = {
       method: "POST",
@@ -71,9 +79,11 @@ export default function Form() {
       .then((res) => res.json())
       .then((d) => console.log(d));
   }
+
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content">
+        {/* Recipe Name Input */}
         <label htmlFor="" className="form--label">
           Recipe Name:
           <input
@@ -84,6 +94,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Description Input */}
         <label htmlFor="" className="form--label">
           Description:
           <input
@@ -94,6 +105,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Ingredients Input */}
         <label htmlFor="" className="form--label">
           Ingredients:
           <input
@@ -104,6 +116,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Instruction Input */}
         <label htmlFor="" className="form--label">
           Instruction:
           <div className="form--instructions__container">
@@ -131,8 +144,9 @@ export default function Form() {
           </div>
         </label>
 
+        {/* Cook_time Input */}
         <label htmlFor="" className="form--label">
-          cook_time_minutes:
+          Cook_time_minutes:
           <input
             type="text"
             name="cook_time"
@@ -141,6 +155,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Image Input */}
         <label htmlFor="" className="form--label">
           Image:
           <input
@@ -151,6 +166,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Submit */}
         <button
           type="submit"
           className="form--btn form--btn__submit"
