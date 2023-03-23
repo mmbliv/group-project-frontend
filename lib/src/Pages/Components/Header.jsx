@@ -42,7 +42,6 @@ export default function Header() {
                     <p className="add-recipe--text" id="hidden--text-2">+ Recipe</p>
                 </div>
                 
-
           <div className="icon--container">
             <div className="groceries--container" id="show--text">
               <HeaderIconBtn icon={CiShoppingCart} text="" link="groceries" />
@@ -61,5 +60,6 @@ export default function Header() {
         </div>
       </div>
     </div>
+  </div>
   );
 }
