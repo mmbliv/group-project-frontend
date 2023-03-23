@@ -6,96 +6,87 @@
     margin-bottom: 10px;
     padding: 0.5rem 2rem 0.5rem 0rem;
     font-family: 'League Script', cursive;
-  padding: 0.5rem 2rem 0.5rem 0rem;
-  font-family: "League Script", cursive;
 }
 
 .header--logo__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
 
 .header--logo {
-
     height: 150px;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
 }
 
 .header--logo--text {
-    margin-top: 91px;
     font-size: 60px;
-
-  height: 100px;
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
 }
 
 .header--logo--text {
-  margin-top: 66px;
-  font-family: "League Script", cursive;
-
+    margin-top: 66px;
+    color: #000000;
+    font-family: "League Script", cursive;
 }
 
 .header--content {
-  height: 50px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 40px;
-}
-
-.header--btns {
-  display: flex;
-  flex-direction: row;
-  gap: 3rem;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
 }
 
 .icon--container {
-
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     height: 60px;
-    width: 190px;
+    width: 250px;
 }
 
 .groceries--container {
-    margin-right: 18px;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  height: 60px;
-  width: 90px;
-}
-
-.groceries--container {
-  margin-right: 10px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 65px;
 }
 
 .groceries--text {
-  margin: 0;
-  font-size: 0px;
-  font-weight: 800;
+    margin: 0;
+    font-size: 0px;
+    font-weight: 800;
+}
+
+.add-recipe--container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
 }
 
 .add-recipe--text {
-  margin: 0;
-  font-size: 0px;
-  font-weight: 800;
+    margin: 0;
+    font-size: 0px;
+    font-weight: 800;
 }
 
 #show--text:hover #hidden--text-1 {
-  font-size: 12px;
-  transition: 0.5s;
+    font-size: 15px;
+    transition: 0.5s;
 }
 
 #show--text:hover #hidden--text-2 {
-  font-size: 12px;
-  transition: 0.5s;
+    font-size: 15px;
+    transition: 0.5s;
 }
