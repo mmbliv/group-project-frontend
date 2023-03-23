@@ -12,14 +12,14 @@ export default function Header() {
   return (
     <div className="header--container">
       <div className="header--content">
-        <div className="header--logo__container">
+        <Link to="/" className="header--logo__container">
           <img
             src={require("./img/HeaderLogo.jpg")}
             alt=""
             className="header--logo"
           />
           <p className="header--logo--text">Platefuls</p>
-        </div>
+        </Link>
         <div className="header--btns">
           <div className="icon--container">
             <div className="groceries--container" id="show--text">
@@ -29,7 +29,7 @@ export default function Header() {
               </p>
             </div>
             <div className="add-recipe--container" id="show--text">
-              <HeaderIconBtn icon={CiSquarePlus} text="" link="form" />
+              <HeaderIconBtn icon={CiSquarePlus} text="" link="form/:form" />
               <p className="add-recipe--text" id="hidden--text-2">
                 + Recipe
               </p>
