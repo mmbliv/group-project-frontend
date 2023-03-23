@@ -6,6 +6,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: "League Script", cursive;
+    font-weight: 800;
 }
 
 .recipe-card--img {
