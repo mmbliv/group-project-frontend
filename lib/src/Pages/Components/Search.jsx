@@ -1,10 +1,11 @@
 import React, { useState }from 'react';
 import './Search.css'
 import { BiSearch } from "react-icons/bi"
-// import axios from "axios"
+import axios from "axios"
 
 export default function Search() {
 const [search, setSearch] = useState('')
+const [results, setResults] = useState([])
 
 //use state to find db document by name and render to component
 //uses set value to communicate with database
@@ -15,8 +16,11 @@ const handleKeyPress = (e) => {
     } 
 }
 
-const handleSubmit = (e) => {
-   console.log(search)
+const handleSubmit = async(e) => {
+    const res = await axios.get(`http://localhost:4000/recipes/name/${search}`)
+    setResults(res.data)
+    console.log(res.data)
+    console.log(search)
 }
 //set value
 const handleChange = (e) => {
