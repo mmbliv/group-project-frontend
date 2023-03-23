@@ -4,11 +4,17 @@ import { GrAdd } from "react-icons/gr";
 import "./Form.css";
 
 export default function Form() {
-  const params = useParams();
-  const [instructionItemNumber, setIntructionItemNumber] = useState(0);
+  // This state is used to add more instruction item, when click Add Instruction Button,
+  // this state will be incresed by one, and one more line of instruction input will be added
+  const [instructionItemNumber, setIntructionItemNumber] = useState(1);
+
+  // This state is used to store body data that will be sent in request body
   const [bodyData, setBodyData] = useState({});
 
-  //   const body = {};
+  // This state is used to store the instruction input when the Add Instruciton button is hitted
+  const [instructionInput, setInstructionInput] = useState({});
+
+  //This function is used to handle the input change
   function handleChange(e) {
     if (e.target.name === "name") {
       setBodyData((preData) => {
@@ -25,24 +31,14 @@ export default function Form() {
         return { ...preData, components: e.target.value.split(",") };
       });
     }
+    // set the data of instruction is slightly different from other input data,
+    // cuz instruction data has a nested object (hard to explain).
+    // I created a instructionInput state to store the instruction data first, and
+    // then use handleAdd()  function to set it into bodyData
     if (e.target.name === "instrunction") {
-      setBodyData((preData) => {
-        if (preData.instruction) {
-          return {
-            ...preData,
-            instruction: [
-              ...preData.instruction,
-              { position: e.target.id, display_text: e.target.value },
-            ],
-          };
-        } else {
-          return {
-            ...preData,
-            instruction: [
-              { position: e.target.id, display_text: e.target.value },
-            ],
-          };
-        }
+      setInstructionInput({
+        position: e.target.id,
+        display_text: e.target.value,
       });
     }
     if (e.target.name === "cook_time") {
@@ -52,18 +48,28 @@ export default function Form() {
     }
   }
 
+  // When the Add Instruction button is hitted, this function will be excuted.
+  //  This will add one more line of instruction input, and also set the instruction data
+  // into bodyData
+  function handleAdd() {
+    setIntructionItemNumber(instructionItemNumber + 1);
+    setBodyData((preData) => {
+      if (preData.instruction) {
+        return {
+          ...preData,
+          instruction: [...preData.instruction, instructionInput],
+        };
+      } else {
+        return {
+          ...preData,
+          instruction: [instructionInput],
+        };
+      }
+    });
+  }
+
+  // Handle submit
   function handleSubmit() {
-    // const tempData = [];
-
-    // const filteredInstructionData = bodyData.instruction.map((d) => {
-    //   if (!tempData.includes(d.position)) {
-    //     tempData.push(d.position);
-    //     return d;
-    //   }
-    //   if (tempData.includes(d.position)) {
-
-    //   }
-    // });
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -73,9 +79,11 @@ export default function Form() {
       .then((res) => res.json())
       .then((d) => console.log(d));
   }
+
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content">
+        {/* Recipe Name Input */}
         <label htmlFor="" className="form--label">
           Recipe Name:
           <input
@@ -86,6 +94,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Description Input */}
         <label htmlFor="" className="form--label">
           Description:
           <input
@@ -96,6 +105,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Ingredients Input */}
         <label htmlFor="" className="form--label">
           Ingredients:
           <input
@@ -106,6 +116,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Instruction Input */}
         <label htmlFor="" className="form--label">
           Instruction:
           <div className="form--instructions__container">
@@ -124,7 +135,7 @@ export default function Form() {
                 );
               })}
             <button
-              onClick={() => setIntructionItemNumber(instructionItemNumber + 1)}
+              onClick={() => handleAdd()}
               className="form--btn form--btn__add"
             >
               <GrAdd />
@@ -133,8 +144,9 @@ export default function Form() {
           </div>
         </label>
 
+        {/* Cook_time Input */}
         <label htmlFor="" className="form--label">
-          cook_time_minutes:
+          Cook_time_minutes:
           <input
             type="text"
             name="cook_time"
@@ -143,6 +155,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Image Input */}
         <label htmlFor="" className="form--label">
           Image:
           <input
@@ -153,6 +166,7 @@ export default function Form() {
           />
         </label>
 
+        {/* Submit */}
         <button
           type="submit"
           className="form--btn form--btn__submit"
