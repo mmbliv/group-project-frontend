@@ -13,7 +13,7 @@ export default function Home() {
         if(img !== null){
             return(
                 testArr.push(
-                    <RecipeCard title={name} img={img} key={_id}/>
+                    <RecipeCard title={name} img={img} alt={name} key={_id} />
                 )
             )
         }

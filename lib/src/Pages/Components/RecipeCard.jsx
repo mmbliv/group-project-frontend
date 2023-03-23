@@ -9,10 +9,12 @@ export default function RecipeCard(props) {
             <RCHeader {...props}/>
             <div className="recipe-card--content">
                 <div className="recipe-card--img__container">
-                    <img src={props.img} alt="" className="recipe-card--img" />
+                    <img src={props.img} alt={props.alt} className="recipe-card--img" />
                 </div>
             </div>
-            <RCFooter />
+            <div className="recipe-card--footer__container">
+                <RCFooter />
+            </div>
         </div>
      );
 }

@@ -1,9 +1,18 @@
 .recipe-card--container {
     margin: 5px 0px;
-    height: 400px;
-    width: 600px;
+    height: 500px;
+    width: 400px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
+.recipe-card--img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 420px;
+    min-width: 100%;
+    object-fit: fill;
+}
