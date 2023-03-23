@@ -21,11 +21,14 @@ const handleChange = (e) => {
         // should we change the div for the search bar to <form>?
         // will need to find a way to get this to pull a "search" from mongoDB and load that data.
 
-        <div className="search--container" onSubmit={handleSubmit}>
+        //added temporary button to handle state changes. State is stored on submit. need to handle state change on key press of ENTER....
+
+        <div className="search--container" >
             <div className="search--icon">
                 <BiSearch />
             </div>
             <input type="search" value={search} onChange={handleChange} placeholder="Search..." id="search--input"/>
+            <button type="submit" onClick={handleSubmit}>Search</button>
         </div>
      );
 }
