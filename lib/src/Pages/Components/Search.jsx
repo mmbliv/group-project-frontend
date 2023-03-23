@@ -1,10 +1,12 @@
 import React, { useState }from 'react';
 import './Search.css'
 import { BiSearch } from "react-icons/bi"
+// import axios from "axios"
 
 export default function Search() {
 const [search, setSearch] = useState('')
 
+//use state to find db document by name and render to component
 //uses set value to communicate with database
 //if e.key is Enter handle the submit event and store state....
 const handleKeyPress = (e) => {
@@ -19,6 +21,10 @@ const handleSubmit = (e) => {
 //set value
 const handleChange = (e) => {
     setSearch(e.target.value)
+// .then(() => axios.get("http://localhost:4000/name/:name"))
+// .then(res=>{
+//  console.log(res.data)}
+// )
 }
 
     return ( 
