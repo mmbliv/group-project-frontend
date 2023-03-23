@@ -5,13 +5,13 @@ import { useLoaderData, Link } from 'react-router-dom'
 
 export default function Home() {
 
-    const testData = useLoaderData()
-    let testArr = []
+    const recipeData = useLoaderData()
+    let recipeArr = []
 
-    testData.map(({name, img, _id}) => {
+    recipeData.map(({name, img, _id}) => {
         if(img !== null){
             return(
-                testArr.push(
+                recipeArr.push(
                     <Link to={`recipe/${_id}`} key={_id} style={{textDecoration: 'none'}}>
                         <RecipeCard title={name} img={img} alt={name} />
                     </Link>
@@ -19,11 +19,10 @@ export default function Home() {
             )
         }
     })
-    console.log(testData)
 
     return ( 
         <div className="home--container">
-            {testArr}
+            {recipeArr}
         </div>
      );
 }
