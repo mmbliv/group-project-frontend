@@ -1,5 +1,5 @@
 .RCF--container {
     display: flex;
     height: 40px;
-    background-color: lightgray;
+    background-image: linear-gradient(to bottom right, #FFFFFF, #b1b1b1);
 }
