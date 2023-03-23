@@ -7,6 +7,7 @@ import {
   RouterProvider
 } from 'react-router-dom'
 import { Home, Layout, Form } from './Pages'
+import { testLoader } from './loaders'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

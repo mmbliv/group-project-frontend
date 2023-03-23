@@ -7,16 +7,20 @@ import { useLoaderData } from 'react-router-dom'
 export default function Home() {
 
     const testData = useLoaderData()
+    let testArr = []
 
+    testData.map(() => {
+        return(
+            testArr.push(
+                <RecipeCard />
+            )
+        )
+    })
     console.log(testData)
 
     return ( 
         <div className="home--container">
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
+            {testArr}
         </div>
      );
 }
