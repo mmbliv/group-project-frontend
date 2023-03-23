@@ -73,9 +73,11 @@ export default function Form() {
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      // needed for multer package
+      enctype: "multipart/form-data",
       body: JSON.stringify(bodyData),
     };
-    fetch("http://localhost:4000/recipes", reqOptions)
+    fetch("http://localhost:4000/recipes/newRecipe", reqOptions)
       .then((res) => res.json())
       .then((d) => console.log(d));
   }
@@ -155,7 +157,7 @@ export default function Form() {
           />
         </label>
 
-        {/* Image Input */}
+        {/* Image Input
         <label htmlFor="" className="form--label">
           Image:
           <input
@@ -164,7 +166,7 @@ export default function Form() {
             className="form--input"
             onChange={(e) => handleChange(e)}
           />
-        </label>
+        </label> */}
 
         {/* Submit */}
         <button
