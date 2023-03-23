@@ -8,6 +8,9 @@
     justify-content: space-between;
     font-family: "League Script", cursive;
     font-weight: 800;
+    box-shadow: 4px 4px 5px #a3a3a3;
+    border-radius: 5px;
+    border-top-right-radius: 35px;
 }
 
 .recipe-card--img {
