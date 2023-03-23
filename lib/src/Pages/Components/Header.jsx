@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import HeaderIconBtn from "./HeaderIconBtn";
+import Search from './Search'
 import { BsFillBasketFill } from "react-icons/bs";
 import { MdPlaylistAddCircle } from "react-icons/md";
 import { CiShoppingCart, CiSquarePlus } from "react-icons/ci"
@@ -15,6 +16,7 @@ export default function Header() {
         </div>
         <div className="header--btns">
             <div className="icon--container">
+                <Search />
                 <div className="groceries--container" id="show--text">
                     <HeaderIconBtn
                       icon={CiShoppingCart}
@@ -31,6 +33,7 @@ export default function Header() {
                     />
                     <p className="add-recipe--text" id="hidden--text-2">+ Recipe</p>
                 </div>
+                
             </div>
         </div>
       </div>
