@@ -1,11 +1,16 @@
 .search--container {
-    border: 2px dotted grey;
     width: 85px;
+    height: 40px;
     padding: 5px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     color: black;
+}
+
+.search--icon > * {
+    height: 22px;
+    font-weight: 100;
 }
 
 #search--input {
@@ -16,10 +21,10 @@
 
 #search--input:hover {
     width: 70px;
-    transition: 1s;
+    transition: 0.5s;
 }
 
 .search--icon:hover ~ #search--input {
     width: 70px;
-    transition: 2s;
+    transition: 0.5s;
 }

@@ -1,4 +1,11 @@
 .header--container {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0.5rem 2rem 0.5rem 0rem;
+    font-family: 'League Script', cursive;
   padding: 0.5rem 2rem 0.5rem 0rem;
   font-family: "League Script", cursive;
 }
@@ -11,12 +18,22 @@
 }
 
 .header--logo {
+
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.header--logo--text {
+    margin-top: 91px;
+    font-size: 60px;
+
   height: 100px;
 }
 
 .header--logo--text {
   margin-top: 66px;
   font-family: "League Script", cursive;
+
 }
 
 .header--content {
@@ -36,6 +53,18 @@
 }
 
 .icon--container {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 60px;
+    width: 190px;
+}
+
+.groceries--container {
+    margin-right: 18px;
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -46,6 +75,7 @@
 
 .groceries--container {
   margin-right: 10px;
+
 }
 
 .groceries--text {
