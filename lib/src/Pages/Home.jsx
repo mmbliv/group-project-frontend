@@ -9,12 +9,14 @@ export default function Home() {
     const testData = useLoaderData()
     let testArr = []
 
-    testData.map(() => {
-        return(
-            testArr.push(
-                <RecipeCard />
+    testData.map(({name, img, _id}) => {
+        if(img !== null){
+            return(
+                testArr.push(
+                    <RecipeCard title={name} img={img} key={_id}/>
+                )
             )
-        )
+        }
     })
     console.log(testData)
 
