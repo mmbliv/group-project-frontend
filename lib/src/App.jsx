@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 
 import {
   Route,
@@ -6,19 +6,17 @@ import {
   createRoutesFromElements,
   RouterProvider
 } from 'react-router-dom'
-import { Home, Layout } from './Pages'
-import { testLoader } from './loaders.js'
+import { Home, Layout, Form } from './Pages'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route index element={<Home />} loader={testLoader}/>
+      <Route path="/form/:type" element={<Form />} />
     </Route>
   )
-)
+);
 
 export default function App() {
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }

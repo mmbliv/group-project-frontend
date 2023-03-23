@@ -1,0 +1,39 @@
+.form--container {
+  padding-top: 3rem;
+  overflow: hidden;
+}
+.form--content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 60%;
+  margin: 0 auto;
+  overflow: scroll;
+  height: 20rem;
+}
+.form--label {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+.form--input {
+  /* padding-left: 1rem; */
+  /* margin-left: 1rem; */
+}
+.form--instructions__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form--btn {
+  width: max-content;
+  padding: 5px 10px;
+}
+.form--btn__add {
+  display: flex;
+  gap: 5px;
+}
+.form--btn__submit {
+  margin: 0 auto;
+  margin-top: 1rem;
+}

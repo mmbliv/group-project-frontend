@@ -2,7 +2,6 @@ import React from "react";
 import "./HeaderIconBtn.css";
 import { Link } from "react-router-dom";
 export default function HeaderIconBtn(props) {
-  console.log(props);
   return (
     <div className="header--btn">
       <Link to={props.link} className="header--btn__link">
