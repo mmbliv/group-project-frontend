@@ -1,8 +1,10 @@
 .RCH--container {
     height: 40px;
-    padding-left: 7px;
+    padding-left: 17px;
     display: flex;
     align-items: center;
     color: black;
-    background-color: lightgray;
+    background-image: linear-gradient(to bottom right, #FFFFFF, #dcdcdc);
+    border-top-right-radius: 35px;
+    border-top: 2px solid #dcdcdc;
 }
