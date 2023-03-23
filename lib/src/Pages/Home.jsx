@@ -1,8 +1,7 @@
 import React from 'react';
 import './Home.css'
 import { RecipeCard } from './Components'
-import RecipePage from './RecipePage'
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, Link } from 'react-router-dom'
 
 export default function Home() {
 
@@ -13,7 +12,9 @@ export default function Home() {
         if(img !== null){
             return(
                 testArr.push(
-                    <RecipeCard title={name} img={img} alt={name} key={_id} />
+                    <Link to={`recipe/${_id}`} key={_id} style={{textDecoration: 'none'}}>
+                        <RecipeCard title={name} img={img} alt={name} />
+                    </Link>
                 )
             )
         }
