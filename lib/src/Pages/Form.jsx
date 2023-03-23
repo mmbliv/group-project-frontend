@@ -53,6 +53,17 @@ export default function Form() {
   }
 
   function handleSubmit() {
+    // const tempData = [];
+
+    // const filteredInstructionData = bodyData.instruction.map((d) => {
+    //   if (!tempData.includes(d.position)) {
+    //     tempData.push(d.position);
+    //     return d;
+    //   }
+    //   if (tempData.includes(d.position)) {
+
+    //   }
+    // });
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
