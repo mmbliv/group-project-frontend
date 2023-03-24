@@ -4,16 +4,19 @@ import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
-  RouterProvider,
-} from "react-router-dom";
-import { Home, Layout, Form } from "./Pages";
-import { testLoader } from "./loaders";
+
+  RouterProvider
+} from 'react-router-dom'
+import { Home, Layout, RecipePage, Form } from './Pages'
+import { recipeLoader } from './loaders'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} loader={testLoader} />
+    <Route path='/' element={<Layout />}>
+      <Route index element={<Home />} loader={recipeLoader} />
       <Route path="/form" element={<Form />} />
+      <Route path="/recipe/:id" element={<RecipePage />} loader={recipeLoader} />
+
     </Route>
   )
 );
