@@ -52,8 +52,15 @@ export default function Form() {
       setBodyData((preData) => {
         return { ...preData, cook_time_minutes: +e.target.value };
       });
-    }
+     
   }
+  if (e.target.name === "image") {
+    setUploadedImg((preData) => {
+      return { ...preData, img: +e.target.value };
+    });
+   
+  }
+}
 
   // When the Add Instruction button is hitted, this function will be excuted.
   //  This will add one more line of instruction input, and also set the instruction data
@@ -112,8 +119,9 @@ export default function Form() {
     console.log(newRecipe);
     const reqOptions = {
       headers:{
-        "Content-Type": "multipart/form-data",
-        enctype: "multipart/form-data",},
+        "Content-Type": "application/json",
+       
+        },
       //not sure which one is needed
       // data: formData,
       
@@ -132,7 +140,7 @@ export default function Form() {
 
   return (
     <div className="form--container">
-      <form onSubmit={(e) => e.preventDefault()} className="form--content" >
+      <form onSubmit={(e) => e.preventDefault()} className="form--content"  encType="multipart/form-data">
         {/* Recipe Name Input */}
         <label htmlFor="" className="form--label">
           Recipe Name:
@@ -212,7 +220,7 @@ export default function Form() {
             type="file"
             name="image"
             className="form--input"
-            onChange={(e)=>handleImgUpload(e)}
+            onChange={(e)=>handleChange(e)}
           />
         </label> 
 
