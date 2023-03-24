@@ -53,18 +53,21 @@ export default function RecipePage() {
                 <p className="RP--title">{recipeArr[0].name}</p>
             </div>
             <div className="RP--img__container">
-                <img src={recipeArr[0].img} alt="" className="RP--img" />
+                <img src={recipeArr[0].img} alt={recipeArr[0].name} className="RP--img" />
+            </div>
+            <div className="RP--components__container">
+                    <ul className="RP--components--list">
+                        {componentArr}
+                    </ul>
+                </div>
+            <div className="RP--cookTime">
+                {recipeArr[0].cook_time_minutes}
             </div>
             <div className="RP--content">
                 <div className="RP--instructions__container">
                     <ol className="RP--instructions--list">
                         {instructionArr}
                     </ol>
-                </div>
-                <div className="RP--components__container">
-                    <ul className="RP--components--list">
-                        {componentArr}
-                    </ul>
                 </div>
             </div>
         </div>
