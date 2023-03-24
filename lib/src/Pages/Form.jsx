@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
 import "./Form.css";
+import axios from "axios";
 
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
@@ -13,6 +14,10 @@ export default function Form() {
 
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
+
+  //This state for the file in multer
+
+  const [uploadedFile, setUploadedFile] = useState(null);
 
   //This function is used to handle the input change
   function handleChange(e) {
@@ -69,18 +74,31 @@ export default function Form() {
   }
 
   // Handle submit
+
   function handleSubmit() {
+    // const reqOptions = {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   // needed for multer package
+    //   enctype: "multipart/form-data",
+    //   body: JSON.stringify(bodyData),
+    // };
+    // fetch("http://localhost:4000/recipes/newRecipe", reqOptions)
+    //   .then((res) => res.json())
+    //   .then((d) => console.log(d));
+    const formData = new FormData(e.target);
     const reqOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      // needed for multer package
+      headers: { "Content-Type": "multipart/form-data" },
+      //not sure which one is needed
+      body: formData,
+      data: formData,
       enctype: "multipart/form-data",
-      body: JSON.stringify(bodyData),
     };
-    fetch("http://localhost:4000/recipes/newRecipe", reqOptions)
-      .then((res) => res.json())
-      .then((d) => console.log(d));
+    axios.post("http://localhost:4000/recipes/newRecipe", reqOptions)
+
   }
+
+
 
   return (
     <div className="form--container">
