@@ -7,22 +7,35 @@ export default function RecipePage() {
     const recipeId = useParams()
     const recipeData = useLoaderData()
     const recipeArr = []
+    const instructionArr = []
 
     // console.log(recipeData)
     // console.log(recipeId)
 
-    recipeData.map(({ _id, name, img }) => {
+    recipeData.map(({ _id, name, img, components, cook_time_minutes, instruction }) => {
         if (recipeId.id === _id) {
             return(
                 recipeArr.push(
                     {
                         _id,
                         name,
-                        img
+                        img,
+                        components,
+                        cook_time_minutes,
+                        instruction
                     }
-                )
+                ),
+                console.log(recipeArr[0])
             )
         }
+    })
+
+    recipeArr[0].instruction.map(({ display_text, position }) => {
+        return(
+            instructionArr.push(
+                    <li className="RP--instruction--text" key={position}>{display_text}</li>
+             )
+        )
     })
 
     return ( 
@@ -35,10 +48,12 @@ export default function RecipePage() {
             </div>
             <div className="RP--content">
                 <div className="RP--instructions__container">
-                    
+                    <ol className="RP--instructions--list">
+                        {instructionArr}
+                    </ol>
                 </div>
                 <div className="RP--components__container">
-                    
+                    <ul className="RP--components--list"></ul>
                 </div>
             </div>
         </div>
