@@ -8,6 +8,7 @@ export default function RecipePage() {
     const recipeData = useLoaderData()
     const recipeArr = []
     const instructionArr = []
+    const componentArr = []
 
     // console.log(recipeData)
     // console.log(recipeId)
@@ -38,6 +39,14 @@ export default function RecipePage() {
         )
     })
 
+    recipeArr[0].components.map((elem) => {
+        return(
+            componentArr.push(
+                    <li className="RP--component--text" key={elem} >{elem}</li>
+             )
+        )
+    })
+
     return ( 
         <div className="RP--container">
             <div className="RP--title__container">
@@ -53,7 +62,9 @@ export default function RecipePage() {
                     </ol>
                 </div>
                 <div className="RP--components__container">
-                    <ul className="RP--components--list"></ul>
+                    <ul className="RP--components--list">
+                        {componentArr}
+                    </ul>
                 </div>
             </div>
         </div>
