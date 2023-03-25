@@ -138,6 +138,7 @@ try {
     console.log(res.data);
     } catch (error) {
     console.log(error);
+      }
   }
 
   return (
@@ -235,4 +236,4 @@ try {
       </form>
     </div>
   );
-            }}
+}
