@@ -34,8 +34,8 @@
 
 .RP--tape {
     height: 35px;
-    width: 110px;
-    margin-left: 170px;
+    width: 150px;
+    margin-left: 200px;
     margin-top: 13px;
     position: absolute;
     z-index: 2;
@@ -44,7 +44,7 @@
 }
 
 .RP--img__container {
-    margin: 30px;
+    margin: 30px 30px 30px 70px;
     width: 400px;
     height: 400px;
     overflow: hidden;
@@ -86,8 +86,39 @@
     font-family: cursive;
 }
 
-.RP--component--text:before {
-    border: 2px solid grey;
-    height: 5px;
-    width: 5px;
+.RP--instructions__title {
+    margin: 30px 0px 0px 35px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 26px;
+    font-weight: 800;
+    font-family: "League Script", cursive;
+}
+
+.RP--instructions__title p {
+    margin: 0;
+}
+
+.RP--cookTime__container {
+    margin-right: 45px;
+    display: flex;
+    align-items: center;
+}
+
+.RP--cookTime {
+    margin-left: 10px;
+}
+
+.RP--instructions--list {
+    margin-bottom: 30px;
+    margin-left: 25px;
+    font-family: cursive;
+}
+    
+.RP--instruction--text{
+    border-bottom: 2px solid #dcdcdc;;
+    margin-top: 8px;
+    margin-right: 50px;
+    padding: 0px 0px 3px 3px;
+    font-family: cursive;
 }

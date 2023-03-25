@@ -67,13 +67,14 @@ export default function RecipePage() {
                         </ul>
                 </div>
             </div>
-            <div className="RP--cookTime">
-                {recipeArr[0].cook_time_minutes}
-            </div>
             <div className="RP--content">
                 <div className="RP--instructions__container">
                     <div className="RP--instructions__title">
-                            <p>Directions</p>
+                        <p>Directions</p>
+                        <div className="RP--cookTime__container">
+                            <p className="RP--cookTime__title">Cook Time:</p>
+                            <p className="RP--cookTime">{recipeArr[0].cook_time_minutes} minutes.</p>
+                        </div>
                     </div>
                     <ol className="RP--instructions--list">
                         {instructionArr}
