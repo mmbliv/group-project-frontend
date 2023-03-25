@@ -1,26 +1,35 @@
 .RP--container {
-    border: 2px solid grey;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
-    width: 1000px;
+    margin-top: 50px;
+    margin-bottom: 150px;
+    width: 1200px;
     display: flex;
     flex-direction: column;
+    border-radius: 15px;
+    background-color: #fffcf2;
+    background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
+    box-shadow: 2px 5px 7px #000000;
 }
 
 .RP--title__container {
-    border: 2px solid grey;
     font-family: "League Script", cursive;
 }
 
 .RP--title {
     font-weight: 800;
     font-size: 40px;
-    margin: 10px;
+    margin: 25px 0px 15px 25px;
+}
+
+.RP--lineBreak {
+    border: 1px solid #fda5a5;
+    margin: 0px 22px;
 }
 
 .RP--head--container {
     display: flex;
+    justify-content: space-between;
 }
 
 .RP--tape {
@@ -48,4 +57,33 @@
 
 .RP--img {
     max-height: 400px;
+}
+
+.RP--components__container {
+    border: 2px solid grey;
+    width: 50%;
+}
+
+.RP--components__title {
+    font-size: 26px;
+    font-weight: 800;
+    font-family: "League Script", cursive;
+}
+
+.RP--components__title > * {
+    margin: 10px;
+}
+
+.RP--components--list {
+    list-style: none;
+}
+
+.RP--component--text {
+    border: 2px solid grey;;
+}
+
+.RP--component--text:before {
+    border: 2px solid grey;
+    height: 5px;
+    width: 5px;
 }
