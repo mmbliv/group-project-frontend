@@ -2,23 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
 import "./Form.css";
-import axios from "axios";
-
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
   // this state will be incresed by one, and one more line of instruction input will be added
-  const [instructionItemNumber, setInstructionItemNumber] = useState(1);
-
+  const [instructionItemNumber, setIntructionItemNumber] = useState(1);
   // This state is used to store body data that will be sent in request body
   const [bodyData, setBodyData] = useState({});
-
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
-
-  //This state for the file in multer
-
-  const [uploadedImg, setUploadedImg] = useState(null);
-
   //This function is used to handle the input change
   function handleChange(e) {
     if (e.target.name === "name") {
@@ -29,19 +20,17 @@ export default function Form() {
     if (e.target.name === "description") {
       setBodyData((preData) => {
         return { ...preData, description: e.target.value };
-      });          // onChange={(e) => handleChange(e)}
+      });
     }
     if (e.target.name === "ingredients") {
       setBodyData((preData) => {
         return { ...preData, components: e.target.value.split(",") };
       });
     }
-
     // set the data of instruction is slightly different from other input data,
     // cuz instruction data has a nested object (hard to explain).
     // I created a instructionInput state to store the instruction data first, and
     // then use handleAdd()  function to set it into bodyData
-
     if (e.target.name === "instrunction") {
       setInstructionInput({
         position: e.target.id,
@@ -64,7 +53,7 @@ export default function Form() {
   //  This will add one more line of instruction input, and also set the instruction data
   // into bodyData
   function handleAdd() {
-    setInstructionItemNumber(instructionItemNumber + 1);
+    setIntructionItemNumber(instructionItemNumber + 1);
     setBodyData((preData) => {
       if (preData.instruction) {
         return {
@@ -79,71 +68,22 @@ export default function Form() {
       }
     });
   }
-
-  function handleImgUpload(e) {
-    setUploadedImg(e.target.files[0]);
-  }
-
   // Handle submit
-
-  async function handleSubmit(e) {
-    // const reqOptions = {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   // needed for multer package
-    //   enctype: "multipart/form-data",
-    //   body: JSON.stringify(bodyData),
-    // };
-    // fetch("http://localhost:4000/recipes/uploads", reqOptions)
-    //   .then((res) => res.json())
-    //   .then((d) => console.log(d));
-
-    e.preventDefault();
-    // console.log(bodyData);
-    // console.log(instructionInput);
-    // console.log(instructionItemNumber);
-    // console.log(uploadedImg);
-    // console.log(e.target.files)
-    // console.log(e.target.file);
-    // console.log(e.target.image)
-
-    const newRecipe = new FormData(document.querySelector('form'));
-    newRecipe.append("name", bodyData.name);
-    newRecipe.append("description", bodyData.description);
-    newRecipe.append("ingredients", bodyData.components);
-    newRecipe.append("cook_time_minutes", bodyData.cook_time_minutes);
-    if (bodyData.instruction) {
-      for (let i = 0; i < bodyData.instruction.length; i++) {
-        newRecipe.append(`instruction[${i}][position]`, bodyData.instruction[i].position);
-        newRecipe.append(`instruction[${i}][display_text]`, bodyData.instruction[i].display_text);
-      }
-    }
-    newRecipe.append("image", uploadedImg);
-    console.log(newRecipe);
-    console.log(bodyData);
-    console.log(instructionInput);
-    console.log(instructionItemNumber);
-    console.log(uploadedImg);
-    console.log(e.target.files)
-    console.log(e.target.file);
-    console.log(e.target.image)
+  function handleSubmit() {
     const reqOptions = {
-      headers:{
-        "Content-Type": "aaplication/json",
-        enctype: "multipart/form-data",
-        },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      // needed for multer package
+      enctype: "multipart/form-data",
+      body: JSON.stringify(bodyData),
+    };
+    fetch("http://localhost:4000/recipes/", reqOptions)
+      .then((res) => res.json())
+      .then((d) => console.log(d));
   }
-try {
-  const res = await axios.post("http://localhost:4000/recipes/newRecipes", newRecipe, reqOptions)
-    console.log(res.data);
-    } catch (error) {
-    console.log(error);
-      }
-  }
-
   return (
     <div className="form--container">
-      <form onSubmit={(e) => e.preventDefault()} className="form--content" action="/uploads" encType="multipart/form-data">
+      <form onSubmit={(e) => e.preventDefault()} className="form--content">
         {/* Recipe Name Input */}
         <label htmlFor="" className="form--label">
           Recipe Name:
@@ -154,6 +94,7 @@ try {
             onChange={(e) => handleChange(e)}
           />
         </label>
+
         {/* Description Input */}
         <label htmlFor="" className="form--label">
           Description:
@@ -164,6 +105,7 @@ try {
             onChange={(e) => handleChange(e)}
           />
         </label>
+
         {/* Ingredients Input */}
         <label htmlFor="" className="form--label">
           Ingredients:
@@ -174,6 +116,7 @@ try {
             onChange={(e) => handleChange(e)}
           />
         </label>
+
         {/* Instruction Input */}
         <label htmlFor="" className="form--label">
           Instruction:
@@ -201,6 +144,7 @@ try {
             </button>
           </div>
         </label>
+
         {/* Cook_time Input */}
         <label htmlFor="" className="form--label">
           Cook_time_minutes:
@@ -212,20 +156,20 @@ try {
           />
         </label>
 
+        {/* Image Input
         {/* Image Input */}
         <label htmlFor="" className="form--label">
-
           Image:
           <input
             type="file"
             name="image"
             className="form--input"
-            // onChange={(e) => handleChange(e)}
-            // onChange={(e)=>handleImgUpload(e)}
+            onChange={(e) => handleChange(e)}
           />
+        {/* </label>  */}
+
         </label>
         {/* Submit */}
-
         <button
           type="submit"
           className="form--btn form--btn__submit"
