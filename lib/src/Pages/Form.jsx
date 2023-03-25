@@ -59,7 +59,6 @@ export default function Form() {
       });
     }
   }
-}
 
   // When the Add Instruction button is hitted, this function will be excuted.
   //  This will add one more line of instruction input, and also set the instruction data
@@ -140,6 +139,7 @@ try {
     } catch (error) {
     console.log(error);
   }
+
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content" action="/uploads" encType="multipart/form-data">
@@ -235,4 +235,4 @@ try {
       </form>
     </div>
   );
-}
+            }}
