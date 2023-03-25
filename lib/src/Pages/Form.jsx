@@ -140,7 +140,6 @@ try {
     } catch (error) {
     console.log(error);
   }
-}
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content" action="/uploads" encType="multipart/form-data">
