@@ -13,6 +13,7 @@ export default function GroceriesItem(props) {
   const date = new Date(createdAt);
   function handleUpdata() {
     const body = { checked: checkStatus, deleted: deleteStatus };
+    console.log("jiji");
     const reqOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
