@@ -54,12 +54,12 @@ export default function Form() {
       });
      
   }
-  if (e.target.name === "image") {
-    setUploadedImg((preData) => {
-      return { ...preData, img: +e.target.value };
-    });
+  // if (e.target.name === "image") {
+  //   setUploadedImg((preData) => {
+  //     return { ...preData, img: +e.target.value };
+  //   });
    
-  }
+  // }
 }
 
   // When the Add Instruction button is hitted, this function will be excuted.
@@ -83,7 +83,7 @@ export default function Form() {
   }
 
   function handleImgUpload(e) {
-    setUploadedImg(e.target.files[0]);
+    setUploadedImg(e.target.file);
   }
 
   // Handle submit
@@ -96,15 +96,18 @@ export default function Form() {
     //   enctype: "multipart/form-data",
     //   body: JSON.stringify(bodyData),
     // };
-    // fetch("http://localhost:4000/recipes/newRecipe", reqOptions)
+    // fetch("http://localhost:4000/recipes/uploads", reqOptions)
     //   .then((res) => res.json())
     //   .then((d) => console.log(d));
     e.preventDefault();
-    // console.log(bodyData);
-    // console.log(instructionInput);
-    // console.log(instructionItemNumber);
-    // console.log(uploadedImg);
-    const newRecipe = new FormData();
+    console.log(bodyData);
+    console.log(instructionInput);
+    console.log(instructionItemNumber);
+    console.log(uploadedImg);
+    console.log(e.target.files)
+    console.log(e.target.file);
+    console.log(e.target.image)
+    const newRecipe = new FormData(document.querySelector('form'));
     newRecipe.append("name", bodyData.name);
     newRecipe.append("description", bodyData.description);
     newRecipe.append("ingredients", bodyData.components);
@@ -115,32 +118,24 @@ export default function Form() {
         newRecipe.append(`instruction[${i}][display_text]`, bodyData.instruction[i].display_text);
       }
     }
-    newRecipe.append("img", uploadedImg);
+    newRecipe.append("image", uploadedImg);
     console.log(newRecipe);
     const reqOptions = {
       headers:{
         "Content-Type": "application/json",
-       
         },
-      //not sure which one is needed
-      // data: formData,
-      
-  
   }
-    try {
-    const res = await axios.post("http://localhost:4000/recipes/newRecipe", newRecipe, reqOptions)
+try {
+  const res = await axios.post("http://localhost:4000/recipes/uploads", newRecipe, reqOptions)
     console.log(res.data);
-  } catch (error) {
+    } catch (error) {
     console.log(error);
   }
-
-  }
-
-
+}
 
   return (
     <div className="form--container">
-      <form onSubmit={(e) => e.preventDefault()} className="form--content"  encType="multipart/form-data">
+      <form onSubmit={(e) => e.preventDefault()} className="form--content" action="/uploads" encType="multipart/form-data">
         {/* Recipe Name Input */}
         <label htmlFor="" className="form--label">
           Recipe Name:
@@ -220,7 +215,7 @@ export default function Form() {
             type="file"
             name="image"
             className="form--input"
-            onChange={(e)=>handleChange(e)}
+            onChange={(e)=>handleImgUpload(e)}
           />
         </label> 
 
