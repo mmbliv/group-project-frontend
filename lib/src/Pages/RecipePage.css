@@ -4,8 +4,48 @@
     margin-right: auto;
     margin-top: 30px;
     width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.RP--title__container {
+    border: 2px solid grey;
+    font-family: "League Script", cursive;
+}
+
+.RP--title {
+    font-weight: 800;
+    font-size: 40px;
+    margin: 10px;
+}
+
+.RP--head--container {
+    display: flex;
+}
+
+.RP--tape {
+    height: 35px;
+    width: 110px;
+    margin-left: 170px;
+    margin-top: 13px;
+    position: absolute;
+    z-index: 2;
+    transform: rotate(-1deg);
+    background-color: #d2d2d266;
+}
+
+.RP--img__container {
+    margin: 30px;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    transform: rotate(-2deg);
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    box-shadow: 2px 5px 7px #000000;
 }
 
 .RP--img {
-    width: 100px;
+    max-height: 400px;
 }
