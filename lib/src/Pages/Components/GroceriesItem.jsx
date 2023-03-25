@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { format } from "date-fns";
 import "./GroceriesItem.css";
 import { GiCheckMark } from "react-icons/gi";
 import { RiDeleteBinFill } from "react-icons/ri";
@@ -9,7 +10,7 @@ export default function GroceriesItem(props) {
   const [deleteStatus, setDeleteStatus] = useState(deleted);
 
   //   console.log(deleteStatus);
-
+  const date = new Date(createdAt);
   function handleUpdata() {
     const body = { checked: checkStatus, deleted: deleteStatus };
     const reqOptions = {
@@ -35,7 +36,9 @@ export default function GroceriesItem(props) {
         <p className="groceriesItem--from">
           from <span className="groceriesItem--recipe">{recipe}</span>
         </p>
-        <p className="groceriesItem--createdAt">{createdAt}</p>
+        <p className="groceriesItem--createdAt">
+          {date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear()}
+        </p>
         <div className="groceriesItem--btns">
           <div
             onClick={() => setCheckStatus(!checkStatus)}
