@@ -9,7 +9,7 @@
     border-radius: 15px;
     background-color: #fffcf2;
     background-image: url("https://www.transparenttextures.com/patterns/beige-paper.png");
-    box-shadow: 2px 5px 7px #000000;
+    box-shadow: 2px 5px 7px #545454;
 }
 
 .RP--title__container {
@@ -86,7 +86,7 @@
     font-family: cursive;
 }
 
-.RP--instructions__title {
+.RP--instructions__head {
     margin: 30px 0px 0px 35px;
     display: flex;
     justify-content: space-between;
@@ -95,7 +95,7 @@
     font-family: "League Script", cursive;
 }
 
-.RP--instructions__title p {
+.RP--instructions--title {
     margin: 0;
 }
 
@@ -105,12 +105,16 @@
     align-items: center;
 }
 
+.RP--cookTime__title {
+    margin: 0;
+}
+
 .RP--cookTime {
-    margin-left: 10px;
+    margin: 0px 0px 0px 10px;
 }
 
 .RP--instructions--list {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     margin-left: 25px;
     font-family: cursive;
 }

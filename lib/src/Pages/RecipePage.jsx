@@ -69,8 +69,8 @@ export default function RecipePage() {
             </div>
             <div className="RP--content">
                 <div className="RP--instructions__container">
-                    <div className="RP--instructions__title">
-                        <p>Directions</p>
+                    <div className="RP--instructions__head">
+                        <p className="RP--instructions--title">Directions</p>
                         <div className="RP--cookTime__container">
                             <p className="RP--cookTime__title">Cook Time:</p>
                             <p className="RP--cookTime">{recipeArr[0].cook_time_minutes} minutes.</p>
