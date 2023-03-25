@@ -25,32 +25,34 @@ export default function GroceriesItem(props) {
   }
 
   useEffect(() => {
-    // console.log(window);
     window.addEventListener("beforeunload", handleUpdata);
   }, []);
 
   if (!deleted && !deleteStatus)
     return (
       <div className="groceriesItem--container">
-        <p>{name}</p>
-        <p>{createdAt}</p>
-        <p>
-          from <span>{recipe}</span>
+        <p className="groceriesItem--name">{name}</p>
+        <p className="groceriesItem--from">
+          from <span className="groceriesItem--recipe">{recipe}</span>
         </p>
-        <p>{createdAt}</p>
-
-        <div
-          onClick={() => setCheckStatus(!checkStatus)}
-          className={
-            checkStatus
-              ? "groceriesItem--checkBox__checked"
-              : "groceriesItem--checkBox"
-          }
-        >
-          <GiCheckMark />
-        </div>
-        <div onClick={() => setDeleteStatus(!deleteStatus)}>
-          <RiDeleteBinFill />
+        <p className="groceriesItem--createdAt">{createdAt}</p>
+        <div className="groceriesItem--btns">
+          <div
+            onClick={() => setCheckStatus(!checkStatus)}
+            className={
+              checkStatus
+                ? "groceriesItem--checkBox__checked"
+                : "groceriesItem--checkBox"
+            }
+          >
+            <GiCheckMark />
+          </div>
+          <div
+            onClick={() => setDeleteStatus(!deleteStatus)}
+            className="groceriesItem--delete"
+          >
+            <RiDeleteBinFill />
+          </div>
         </div>
       </div>
     );
