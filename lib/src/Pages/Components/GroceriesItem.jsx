@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { format } from "date-fns";
 import "./GroceriesItem.css";
 import { GiCheckMark } from "react-icons/gi";
 import { RiDeleteBinFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export default function GroceriesItem(props) {
   const { name, deleted, checked, recipe, createdAt, _id } = props.data;
@@ -34,7 +34,7 @@ export default function GroceriesItem(props) {
       <div className="groceriesItem--container">
         <p className="groceriesItem--name">{name}</p>
         <p className="groceriesItem--from">
-          from <span className="groceriesItem--recipe">{recipe}</span>
+          from <Link className="groceriesItem--recipe">{recipe}</Link>
         </p>
         <p className="groceriesItem--createdAt">
           {date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear()}
