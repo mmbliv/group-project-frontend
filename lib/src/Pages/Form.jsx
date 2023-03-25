@@ -52,13 +52,12 @@ export default function Form() {
       setBodyData((preData) => {
         return { ...preData, cook_time_minutes: +e.target.value };
       });
-     
-  }
-  if (e.target.name === "image") {
-    setUploadedImg((preData) => {
-      return { ...preData, img: +e.target.files};
-    });
-   
+    }
+    if (e.target.name === "image") {
+      setBodyData((preData) => {
+        return { ...preData, img: e.target.value };
+      });
+    }
   }
 }
 
@@ -142,7 +141,6 @@ try {
     console.log(error);
   }
 }
-
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content" action="/uploads" encType="multipart/form-data">
@@ -156,7 +154,6 @@ try {
             onChange={(e) => handleChange(e)}
           />
         </label>
-
         {/* Description Input */}
         <label htmlFor="" className="form--label">
           Description:
@@ -167,7 +164,6 @@ try {
             onChange={(e) => handleChange(e)}
           />
         </label>
-
         {/* Ingredients Input */}
         <label htmlFor="" className="form--label">
           Ingredients:
@@ -178,7 +174,6 @@ try {
             onChange={(e) => handleChange(e)}
           />
         </label>
-
         {/* Instruction Input */}
         <label htmlFor="" className="form--label">
           Instruction:
@@ -206,7 +201,6 @@ try {
             </button>
           </div>
         </label>
-
         {/* Cook_time Input */}
         <label htmlFor="" className="form--label">
           Cook_time_minutes:
@@ -218,8 +212,9 @@ try {
           />
         </label>
 
-        Image Input
-        <label htmlFor="image" className="form--label" >
+        {/* Image Input */}
+        <label htmlFor="" className="form--label">
+
           Image:
           <input
             type="file"
@@ -228,9 +223,9 @@ try {
             // onChange={(e) => handleChange(e)}
             // onChange={(e)=>handleImgUpload(e)}
           />
-        </label> 
+        </label>
+        {/* Submit */}
 
-        {/* Submit*/}
         <button
           type="submit"
           className="form--btn form--btn__submit"
