@@ -1,6 +1,57 @@
-import React from "react";
-import "./Groceries.css";
+import React, { useEffect, useState } from "react";
+import "./GroceriesItem.css";
+import { GiCheckMark } from "react-icons/gi";
+import { RiDeleteBinFill } from "react-icons/ri";
 
 export default function GroceriesItem(props) {
-  return <div>grocery</div>;
+  const { name, deleted, checked, recipe, createdAt, _id } = props.data;
+  const [checkStatus, setCheckStatus] = useState(checked);
+  const [deleteStatus, setDeleteStatus] = useState(deleted);
+
+  //   console.log(deleteStatus);
+
+  function handleUpdata() {
+    const body = { checked: checkStatus, deleted: deleteStatus };
+    const reqOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      // needed for multer package
+      //   enctype: "multipart/form-data",
+      body: JSON.stringify(body),
+    };
+    fetch(`http://localhost:4000/groceries/:${_id}`, reqOptions)
+      .then((res) => res.json())
+      .then((d) => console.log(d));
+  }
+
+  useEffect(() => {
+    // console.log(window);
+    window.addEventListener("beforeunload", handleUpdata);
+  }, []);
+
+  if (!deleted && !deleteStatus)
+    return (
+      <div className="groceriesItem--container">
+        <p>{name}</p>
+        <p>{createdAt}</p>
+        <p>
+          from <span>{recipe}</span>
+        </p>
+        <p>{createdAt}</p>
+
+        <div
+          onClick={() => setCheckStatus(!checkStatus)}
+          className={
+            checkStatus
+              ? "groceriesItem--checkBox__checked"
+              : "groceriesItem--checkBox"
+          }
+        >
+          <GiCheckMark />
+        </div>
+        <div onClick={() => setDeleteStatus(!deleteStatus)}>
+          <RiDeleteBinFill />
+        </div>
+      </div>
+    );
 }
