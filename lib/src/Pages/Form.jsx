@@ -46,6 +46,11 @@ export default function Form() {
         return { ...preData, cook_time_minutes: +e.target.value };
       });
     }
+    if (e.target.name === "image") {
+      setBodyData((preData) => {
+        return { ...preData, img: e.target.value };
+      });
+    }
   }
 
   // When the Add Instruction button is hitted, this function will be excuted.
@@ -77,7 +82,7 @@ export default function Form() {
       enctype: "multipart/form-data",
       body: JSON.stringify(bodyData),
     };
-    fetch("http://localhost:4000/recipes/newRecipe", reqOptions)
+    fetch("http://localhost:4000/recipes", reqOptions)
       .then((res) => res.json())
       .then((d) => console.log(d));
   }
@@ -95,7 +100,6 @@ export default function Form() {
             onChange={(e) => handleChange(e)}
           />
         </label>
-
         {/* Description Input */}
         <label htmlFor="" className="form--label">
           Description:
@@ -106,7 +110,6 @@ export default function Form() {
             onChange={(e) => handleChange(e)}
           />
         </label>
-
         {/* Ingredients Input */}
         <label htmlFor="" className="form--label">
           Ingredients:
@@ -117,7 +120,6 @@ export default function Form() {
             onChange={(e) => handleChange(e)}
           />
         </label>
-
         {/* Instruction Input */}
         <label htmlFor="" className="form--label">
           Instruction:
@@ -145,7 +147,6 @@ export default function Form() {
             </button>
           </div>
         </label>
-
         {/* Cook_time Input */}
         <label htmlFor="" className="form--label">
           Cook_time_minutes:
@@ -156,8 +157,7 @@ export default function Form() {
             onChange={(e) => handleChange(e)}
           />
         </label>
-
-        {/* Image Input
+        {/* Image Input */}
         <label htmlFor="" className="form--label">
           Image:
           <input
@@ -166,8 +166,7 @@ export default function Form() {
             className="form--input"
             onChange={(e) => handleChange(e)}
           />
-        </label> */}
-
+        </label>
         {/* Submit */}
         <button
           type="submit"
