@@ -72,6 +72,9 @@ export default function RecipePage() {
             </div>
             <div className="RP--content">
                 <div className="RP--instructions__container">
+                    <div className="RP--instructions__title">
+                            <p>Directions</p>
+                    </div>
                     <ol className="RP--instructions--list">
                         {instructionArr}
                     </ol>

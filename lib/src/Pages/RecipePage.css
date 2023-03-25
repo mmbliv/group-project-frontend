@@ -60,11 +60,11 @@
 }
 
 .RP--components__container {
-    border: 2px solid grey;
     width: 50%;
 }
 
 .RP--components__title {
+    margin-top: 20px;
     font-size: 26px;
     font-weight: 800;
     font-family: "League Script", cursive;
@@ -79,7 +79,11 @@
 }
 
 .RP--component--text {
-    border: 2px solid grey;;
+    border-bottom: 2px solid #dcdcdc;;
+    margin-top: 8px;
+    margin-right: 50px;
+    padding: 0px 0px 3px 3px;
+    font-family: cursive;
 }
 
 .RP--component--text:before {
