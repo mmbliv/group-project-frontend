@@ -5,19 +5,18 @@ import { GrAdd } from "react-icons/gr";
 // import { fill } from "cloudinary/url-gen/actions/resize";
 // import { CloudinaryImage } from "cloudinary/url-gen";
 import "./Form.css";
-
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
   // this state will be incresed by one, and one more line of instruction input will be added
   const [instructionItemNumber, setIntructionItemNumber] = useState(1);
-
   // This state is used to store body data that will be sent in request body
   const [bodyData, setBodyData] = useState({});
-
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
 
+
   const [imgURL, setImgURL] = useState();
+
 
   //This function is used to handle the input change
   function handleChange(e) {
@@ -90,7 +89,6 @@ export default function Form() {
       }
     });
   }
-
   // Handle submit
   function handleSubmit() {
     const reqOptions = {
@@ -100,7 +98,7 @@ export default function Form() {
       enctype: "multipart/form-data",
       body: JSON.stringify(bodyData),
     };
-    fetch("http://localhost:4000/recipes", reqOptions)
+    fetch("http://localhost:4000/recipes/", reqOptions)
       .then((res) => res.json())
       .then((d) => console.log(d));
 
@@ -116,7 +114,6 @@ export default function Form() {
     //     console.log(e);
     //   });
   }
-
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content">
@@ -130,6 +127,7 @@ export default function Form() {
             onChange={(e) => handleChange(e)}
           />
         </label>
+
         {/* Description Input */}
         <label htmlFor="" className="form--label">
           Description:
@@ -140,6 +138,7 @@ export default function Form() {
             onChange={(e) => handleChange(e)}
           />
         </label>
+
         {/* Ingredients Input */}
         <label htmlFor="" className="form--label">
           Ingredients:
@@ -150,6 +149,7 @@ export default function Form() {
             onChange={(e) => handleChange(e)}
           />
         </label>
+
         {/* Instruction Input */}
         <label htmlFor="" className="form--label">
           Instruction:
@@ -177,6 +177,7 @@ export default function Form() {
             </button>
           </div>
         </label>
+
         {/* Cook_time Input */}
         <label htmlFor="" className="form--label">
           Cook_time_minutes:
@@ -187,6 +188,8 @@ export default function Form() {
             onChange={(e) => handleChange(e)}
           />
         </label>
+
+        {/* Image Input
         {/* Image Input */}
         <label htmlFor="" className="form--label">
           Image:
@@ -196,6 +199,8 @@ export default function Form() {
             className="form--input"
             onChange={(e) => handleChange(e)}
           />
+        {/* </label>  */}
+
         </label>
         <img src={imgURL} alt="img" />
         {/* Submit */}
