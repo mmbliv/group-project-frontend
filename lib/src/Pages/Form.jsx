@@ -47,8 +47,9 @@ export default function Form() {
       });
     }
     if (e.target.name === "image") {
+      console.log(e.target.files[0]);
       setBodyData((preData) => {
-        return { ...preData, img: e.target.value };
+        return { ...preData, img: e.target.files[0] };
       });
     }
   }
@@ -75,6 +76,8 @@ export default function Form() {
 
   // Handle submit
   function handleSubmit() {
+    const img = bodyData.img;
+    console.log(img);
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -85,6 +88,18 @@ export default function Form() {
     fetch("http://localhost:4000/recipes", reqOptions)
       .then((res) => res.json())
       .then((d) => console.log(d));
+
+    // const reqOptionsImg = {
+    //   method: "POST",
+    //   headers: { "content-type": img.type, "content-length": `${img.size}` },
+    //   body: img,
+    // };
+    // fetch("http://localhost:4000/recipes", reqOptionsImg)
+    //   .then((res) => res.json())
+    //   .then((d) => console.log(d))
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
   }
 
   return (
@@ -162,7 +177,7 @@ export default function Form() {
           Image:
           <input
             type="file"
-            name="image"
+            name="img"
             className="form--input"
             onChange={(e) => handleChange(e)}
           />
