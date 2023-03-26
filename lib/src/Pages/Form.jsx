@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
+
+// import cloudinary from "cloudinary";
+// import { fill } from "cloudinary/url-gen/actions/resize";
+// import { CloudinaryImage } from "cloudinary/url-gen";
 import "./Form.css";
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
@@ -10,6 +13,11 @@ export default function Form() {
   const [bodyData, setBodyData] = useState({});
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
+
+
+  const [imgURL, setImgURL] = useState();
+
+
   //This function is used to handle the input change
   function handleChange(e) {
     if (e.target.name === "name") {
@@ -42,10 +50,23 @@ export default function Form() {
         return { ...preData, cook_time_minutes: +e.target.value };
       });
     }
-    if (e.target.name === "image") {
-      setBodyData((preData) => {
-        return { ...preData, img: e.target.value };
-      });
+    if (e.target.name === "img") {
+      // setImgData(e.target.files[0]);
+      const formData = new FormData();
+      formData.append("file", e.target.files[0]);
+      formData.append("upload_preset", "ml_default");
+      // console.log(formData);
+      fetch("https://api.cloudinary.com/v1_1/duambh2yn/image/upload", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((d) => {
+          setImgURL(d.secure_url);
+          setBodyData((preData) => {
+            return { ...preData, img: d.secure_url };
+          });
+        });
     }
   }
 
@@ -80,6 +101,18 @@ export default function Form() {
     fetch("http://localhost:4000/recipes/", reqOptions)
       .then((res) => res.json())
       .then((d) => console.log(d));
+
+    // const reqOptionsImg = {
+    //   method: "POST",
+    //   headers: { "content-type": img.type, "content-length": `${img.size}` },
+    //   body: img,
+    // };
+    // fetch("http://localhost:4000/recipes", reqOptionsImg)
+    //   .then((res) => res.json())
+    //   .then((d) => console.log(d))
+    //   .catch((e) => {
+    //     console.log(e);
+    //   });
   }
   return (
     <div className="form--container">
@@ -162,13 +195,14 @@ export default function Form() {
           Image:
           <input
             type="file"
-            name="image"
+            name="img"
             className="form--input"
             onChange={(e) => handleChange(e)}
           />
         {/* </label>  */}
 
         </label>
+        <img src={imgURL} alt="img" />
         {/* Submit */}
         <button
           type="submit"

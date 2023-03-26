@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useBeforeUnload } from "react-router-dom";
 import "./GroceriesItem.css";
 import { GiCheckMark } from "react-icons/gi";
 import { RiDeleteBinFill } from "react-icons/ri";
@@ -13,6 +14,7 @@ export default function GroceriesItem(props) {
   const date = new Date(createdAt);
   function handleUpdata() {
     const body = { checked: checkStatus, deleted: deleteStatus };
+    console.log("jiji");
     const reqOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -25,9 +27,10 @@ export default function GroceriesItem(props) {
       .then((d) => console.log(d));
   }
 
-  useEffect(() => {
-    window.addEventListener("beforeunload", handleUpdata);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("beforeunload", handleUpdata);
+  // }, []);
+  useBeforeUnload(handleUpdata());
 
   if (!deleted && !deleteStatus)
     return (
