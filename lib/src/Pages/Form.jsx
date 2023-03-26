@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
-import { Cloudinary } from "@cloudinary/url-gen";
-import { Resize } from "@cloudinary/url-gen/actions/resize";
 
 // import cloudinary from "cloudinary";
 // import { fill } from "cloudinary/url-gen/actions/resize";
@@ -19,8 +16,6 @@ export default function Form() {
 
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
-
-  const [imgData, setImgData] = useState();
 
   const [imgURL, setImgURL] = useState();
 
