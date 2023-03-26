@@ -20,6 +20,10 @@ export default function Form() {
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
 
+  const [imgData, setImgData] = useState();
+
+  const [imgURL, setImgURL] = useState();
+
   //This function is used to handle the input change
   function handleChange(e) {
     if (e.target.name === "name") {
@@ -53,25 +57,22 @@ export default function Form() {
       });
     }
     if (e.target.name === "img") {
+      // setImgData(e.target.files[0]);
       const formData = new FormData();
       formData.append("file", e.target.files[0]);
-      formData.append("upload_preset", "ggbjb7m5");
-      console.log(formData);
-      fetch("https://api.cloudinary.com/v1_1/dxywexfqi/image/upload", {
+      formData.append("upload_preset", "ml_default");
+      // console.log(formData);
+      fetch("https://api.cloudinary.com/v1_1/duambh2yn/image/upload", {
         method: "POST",
         body: formData,
       })
         .then((res) => res.json())
         .then((d) => {
+          setImgURL(d.secure_url);
           setBodyData((preData) => {
             return { ...preData, img: d.secure_url };
           });
         });
-
-      // console.log(e.target.files[0]);
-      // setBodyData((preData) => {
-      //   return { ...preData, img: e.target.files[0] };
-      // });
     }
   }
 
@@ -95,31 +96,8 @@ export default function Form() {
     });
   }
 
-  // Cloudinary.config({
-  //   cloud_name: "dxywexfqi",
-  //   api_key: "473696498369353",
-  //   api_secret: "Ksqzslge01iIWSw5qFMIHdZhWGo",
-  // });
-
-  // const cld = new Cloudinary({
-  //   cloud: {
-  //     cloudName: "dxywexfqi",
-  //     apiKey: "473696498369353",
-  //     apiSecret: "Ksqzslge01iIWSw5qFMIHdZhWGo",
-  //   },
-  // });
-
-  // const myImg = cld.image("huhuhu");
-  // console.log(myImg);
-  // myImg.resize(Resize.scale().width(100).height(100));
-  // const myURL = myImg.toURL();
-  // console.log(myURL);
-
   // Handle submit
   function handleSubmit() {
-    // const img = bodyData.img;
-    // console.log(img);
-
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -224,6 +202,7 @@ export default function Form() {
             onChange={(e) => handleChange(e)}
           />
         </label>
+        <img src={imgURL} alt="img" />
         {/* Submit */}
         <button
           type="submit"
