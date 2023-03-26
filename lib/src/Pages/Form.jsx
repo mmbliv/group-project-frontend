@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { Resize } from "@cloudinary/url-gen/actions/resize";
+
+// import cloudinary from "cloudinary";
+// import { fill } from "cloudinary/url-gen/actions/resize";
+// import { CloudinaryImage } from "cloudinary/url-gen";
 import "./Form.css";
 
 export default function Form() {
@@ -46,11 +52,26 @@ export default function Form() {
         return { ...preData, cook_time_minutes: +e.target.value };
       });
     }
-    if (e.target.name === "image") {
-      console.log(e.target.files[0]);
-      setBodyData((preData) => {
-        return { ...preData, img: e.target.files[0] };
-      });
+    if (e.target.name === "img") {
+      const formData = new FormData();
+      formData.append("file", e.target.files[0]);
+      formData.append("upload_preset", "ggbjb7m5");
+      console.log(formData);
+      fetch("https://api.cloudinary.com/v1_1/dxywexfqi/image/upload", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((d) => {
+          setBodyData((preData) => {
+            return { ...preData, img: d.secure_url };
+          });
+        });
+
+      // console.log(e.target.files[0]);
+      // setBodyData((preData) => {
+      //   return { ...preData, img: e.target.files[0] };
+      // });
     }
   }
 
@@ -74,10 +95,31 @@ export default function Form() {
     });
   }
 
+  // Cloudinary.config({
+  //   cloud_name: "dxywexfqi",
+  //   api_key: "473696498369353",
+  //   api_secret: "Ksqzslge01iIWSw5qFMIHdZhWGo",
+  // });
+
+  // const cld = new Cloudinary({
+  //   cloud: {
+  //     cloudName: "dxywexfqi",
+  //     apiKey: "473696498369353",
+  //     apiSecret: "Ksqzslge01iIWSw5qFMIHdZhWGo",
+  //   },
+  // });
+
+  // const myImg = cld.image("huhuhu");
+  // console.log(myImg);
+  // myImg.resize(Resize.scale().width(100).height(100));
+  // const myURL = myImg.toURL();
+  // console.log(myURL);
+
   // Handle submit
   function handleSubmit() {
-    const img = bodyData.img;
-    console.log(img);
+    // const img = bodyData.img;
+    // console.log(img);
+
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
