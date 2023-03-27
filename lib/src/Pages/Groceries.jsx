@@ -11,7 +11,12 @@ export default function Groceries() {
       {groceriesData.map((d) => {
         return <GroceriesItem key={d._id} data={d} />;
       })}
-      <button onClick={() => window.location.reload(true)}>submit</button>
+      <button
+        onClick={() => window.location.reload(true)}
+        className="groceriesItems--submit"
+      >
+        submit
+      </button>
     </div>
   );
 }
