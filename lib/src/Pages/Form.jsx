@@ -15,8 +15,9 @@ export default function Form() {
   const [instructionInput, setInstructionInput] = useState({});
 
   // use this imgURL that get from cloudinary to preview the uploaded img
-
   const [imgURL, setImgURL] = useState();
+
+  const [loadingImg, setLoadingImg] = useState(false);
 
   //This function is used to handle the input change
   function handleChange(e) {
@@ -55,6 +56,7 @@ export default function Form() {
       const formData = new FormData();
       formData.append("file", e.target.files[0]);
       formData.append("upload_preset", "ml_default");
+      setLoadingImg(true);
       // host img to cloudianry
       fetch("https://api.cloudinary.com/v1_1/duambh2yn/image/upload", {
         method: "POST",
@@ -64,6 +66,7 @@ export default function Form() {
         .then((d) => {
           // get the url back from cloudinary
           setImgURL(d.secure_url);
+          setLoadingImg(false);
           setBodyData((preData) => {
             return { ...preData, img: d.secure_url };
           });
@@ -190,7 +193,10 @@ export default function Form() {
           />
           {/* </label>  */}
         </label>
-        <img src={imgURL} alt="img" />
+        <div className="form--img__container">
+          {imgURL && <img src={imgURL} alt="img" className="form--img" />}
+          {loadingImg && <p>Loading...</p>}
+        </div>
         {/* Submit */}
         <button
           type="submit"
