@@ -1,7 +1,8 @@
 import React from 'react';
+import { Thumbnail } from './Components'
 
 export default function SearchPage() {
     return (
-        <p>Test Search Page</p>
+        <Thumbnail />
      );
 }
