@@ -14,9 +14,9 @@ export default function Form() {
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
 
+  // use this imgURL that get from cloudinary to preview the uploaded img
 
   const [imgURL, setImgURL] = useState();
-
 
   //This function is used to handle the input change
   function handleChange(e) {
@@ -55,13 +55,14 @@ export default function Form() {
       const formData = new FormData();
       formData.append("file", e.target.files[0]);
       formData.append("upload_preset", "ml_default");
-      // console.log(formData);
+      // host img to cloudianry
       fetch("https://api.cloudinary.com/v1_1/duambh2yn/image/upload", {
         method: "POST",
         body: formData,
       })
         .then((res) => res.json())
         .then((d) => {
+          // get the url back from cloudinary
           setImgURL(d.secure_url);
           setBodyData((preData) => {
             return { ...preData, img: d.secure_url };
@@ -101,18 +102,6 @@ export default function Form() {
     fetch("http://localhost:4000/recipes/", reqOptions)
       .then((res) => res.json())
       .then((d) => console.log(d));
-
-    // const reqOptionsImg = {
-    //   method: "POST",
-    //   headers: { "content-type": img.type, "content-length": `${img.size}` },
-    //   body: img,
-    // };
-    // fetch("http://localhost:4000/recipes", reqOptionsImg)
-    //   .then((res) => res.json())
-    //   .then((d) => console.log(d))
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
   }
   return (
     <div className="form--container">
@@ -199,8 +188,7 @@ export default function Form() {
             className="form--input"
             onChange={(e) => handleChange(e)}
           />
-        {/* </label>  */}
-
+          {/* </label>  */}
         </label>
         <img src={imgURL} alt="img" />
         {/* Submit */}
