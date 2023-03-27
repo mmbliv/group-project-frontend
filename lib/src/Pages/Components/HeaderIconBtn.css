@@ -1,5 +1,5 @@
 .header--btn__icon {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   text-align: center;
 }
 
@@ -13,6 +13,6 @@
   /* color: green; */
 }
 .header--btn__link {
-  color: black;
+  color: #bebcc2;
   text-decoration: none;
 }
