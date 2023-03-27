@@ -10,6 +10,7 @@
 
 .search--icon > * {
     height: 52px;
+    width: 30px;
     font-weight: 100;
 }
 
@@ -22,11 +23,11 @@
 }
 
 #search--input:hover {
-    width: 80px;
+    width: 100px;
     transition: 0.5s;
 }
 
 .search--icon:hover ~ #search--input {
-    width: 80px;
+    width: 100px;
     transition: 0.5s;
 }
