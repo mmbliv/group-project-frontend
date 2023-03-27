@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { GrAdd } from "react-icons/gr";
 
 // import cloudinary from "cloudinary";
@@ -17,6 +17,10 @@ export default function Form() {
   // use this imgURL that get from cloudinary to preview the uploaded img
 
   const [imgURL, setImgURL] = useState();
+
+  const [loadingImg, setLoadingImg] = useState();
+
+  const imgInputRef = useRef();
 
   //This function is used to handle the input change
   function handleChange(e) {
@@ -55,6 +59,7 @@ export default function Form() {
       const formData = new FormData();
       formData.append("file", e.target.files[0]);
       formData.append("upload_preset", "ml_default");
+      setLoadingImg(true);
       // host img to cloudianry
       fetch("https://api.cloudinary.com/v1_1/duambh2yn/image/upload", {
         method: "POST",
@@ -64,6 +69,7 @@ export default function Form() {
         .then((d) => {
           // get the url back from cloudinary
           setImgURL(d.secure_url);
+          setLoadingImg(false);
           setBodyData((preData) => {
             return { ...preData, img: d.secure_url };
           });
@@ -102,6 +108,11 @@ export default function Form() {
     fetch("http://localhost:4000/recipes/", reqOptions)
       .then((res) => res.json())
       .then((d) => console.log(d));
+  }
+
+  // handleImgloading
+  function handleImgLoading() {
+    imgInputRef.current.click();
   }
   return (
     <div className="form--container">
@@ -183,14 +194,19 @@ export default function Form() {
         <label htmlFor="" className="form--label">
           Image:
           <input
+            ref={imgInputRef}
             type="file"
             name="img"
-            className="form--input"
+            className="form--input form--input__img"
             onChange={(e) => handleChange(e)}
           />
           {/* </label>  */}
         </label>
-        <img src={imgURL} alt="img" />
+        <button onClick={handleImgLoading} className="form--btn__addImg">
+          {!loadingImg && !imgURL && <p>add img</p>}
+          {loadingImg && <p>loading...</p>}
+          {imgURL && <img src={imgURL} alt="img" className="form--img" />}
+        </button>
         {/* Submit */}
         <button
           type="submit"
