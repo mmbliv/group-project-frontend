@@ -1,15 +1,13 @@
 .header--container {
-    height: 600px;
+    height: 100px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 10px;
-    padding: 0.5rem 2rem 0.5rem 0rem;
+    padding: 2.5rem 2rem 0.5rem 0rem;
     background-color: #1b191c;
     background-image: url('./img/HeaderBR.jpg');
+    background-position: center;
     background-size: cover;
-    color: #ffffff;
-    
 }
 
 .header--logo__container {
@@ -96,6 +94,8 @@
     margin: 0;
     font-size: 0px;
     font-weight: 800;
+    color: #bebcc2;
+    font-family: 'Poiret One', cursive;
 }
 
 .add-recipe--container {
@@ -110,14 +110,16 @@
     margin: 0;
     font-size: 0px;
     font-weight: 800;
+    color: #bebcc2;
+    font-family: 'Poiret One', cursive;
 }
 
 #show--text:hover #hidden--text-1 {
-    font-size: 15px;
+    font-size: 18px;
     transition: 0.5s;
 }
 
 #show--text:hover #hidden--text-2 {
-    font-size: 15px;
+    font-size: 18px;
     transition: 0.5s;
 }
