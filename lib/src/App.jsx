@@ -6,9 +6,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-
-import { Home, Layout, RecipePage, Form, Groceries } from "./Pages";
-
+import { Home, Layout, RecipePage, Form, Groceries, SearchPage } from "./Pages";
 import { recipeLoader, groceriesLoader } from "./loaders";
 
 const router = createBrowserRouter(
@@ -30,6 +28,10 @@ const router = createBrowserRouter(
         path="/recipe/:id"
         element={<RecipePage />}
         loader={recipeLoader}
+      />
+      <Route
+        path="/search"
+        element={<SearchPage />}
       />
     </Route>
   )
