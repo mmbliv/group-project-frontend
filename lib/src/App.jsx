@@ -6,7 +6,9 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
+
 import { Home, Layout, RecipePage, Form, Groceries } from "./Pages";
+
 import { recipeLoader, groceriesLoader } from "./loaders";
 
 const router = createBrowserRouter(
@@ -14,6 +16,11 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} loader={recipeLoader} />
       <Route path="/form" element={<Form />} />
+      {/* <Route
+        path="/groceries"
+        element={<Groceries />}
+        loader={groceriesLoader}
+      /> */}
       <Route
         path="/groceries"
         element={<Groceries />}
