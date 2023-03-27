@@ -12,13 +12,9 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <div className="header--container">
+        <div className="header--overlay"></div>
         <div className="header--content">
              <Link to="/" className="header--logo__container">
-                {/* <img
-                    src={require("./img/PlateIcon.jpg")}
-                    alt=""
-                    className="header--logo"
-                 /> */}
                  <div className="header--logo--icon">
                     <div className="logo--layer1">
                         <div className="logo--layer2"></div>

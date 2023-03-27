@@ -1,7 +1,6 @@
 .home--container {
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: #1b191c;
 }
