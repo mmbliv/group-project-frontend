@@ -1,30 +1,33 @@
 .search--container {
     width: 85px;
-    height: 40px;
+    height: 60px;
     padding: 5px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    color: black;
+    color: #bebcc2;
 }
 
 .search--icon > * {
-    height: 22px;
+    height: 52px;
+    width: 30px;
     font-weight: 100;
 }
 
 #search--input {
     width: 0px;
     border: none;
+    color: #bebcc2;
+    background-color: #00000000;
     transition: 1s;
 }
 
 #search--input:hover {
-    width: 70px;
+    width: 100px;
     transition: 0.5s;
 }
 
 .search--icon:hover ~ #search--input {
-    width: 70px;
+    width: 100px;
     transition: 0.5s;
 }

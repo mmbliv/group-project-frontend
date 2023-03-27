@@ -1,18 +1,48 @@
 .header--container {
-    height: 80px;
+    height: 100px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 0.5rem 2rem 0.5rem 0rem;
-    font-family: 'League Script', cursive;
+    padding: 2.5rem 2rem 0rem 0rem;
+    background-color: #1b191c;
+    background-image: url('./img/HeaderBR.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .header--logo__container {
+    margin-left: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+}
+
+.header--logo--icon {
+    height: 80px;
+    width: 80px;
+    margin-right: 20px;
+}
+
+.logo--layer1 {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border-right: 1px solid #bebcc2;
+    border-bottom: 3px solid #bebcc2;
+    border-left: 1px solid #bebcc2;
+    transform: rotate(-45deg);
+}
+
+.logo--layer2 {
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+    border-left: 1px solid #bebcc2;
+    border-top: 1px solid #bebcc2;
+    border-bottom: 1px solid #bebcc2;
 }
 
 .header--logo {
@@ -23,14 +53,12 @@
 .header--logo--text {
     font-size: 60px;
     height: 100px;
+    margin: 13px 0px 0px 0px;
     display: flex;
     align-items: flex-end;
-}
-
-.header--logo--text {
-    margin-top: 66px;
-    color: #000000;
-    font-family: "League Script", cursive;
+    color: #bebcc2;
+    font-size: 70px;
+    font-family: 'Poiret One', cursive;
 }
 
 .header--content {
@@ -65,6 +93,8 @@
     margin: 0;
     font-size: 0px;
     font-weight: 800;
+    color: #bebcc2;
+    font-family: 'Poiret One', cursive;
 }
 
 .add-recipe--container {
@@ -79,14 +109,16 @@
     margin: 0;
     font-size: 0px;
     font-weight: 800;
+    color: #bebcc2;
+    font-family: 'Poiret One', cursive;
 }
 
 #show--text:hover #hidden--text-1 {
-    font-size: 15px;
+    font-size: 18px;
     transition: 0.5s;
 }
 
 #show--text:hover #hidden--text-2 {
-    font-size: 15px;
+    font-size: 18px;
     transition: 0.5s;
 }

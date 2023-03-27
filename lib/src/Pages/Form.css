@@ -1,39 +1,56 @@
 .form--container {
-  padding-top: 3rem;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 100px;
+  height: 600px;
+  width: 800px;
   overflow: hidden;
+  border-radius: 40px;
+  background-image: url('./Components/img/FormBR.jpg');
+  background-size: cover;
+  background-position: center;
 }
+
 .form--content {
+  border: 2px solid grey;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
-  overflow: scroll;
   height: 20rem;
+  color: #fffbf3;
 }
+
 .form--label {
+  border: 2px solid grey;
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
 }
-.form--input {
-  /* padding-left: 1rem; */
-  /* margin-left: 1rem; */
-}
+
 .form--instructions__container {
+  border: 2px solid grey;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
+
 .form--btn {
+  border: 2px solid grey;
   width: max-content;
   padding: 5px 10px;
 }
+
 .form--btn__add {
+  border: 2px solid grey;
   display: flex;
   gap: 5px;
 }
+
 .form--btn__submit {
+  border: 2px solid grey;
   margin: 0 auto;
   margin-top: 1rem;
 }
