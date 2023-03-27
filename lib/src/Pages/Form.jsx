@@ -14,9 +14,10 @@ export default function Form() {
   // use this imgURL that get from cloudinary to preview the uploaded img
   const [imgURL, setImgURL] = useState();
 
-  const [loadingImg, setLoadingImg] = useState(false);
+  const [loadingImg, setLoadingImg] = useState();
 
   const imgInputRef = useRef();
+
   //This function is used to handle the input change
   function handleChange(e) {
     if (e.target.name === "name") {
@@ -109,6 +110,10 @@ export default function Form() {
     imgInputRef.current.click();
   }
 
+  // handleImgloading
+  function handleImgLoading() {
+    imgInputRef.current.click();
+  }
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content">
@@ -197,15 +202,12 @@ export default function Form() {
           />
           {/* </label>  */}
         </label>
-        <div className="form--img__container" onClick={handleUploadImg}>
-          {!imgURL && !loadingImg && (
-            <div className="form--img__add">
-              <GrAdd />
-            </div>
-          )}
+
+        <button onClick={handleImgLoading} className="form--btn__addImg">
+          {!loadingImg && !imgURL && <p>add img</p>}
+          {loadingImg && <p>loading...</p>}
           {imgURL && <img src={imgURL} alt="img" className="form--img" />}
-          {loadingImg && <p className="">Loading...</p>}
-        </div>
+        </button>
         {/* Submit */}
         <button
           type="submit"
