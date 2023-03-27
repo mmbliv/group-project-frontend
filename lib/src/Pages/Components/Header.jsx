@@ -14,11 +14,16 @@ export default function Header() {
     <div className="header--container">
         <div className="header--content">
              <Link to="/" className="header--logo__container">
-                <img
-                    src={require("./img/HeaderLogo.jpg")}
+                {/* <img
+                    src={require("./img/PlateIcon.jpg")}
                     alt=""
                     className="header--logo"
-                 />
+                 /> */}
+                 <div className="header--logo--icon">
+                    <div className="logo--layer1">
+                        <div className="logo--layer2"></div>
+                    </div>
+                 </div>
                 <p className="header--logo--text">Platefuls</p>
             </Link>
             <div className="header--btns">
