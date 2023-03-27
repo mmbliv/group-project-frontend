@@ -22,7 +22,7 @@ export default function GroceriesItem(props) {
       //   enctype: "multipart/form-data",
       body: JSON.stringify(body),
     };
-    fetch(`http://localhost:4000/groceries/:${_id}`, reqOptions)
+    fetch(`http://localhost:4000/groceries/${_id}`, reqOptions)
       .then((res) => res.json())
       .then((d) => console.log(d));
   }
