@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { GrAdd } from "react-icons/gr";
-
-// import cloudinary from "cloudinary";
-// import { fill } from "cloudinary/url-gen/actions/resize";
-// import { CloudinaryImage } from "cloudinary/url-gen";
+import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
@@ -19,6 +16,7 @@ export default function Form() {
 
   const [loadingImg, setLoadingImg] = useState(false);
 
+  const imgInputRef = useRef();
   //This function is used to handle the input change
   function handleChange(e) {
     if (e.target.name === "name") {
@@ -106,6 +104,11 @@ export default function Form() {
       .then((res) => res.json())
       .then((d) => console.log(d));
   }
+
+  function handleUploadImg() {
+    imgInputRef.current.click();
+  }
+
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content">
@@ -187,15 +190,21 @@ export default function Form() {
           Image:
           <input
             type="file"
+            ref={imgInputRef}
             name="img"
-            className="form--input"
+            className="form--input form--input__img"
             onChange={(e) => handleChange(e)}
           />
           {/* </label>  */}
         </label>
-        <div className="form--img__container">
+        <div className="form--img__container" onClick={handleUploadImg}>
+          {!imgURL && !loadingImg && (
+            <div className="form--img__add">
+              <GrAdd />
+            </div>
+          )}
           {imgURL && <img src={imgURL} alt="img" className="form--img" />}
-          {loadingImg && <p>Loading...</p>}
+          {loadingImg && <p className="">Loading...</p>}
         </div>
         {/* Submit */}
         <button
