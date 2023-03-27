@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useBeforeUnload } from "react-router-dom";
+// import useBeforeUnload from "../../hooks/useBeforeUnload";
 import "./GroceriesItem.css";
 import { GiCheckMark } from "react-icons/gi";
 import { RiDeleteBinFill } from "react-icons/ri";
@@ -48,6 +49,11 @@ export default function GroceriesItem(props) {
   //       .then((d) => console.log(d));
   //   }, [checkStatus])
   // );
+
+  // useBeforeUnload({
+  //   when: checkStatus !== checked,
+  //   message: "Are you sure you want to leave?",
+  // });
 
   useBeforeUnload(
     React.useCallback(() => {
