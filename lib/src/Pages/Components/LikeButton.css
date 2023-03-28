@@ -1,7 +1,6 @@
 .like-btn--container {
     margin: 7px;
     color: #bebcc2;
-    background-image: linear-gradient(to bottom right, #000000, #464646);
     border-radius: 50%;
     padding: 5px;
     display: flex;
@@ -13,7 +12,6 @@
 .like-btn--container:active {
     border-bottom: none;
     border-right: none;
-    border-left: 1px solid #7a7a7a;
-    border-top: 1px solid #7a7a7a;
-    background-color: grey;
+    border-left: 1px solid #000000;
+    border-top: 1px solid #212121;
 }

@@ -10,7 +10,12 @@ export default function LikeButton() {
     }
     return ( 
         <div className="like-btn--container" 
-        style={{backgroundColor: liked?'#fdb7c2':'#efefef', color: liked?'#222222': '#979797'}}
+        style={
+            { 
+                backgroundImage: liked?"linear-gradient(to bottom right, #000000, #8e2c2c)": "linear-gradient(to bottom right, #000000, #464646)",
+                color: liked?"#ac1414":"#727272"
+            }
+        }
         onClick={handleLikeButton}>
             <HiOutlineHeart />
         </div>
