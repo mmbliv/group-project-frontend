@@ -4,8 +4,10 @@
   align-items:center;
   gap: 3rem;
   border: 1px green solid;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
+  flex-wrap: nowrap;
+  height: 75px;
 }
 
 .groceriesItem--checkBox__checked {
@@ -31,10 +33,12 @@ p {
 
 .groceriesItem--recipe {
   color: #e6e6e6;
+  width: 50%;
 
 }
 
 .groceriesItem--name{
   margin-left: 2vw;
+  width: 20%;
 
 }
