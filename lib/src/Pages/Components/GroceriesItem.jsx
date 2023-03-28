@@ -13,24 +13,33 @@ export default function GroceriesItem(props) {
 
   const date = new Date(createdAt);
 
-  useBeforeUnload(
-    React.useCallback(() => {
-      console.log("0");
-      // console.log(deleteStatus);
-      const body = {};
-      body.checked = checkStatus;
-      body.deleted = deleteStatus;
-      const reqOptions = {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      };
-      fetch(`http://localhost:4000/groceries/${_id}`, reqOptions)
-        .then((res) => res.json())
-        .then((d) => console.log(d));
-    }, [checkStatus, deleteStatus, _id])
-  );
-
+  // useBeforeUnload(
+  //   React.useCallback(() => {
+  //     console.log("0");
+  //     // console.log(deleteStatus);
+  //     const body = {};
+  //     body.checked = checkStatus;
+  //     body.deleted = deleteStatus;
+  //     const reqOptions = {
+  //       method: "PUT",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(body),
+  //     };
+  //     fetch(`http://localhost:4000/groceries/${_id}`, reqOptions)
+  //       .then((res) => res.json())
+  //       .then((d) => console.log(d));
+  //   }, [checkStatus, deleteStatus, _id])
+  // );
+  function handleCheck() {
+    setCheckStatus(!checkStatus);
+    const reqOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch(`http://localhost:4000/groceries/check/${_id}`, reqOptions)
+      .then((res) => res.json())
+      .then((d) => console.log(d));
+  }
   if (!deleted && !deleteStatus)
     return (
       <div className="groceriesItem--container">
@@ -43,7 +52,7 @@ export default function GroceriesItem(props) {
         </p>
         <div className="groceriesItem--btns">
           <div
-            onClick={() => setCheckStatus(!checkStatus)}
+            onClick={() => handleCheck()}
             className={
               checkStatus
                 ? "groceriesItem--checkBox__checked"
