@@ -31,12 +31,13 @@ export default function Form() {
       fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
         .then((res) => res.json())
         .then((d) => {
-          setData(d);
-          console.log(d.instruction.length);
+          // setData(d);
+          setBodyData(d);
           setIntructionItemNumber(d.instruction.length);
+          // setImgURL(d.img);
         });
     } else {
-      setData(null);
+      setBodyData(null);
     }
   }, [params.id]);
 
@@ -116,17 +117,38 @@ export default function Form() {
   }
   // Handle submit
   function handleSubmit() {
-    const reqOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      // needed for multer package
-      enctype: "multipart/form-data",
-      body: JSON.stringify(bodyData),
-    };
-    fetch("http://localhost:4000/recipes/", reqOptions)
-      .then((res) => res.json())
-      .then((d) => console.log(d));
+    if (params.id === "add") {
+      const reqOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // needed for multer package
+        enctype: "multipart/form-data",
+        body: JSON.stringify(bodyData),
+      };
+      fetch("http://localhost:4000/recipes/", reqOptions)
+        .then((res) => res.json())
+        .then((d) => console.log(d));
+    } else {
+      const reqOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        // needed for multer package
+        enctype: "multipart/form-data",
+        body: JSON.stringify(bodyData),
+      };
+      fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
+        .then((res) => res.json())
+        .then((d) => console.log(d));
+    }
   }
+
+  function handleDeleteImg(e) {
+    e.stopPropagation();
+    setBodyData((pre) => {
+      return { ...pre, img: "" };
+    });
+  }
+  // console.log(bodyData.instruction);
 
   // handleImgloading
   function handleImgLoading() {
@@ -143,7 +165,8 @@ export default function Form() {
             name="name"
             className="form--input"
             onChange={(e) => handleChange(e)}
-            defaultValue={data && data.name}
+            defaultValue={bodyData && bodyData.name}
+            // value={bodyData.name}
           />
         </label>
 
@@ -155,7 +178,8 @@ export default function Form() {
             name="description"
             className="form--input"
             onChange={(e) => handleChange(e)}
-            defaultValue={data && data.description}
+            defaultValue={bodyData && bodyData.description}
+            // value={bodyData.description}
           />
         </label>
 
@@ -167,7 +191,8 @@ export default function Form() {
             name="ingredients"
             className="form--input"
             onChange={(e) => handleChange(e)}
-            defaultValue={data && data.components}
+            // value={bodyData.components}
+            defaultValue={bodyData && bodyData.components}
           />
         </label>
 
@@ -186,7 +211,8 @@ export default function Form() {
                     name="instrunction"
                     className="form--input"
                     onChange={(e) => handleChange(e)}
-                    defaultValue={data && data.instruction[i]}
+                    // value={bodyData.instruction[i].display_text}
+                    // defaultValue={data && data.instruction[i]}
                   />
                 );
               })}
@@ -208,7 +234,8 @@ export default function Form() {
             name="cook_time"
             className="form--input"
             onChange={(e) => handleChange(e)}
-            defaultValue={data && data.cook_time_minutes}
+            defaultValue={bodyData && bodyData.cook_time_minutes}
+            // value={bodyData.cook_time_minutes}
           />
         </label>
 
@@ -226,11 +253,22 @@ export default function Form() {
           {/* </label>  */}
         </label>
 
-        <button onClick={handleImgLoading} className="form--btn__addImg">
-          {!loadingImg && !imgURL && <p>add img</p>}
+        <div onClick={handleImgLoading} className="form--btn__addImg">
+          {!loadingImg && !imgURL && !bodyData.img && <p>add img</p>}
           {loadingImg && <p>loading...</p>}
           {imgURL && <img src={imgURL} alt="img" className="form--img" />}
-        </button>
+          {bodyData.img && (
+            <img src={bodyData.img} alt="img" className="form--img"></img>
+          )}
+          {bodyData && (
+            <button
+              className="form--img__delete"
+              onClick={(e) => handleDeleteImg(e)}
+            >
+              X
+            </button>
+          )}
+        </div>
         {/* Submit */}
         <button
           type="submit"
