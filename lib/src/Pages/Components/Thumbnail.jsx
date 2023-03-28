@@ -2,20 +2,19 @@ import React from 'react';
 import './Thumbnail.css'
 
 
-export default function Thumbnail({searchResults}) {
 
+export default function Thumbnail(props) {
+const result = props.result;
     return ( 
         <>
-        {searchResults && searchResults.map((result) => (
-       <div className="thumbnail--container" key={searchResults._id}>
+       <div className="thumbnail--container" >
         <div className="thubmnail--img__container">
-            <img src={searchResults.img} alt={searchResults.name} />
+            <img src={result.img} alt={result.name}/>
         </div>
         <div className="thumbnail--content__container">
-            <p className="thumbnail--content--title">{searchResults.name}</p>
+            <p className="thumbnail--content--title">{result.name}</p>
         </div>
        </div>
-        ))}
      </>
     )
 }

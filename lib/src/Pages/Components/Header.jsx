@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import HeaderIconBtn from "./HeaderIconBtn";
-import Search from './Search.jsx'
+import Search from "./Search";
 import { BsFillBasketFill } from "react-icons/bs";
 import { MdPlaylistAddCircle } from "react-icons/md";
 
@@ -9,7 +9,7 @@ import { CiShoppingCart, CiSquarePlus } from "react-icons/ci";
 
 import { Link } from "react-router-dom";
 
-export default function Header({searchResults, setSearchResults}) {
+export default function Header() {
   return (
     <div className="header--container">
         <div className="header--overlay"></div>
@@ -24,7 +24,7 @@ export default function Header({searchResults, setSearchResults}) {
             </Link>
             <div className="header--btns">
                 <div className="icon--container">
-                    <Search searchResults={searchResults} setSearchResults = {setSearchResults}/>
+                    <Search />
                     <div className="groceries--container" id="show--text">
                         <HeaderIconBtn
                             icon={CiShoppingCart}

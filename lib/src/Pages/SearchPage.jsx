@@ -5,6 +5,10 @@ import Search from './Components/Search.jsx';
 
 export default function SearchPage() {
     const [searchResults, setSearchResults] = useState([]);
+
+   const handleSearchResults = (results)=> {
+        setSearchResults(results);
+    }
     return (
         <div className="searchPage--container">
             <div className="searchPage--title__container">

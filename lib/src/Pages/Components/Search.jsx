@@ -3,9 +3,10 @@ import './Search.css'
 import { BiSearch } from "react-icons/bi"
 import axios from "axios"
 
-export default function Search() {
+export default function Search({setSearchResults}) {
 const [search, setSearch] = useState('')
-const [searchResults, setSearchResults] = useState([])
+
+
 
 const handleKeyPress = (e) => {
     if(e.key === 'Enter') {
