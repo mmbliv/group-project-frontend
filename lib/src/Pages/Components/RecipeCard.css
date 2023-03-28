@@ -9,6 +9,7 @@
     font-family: 'Poiret One', cursive;
     font-weight: 800;
     box-shadow: 4px 4px 5px #303030;
+    border-bottom-left-radius: 20px;
 }
 
 .recipe-card--overlay {

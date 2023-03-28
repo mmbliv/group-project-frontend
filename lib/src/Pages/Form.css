@@ -7,7 +7,7 @@
   width: 800px;
   overflow: hidden;
   border-radius: 40px;
-  background-image: url("./Components/img/FormBR.jpg");
+  background-image: url('./Components/img/FormBR.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -58,9 +58,11 @@
 .form--input__img {
   display: none;
 }
+
 .form--btn__addImg {
   height: 10rem;
 }
+
 .form--img {
   height: 100%;
   object-fit: contain;
