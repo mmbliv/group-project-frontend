@@ -3,12 +3,21 @@
     width: 250px;
     margin: 50px;
     display: flex;
+    font-family: 'Poiret One', cursive;
+    font-weight: 800;
+    color: #fffbf3;
 }
 
 .thubmnail--img__container {
     border: 2px solid grey;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
+}
+
+.thubmnail--img{
+    max-height: 100px;
+    min-width: 100%;
+    object-fit: fill;
 }
 
 .thumbnail--content__container {

@@ -8,7 +8,7 @@ export default function Thumbnail(props) {
     <>
        <div className="thumbnail--container" >
         <div className="thubmnail--img__container">
-            <img src={props.img} alt={props.name}/>
+            <img src={props.img} alt={props.name} className="thubmnail--img" />
         </div>
         <div className="thumbnail--content__container">
             <p className="thumbnail--content--title">{props.name}</p>
