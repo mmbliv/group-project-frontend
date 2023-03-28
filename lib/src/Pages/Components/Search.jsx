@@ -20,7 +20,7 @@ const handleSubmit = async(e) => {
     console.log(res.data)
     console.log(search)
     //passes data from @here to '/search'. state picked up by useLocation on SearchPage
-    navigate('/search', {state: {results: res.data}})
+    navigate('/search', {state: {results: res.data, search: search}})
 }
 
 //set value

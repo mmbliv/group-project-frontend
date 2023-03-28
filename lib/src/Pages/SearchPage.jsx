@@ -7,7 +7,7 @@ import Search from './Components/Search.jsx';
 export default function SearchPage() {
     // const [searchResults, setSearchResults] = useState([]);
     const { state}  = useLocation()
-    const { results } = state;
+    const { results, search } = state;
     const searchResults = []
     console.log(results)
 
@@ -33,7 +33,7 @@ export default function SearchPage() {
     return (
         <div className="searchPage--container">
             <div className="searchPage--title__container">
-                <p className="searchPage--title">Search Results for "props"</p>
+                <p className="searchPage--title">Search Results for "{search}"</p>
             </div>
             <div className="searchPage--content__container">
                 {searchResults}
