@@ -15,7 +15,8 @@ export default function GroceriesItem(props) {
 
   useBeforeUnload(
     React.useCallback(() => {
-      console.log(checkStatus);
+      console.log("0");
+      // console.log(deleteStatus);
       const body = {};
       body.checked = checkStatus;
       body.deleted = deleteStatus;
