@@ -42,16 +42,24 @@ export default function GroceriesItem(props) {
     //navigate function allows to navigate based on deired routes
     navigate(`/recipe/${d._id}`));
   }
+
+  const capitalizedName = name.split(' ').map((newName) =>newName.charAt(0).toUpperCase() + newName.slice(1)).join(' ');
+
   if (!deleted && !deleteStatus)
     return (
       <div className="groceriesItem--container">
-        <p className="groceriesItem--name">{name}</p>
+        <p className="groceriesItem--name">{capitalizedName}</p>
+        <div>
         <p className="groceriesItem--from">
-          from <Link className="groceriesItem--recipe" onClick={handleRecipeNavigate}>{recipe}</Link>
+          Recipe: <Link className="groceriesItem--recipe" onClick={handleRecipeNavigate}>{recipe}</Link>
         </p>
+        </div>
+        <div>
         <p className="groceriesItem--createdAt">
           {date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear()}
         </p>
+        </div>
+        <div>
         <div className="groceriesItem--btns">
           <div
             onClick={() => handleCheck()}
@@ -66,6 +74,7 @@ export default function GroceriesItem(props) {
           <div onClick={() => handleDelete()} className="groceriesItem--delete">
             <RiDeleteBinFill />
           </div>
+        </div>
         </div>
       </div>
     );

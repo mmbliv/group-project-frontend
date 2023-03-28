@@ -1,7 +1,7 @@
 .groceriesItem--container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items:center;
   gap: 3rem;
   border: 1px green solid;
   width: 70%;
@@ -13,8 +13,28 @@
   /* font-size: larger; */
 }
 
+.groceriesItem--createdAt {
+  margin-right: 2vw;
+  margin-right: 2vw;
+}
 .groceriesItem--btns {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  margin-right: 2vw;
+  color: #8d8d8d;
+}
+
+p {
+  color: #e6e6e6;
+}
+
+.groceriesItem--recipe {
+  color: #e6e6e6;
+
+}
+
+.groceriesItem--name{
+  margin-left: 2vw;
+
 }
