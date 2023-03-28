@@ -4,17 +4,16 @@ import './Thumbnail.css'
 
 
 export default function Thumbnail(props) {
-const result = props.result;
     return ( 
-        <>
+    <>
        <div className="thumbnail--container" >
         <div className="thubmnail--img__container">
-            <img src={result.img} alt={result.name}/>
+            <img src={props.img} alt={props.name} className="thubmnail--img" />
         </div>
         <div className="thumbnail--content__container">
-            <p className="thumbnail--content--title">{result.name}</p>
+            <p className="thumbnail--content--title">{props.name}</p>
         </div>
        </div>
-     </>
+    </>
     )
 }
