@@ -1,6 +1,6 @@
 import React from "react";
 import "./RecipePage.css";
-import { useParams, useLoaderData } from "react-router-dom";
+import { useParams, useLoaderData, useNavigate, Link } from "react-router-dom";
 
 export default function RecipePage() {
   const recipeId = useParams();
@@ -8,6 +8,7 @@ export default function RecipePage() {
   const recipeArr = [];
   const instructionArr = [];
   const componentArr = [];
+  const navigate = useNavigate();
 
   // console.log(recipeData)
   // console.log(recipeId)
@@ -27,11 +28,25 @@ export default function RecipePage() {
       enctype: "multipart/form-data",
       body: JSON.stringify(body),
     };
-    fetch("http://localhost:4000/groceries", reqOptions)
-      .then((res) => res.json())
-      .then((d) => console.log(d));
+    fetch("http://localhost:4000/groceries", reqOptions);
+    // .then((res) => res.json())
+    // .then((d) => console.log(d));
   }
 
+  function handleEdit() {}
+
+  function handleDelete() {
+    const reqOptions = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      // needed for multer package
+      enctype: "multipart/form-data",
+    };
+    fetch(`http://localhost:4000/recipes/${recipeArr[0]._id}`, reqOptions).then(
+      () => navigate("/")
+    );
+    // .then((d) => console.log(d));
+  }
   recipeData.map(
     ({ _id, name, img, components, cook_time_minutes, instruction }) => {
       if (recipeId.id === _id) {
@@ -76,6 +91,10 @@ export default function RecipePage() {
 
   return (
     <div className="RP--container">
+      <div className="RP--btns">
+        <Link to={`/form/${recipeArr[0]._id}`}>edit</Link>
+        <button onClick={handleDelete}>delete</button>
+      </div>
       <div className="RP--img__container">
         <div className="RP--overlay"></div>
         <img

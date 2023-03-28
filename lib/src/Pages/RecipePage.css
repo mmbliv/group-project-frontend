@@ -129,3 +129,11 @@
   margin-right: 50px;
   padding: 0px 0px 3px 3px;
 }
+
+.RP--btns {
+  color: #e6e6e6;
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding-right: 2rem;
+}

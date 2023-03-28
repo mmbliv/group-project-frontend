@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
 import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
@@ -10,6 +11,7 @@ export default function Form() {
   const [bodyData, setBodyData] = useState({});
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
+  const [data, setData] = useState();
 
   // use this imgURL that get from cloudinary to preview the uploaded img
   const [imgURL, setImgURL] = useState();
@@ -17,6 +19,26 @@ export default function Form() {
   const [loadingImg, setLoadingImg] = useState();
 
   const imgInputRef = useRef();
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id !== "add") {
+      const reqOptions = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      };
+      fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
+        .then((res) => res.json())
+        .then((d) => {
+          setData(d);
+          console.log(d.instruction.length);
+          setIntructionItemNumber(d.instruction.length);
+        });
+    } else {
+      setData(null);
+    }
+  }, [params.id]);
 
   //This function is used to handle the input change
   function handleChange(e) {
@@ -121,6 +143,7 @@ export default function Form() {
             name="name"
             className="form--input"
             onChange={(e) => handleChange(e)}
+            defaultValue={data && data.name}
           />
         </label>
 
@@ -132,6 +155,7 @@ export default function Form() {
             name="description"
             className="form--input"
             onChange={(e) => handleChange(e)}
+            defaultValue={data && data.description}
           />
         </label>
 
@@ -143,6 +167,7 @@ export default function Form() {
             name="ingredients"
             className="form--input"
             onChange={(e) => handleChange(e)}
+            defaultValue={data && data.components}
           />
         </label>
 
@@ -161,6 +186,7 @@ export default function Form() {
                     name="instrunction"
                     className="form--input"
                     onChange={(e) => handleChange(e)}
+                    defaultValue={data && data.instruction[i]}
                   />
                 );
               })}
@@ -182,6 +208,7 @@ export default function Form() {
             name="cook_time"
             className="form--input"
             onChange={(e) => handleChange(e)}
+            defaultValue={data && data.cook_time_minutes}
           />
         </label>
 

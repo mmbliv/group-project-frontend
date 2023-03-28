@@ -13,7 +13,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} loader={recipeLoader} />
-      <Route path="/form" element={<Form />} />
+      <Route path="/form/:id" element={<Form />} />
       {/* <Route
         path="/groceries"
         element={<Groceries />}
@@ -29,10 +29,7 @@ const router = createBrowserRouter(
         element={<RecipePage />}
         loader={recipeLoader}
       />
-      <Route
-        path="/search"
-        element={<SearchPage />}
-      />
+      <Route path="/search" element={<SearchPage />} />
     </Route>
   )
 );
