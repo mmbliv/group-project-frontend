@@ -8,14 +8,16 @@ export default function SearchPage() {
 
    const handleSearchResults = (results)=> {
         setSearchResults(results);
+        console.log(results)
     }
+
     return (
         <div className="searchPage--container">
             <div className="searchPage--title__container">
                 <p className="searchPage--title">Search Results for "props"</p>
             </div>
             <div className="searchPage--content__container">
-                <Thumbnail searchResults={searchResults}/>
+                {/* <Thumbnail searchResults={searchResults}/> */}
             </div>
         </div>
      );
