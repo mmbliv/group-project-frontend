@@ -40,6 +40,18 @@ export default function GroceriesItem(props) {
       .then((res) => res.json())
       .then((d) => console.log(d));
   }
+
+  function handleDelete() {
+    setDeleteStatus(!deleteStatus);
+    const reqOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch(`http://localhost:4000/groceries/delete/${_id}`, reqOptions)
+      .then((res) => res.json())
+      .then((d) => console.log(d));
+  }
+
   if (!deleted && !deleteStatus)
     return (
       <div className="groceriesItem--container">
@@ -61,10 +73,7 @@ export default function GroceriesItem(props) {
           >
             <GiCheckMark />
           </div>
-          <div
-            onClick={() => setDeleteStatus(!deleteStatus)}
-            className="groceriesItem--delete"
-          >
+          <div onClick={() => handleDelete()} className="groceriesItem--delete">
             <RiDeleteBinFill />
           </div>
         </div>
