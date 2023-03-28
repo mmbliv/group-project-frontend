@@ -168,7 +168,7 @@ export default function Form() {
               onClick={() => handleAdd()}
               className="form--btn form--btn__add"
             >
-              <GrAdd />
+              {/* <GrAdd style={{color: "#fffbf3"}}/> */}
               Add Instruction
             </button>
           </div>
