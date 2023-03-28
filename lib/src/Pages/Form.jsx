@@ -1,9 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { GrAdd } from "react-icons/gr";
-
-// import cloudinary from "cloudinary";
-// import { fill } from "cloudinary/url-gen/actions/resize";
-// import { CloudinaryImage } from "cloudinary/url-gen";
+import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
@@ -15,7 +12,6 @@ export default function Form() {
   const [instructionInput, setInstructionInput] = useState({});
 
   // use this imgURL that get from cloudinary to preview the uploaded img
-
   const [imgURL, setImgURL] = useState();
 
   const [loadingImg, setLoadingImg] = useState();
@@ -194,14 +190,15 @@ export default function Form() {
         <label htmlFor="" className="form--label">
           Image:
           <input
-            ref={imgInputRef}
             type="file"
+            ref={imgInputRef}
             name="img"
             className="form--input form--input__img"
             onChange={(e) => handleChange(e)}
           />
           {/* </label>  */}
         </label>
+
         <button onClick={handleImgLoading} className="form--btn__addImg">
           {!loadingImg && !imgURL && <p>add img</p>}
           {loadingImg && <p>loading...</p>}

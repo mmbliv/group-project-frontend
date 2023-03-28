@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useBeforeUnload } from "react-router-dom";
-// import useBeforeUnload from "../../hooks/useBeforeUnload";
 import "./GroceriesItem.css";
 import { GiCheckMark } from "react-icons/gi";
 import { RiDeleteBinFill } from "react-icons/ri";
@@ -13,24 +11,27 @@ export default function GroceriesItem(props) {
 
   const date = new Date(createdAt);
 
-  //have a handleclick function that will store name state and do a get request for recipe based off of that name state
+  function handleCheck() {
+    setCheckStatus(!checkStatus);
+    const reqOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch(`http://localhost:4000/groceries/check/${_id}`, reqOptions)
+      .then((res) => res.json())
+      .then((d) => console.log(d));
+  }
 
-  useBeforeUnload(
-    React.useCallback(() => {
-      console.log(checkStatus);
-      const body = {};
-      body.checked = checkStatus;
-      body.deleted = deleteStatus;
-      const reqOptions = {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      };
-      fetch(`http://localhost:4000/groceries/recipe/${_id}`, reqOptions)
-        .then((res) => res.json())
-        .then((d) => console.log(d));
-    }, [checkStatus, deleteStatus, _id])
-  );
+  function handleDelete() {
+    setDeleteStatus(!deleteStatus);
+    const reqOptions = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    };
+    fetch(`http://localhost:4000/groceries/delete/${_id}`, reqOptions)
+      .then((res) => res.json())
+      .then((d) => console.log(d));
+  }
 
   if (!deleted && !deleteStatus)
     return (
@@ -44,7 +45,7 @@ export default function GroceriesItem(props) {
         </p>
         <div className="groceriesItem--btns">
           <div
-            onClick={() => setCheckStatus(!checkStatus)}
+            onClick={() => handleCheck()}
             className={
               checkStatus
                 ? "groceriesItem--checkBox__checked"
@@ -53,10 +54,7 @@ export default function GroceriesItem(props) {
           >
             <GiCheckMark />
           </div>
-          <div
-            onClick={() => setDeleteStatus(!deleteStatus)}
-            className="groceriesItem--delete"
-          >
+          <div onClick={() => handleDelete()} className="groceriesItem--delete">
             <RiDeleteBinFill />
           </div>
         </div>
