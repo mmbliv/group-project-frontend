@@ -106,10 +106,6 @@ export default function Form() {
       .then((d) => console.log(d));
   }
 
-  function handleUploadImg() {
-    imgInputRef.current.click();
-  }
-
   // handleImgloading
   function handleImgLoading() {
     imgInputRef.current.click();
