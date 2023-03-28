@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import HeaderIconBtn from "./HeaderIconBtn";
-import Search from './Search'
+import Search from "./Search";
 import { BsFillBasketFill } from "react-icons/bs";
 import { MdPlaylistAddCircle } from "react-icons/md";
 
