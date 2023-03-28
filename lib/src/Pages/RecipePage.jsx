@@ -49,18 +49,14 @@ export default function RecipePage() {
 
     return ( 
         <div className="RP--container"> 
-            
             <div className="RP--img__container">
                 <div className="RP--overlay"></div> 
                 <img src={recipeArr[0].img} alt={recipeArr[0].name} className="RP--img" />  
             </div>
-            
             <div className="RP--title__container">
                 <p className="RP--title">{recipeArr[0].name}</p>
             </div>
-            <div className="RP--lineBreak"></div>
             <div className="RP--head--container">
-                
                 <div className="RP--components__container">
                         <div className="RP--components__title">
                             <p>Ingredients</p>
