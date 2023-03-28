@@ -13,6 +13,8 @@ export default function GroceriesItem(props) {
 
   const date = new Date(createdAt);
 
+  //have a handleclick function that will store name state and do a get request for recipe based off of that name state
+
   useBeforeUnload(
     React.useCallback(() => {
       console.log(checkStatus);
@@ -24,7 +26,7 @@ export default function GroceriesItem(props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       };
-      fetch(`http://localhost:4000/groceries/${_id}`, reqOptions)
+      fetch(`http://localhost:4000/groceries/recipe/${_id}`, reqOptions)
         .then((res) => res.json())
         .then((d) => console.log(d));
     }, [checkStatus, deleteStatus, _id])

@@ -9,7 +9,9 @@ export default function Groceries() {
   return (
     <div className="groceriesItems--container">
       {groceriesData.map((d) => {
+        console.log(d.recipe.name);
         return <GroceriesItem key={d._id} data={d} />;
+        
       })}
       <button
         onClick={() => window.location.reload(true)}
