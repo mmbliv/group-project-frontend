@@ -11,6 +11,7 @@ export default function RecipeCard(props) {
             <div className="recipe-card--content">
                 <Link to={`recipe/${props.id}`} style={{ textDecoration: "none" }}>
                     <div className="recipe-card--img__container">
+                        <div className="recipe-card--overlay"></div>
                         <img src={props.img} alt={props.alt} className="recipe-card--img" />
                     </div>
                 </Link>
