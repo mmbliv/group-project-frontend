@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchPage.css'
 import { Thumbnail } from './Components'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import Search from './Components/Search.jsx';
 
 export default function SearchPage() {
@@ -20,7 +20,9 @@ export default function SearchPage() {
         if(img !== null){
             return(
                 searchResults.push(
-                    <Thumbnail name={name} img={img} key={_id}/>
+                    <Link to={`../recipe/${_id}`} style={{ textDecoration: "none" }}>
+                        <Thumbnail name={name} img={img} key={_id}/>
+                    </Link>
                 )
             )
         }
