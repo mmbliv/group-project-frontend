@@ -1,8 +1,8 @@
 .header--container {
-    height: 100px;
+    height: 150px;
     display: flex;
     justify-content: space-between;
-    padding: 2.5rem 2rem 0rem 0rem;
+    text-shadow: 0 0 2px #000000;
     background-color: #1b191c;
     background-image: url('./img/HeaderBR.jpg');
     background-position: center;
@@ -62,16 +62,18 @@
 }
 
 .header--content {
-    height: 50px;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     font-size: 25px;
+    background-image: linear-gradient(120deg, #020e08, #00000000);
 }
 
 .icon--container {
+    margin-right: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -94,6 +96,7 @@
     font-size: 0px;
     font-weight: 800;
     color: #bebcc2;
+    text-shadow: 0 0 2px #000000;
     font-family: 'Poiret One', cursive;
 }
 
@@ -110,6 +113,7 @@
     font-size: 0px;
     font-weight: 800;
     color: #bebcc2;
+    text-shadow: 0 0 2px #000000;
     font-family: 'Poiret One', cursive;
 }
 
@@ -121,4 +125,33 @@
 #show--text:hover #hidden--text-2 {
     font-size: 18px;
     transition: 0.5s;
+}
+
+@media screen and (max-width: 819px){
+
+    .header--container {
+        padding: 0;
+        padding-bottom: 20px;
+        height: 200px;
+
+    }
+
+    .header--content {
+        padding-bottom: 20px;
+        height: 100%;
+        margin: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+
+    .header--logo__container {
+        margin: 20px 0px 0px 20px;
+    }
+
+    .icon--container {
+        margin: 0;
+        width: 365px;
+    }
+
 }

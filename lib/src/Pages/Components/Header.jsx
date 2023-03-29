@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <div className="header--container">
-        <div className="header--overlay"></div>
         <div className="header--content">
              <Link to="/" className="header--logo__container">
                  <div className="header--logo--icon">
