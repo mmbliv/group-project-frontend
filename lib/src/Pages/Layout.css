@@ -1,5 +1,5 @@
 .layout--container {
     width: 100%;
     background-color: #010302;
-    background-image: url("https://www.transparenttextures.com/patterns/paper-3.png");
+    background-image: url('./Components/img/paper.png');
 }
