@@ -49,15 +49,15 @@ export default function GroceriesItem(props) {
     return (
       <div className="groceriesItem--container">
         <p className="groceriesItem--name">{capitalizedName}</p>
-        <div>
-        <p className="groceriesItem--from">
-          Recipe: <Link className="groceriesItem--recipe" onClick={handleRecipeNavigate}>{recipe}</Link>
-        </p>
+        <div className="groceriesItem--from">
+          <p>
+            Recipe: <Link className="groceriesItem--recipe" onClick={handleRecipeNavigate}>{recipe}</Link>
+          </p>
         </div>
-        <div>
-        <p className="groceriesItem--createdAt">
-          {date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear()}
-        </p>
+        <div className="groceriesItem--createdAt">
+          <p>
+            {date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear()}
+          </p>
         </div>
         <div>
         <div className="groceriesItem--btns">
