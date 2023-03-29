@@ -31,3 +31,17 @@
     width: 100px;
     transition: 0.5s;
 }
+
+@media screen and (max-width: 375px){
+
+    .search--container {
+        margin-right: 12px;
+    }
+
+    .search--icon > * {
+        height: 22px;
+        width: 20px;
+        font-weight: 100;
+    }
+  
+  }
