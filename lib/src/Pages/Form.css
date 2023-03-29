@@ -61,6 +61,10 @@
   cursor: pointer;
 }
 
+.form--btn:hover {
+  color:#93b59e;
+}
+
 .form--btn__add {
   display: flex;
   gap: 10px;
@@ -71,12 +75,14 @@
 }
 
 .form--input {
-  margin-bottom: 5px;
   height: 25px;
+  margin-bottom: 5px;
+  color: #fffbf3;
   border-radius: 10px;
   border-bottom: 2px solid #393939;
   border-right: 2px solid #393939;
   background-color: #2a332d;
+  outline: none;
 }
 
 .form--input__img {
@@ -97,6 +103,10 @@
   cursor: pointer;
 }
 
+.form--btn__addImg:hover {
+  color:#93b59e;
+}
+
 .form--img {
   height: 100%;
   object-fit: contain;
@@ -114,4 +124,8 @@
   background-image: linear-gradient(120deg, #2a372d, #454650, #4e5265, #454650, #2a372d);
   font-weight: 800;
   font-family: 'Poiret One', cursive;
+}
+
+.form--btn__submit:hover {
+  color:#93b59e;
 }
