@@ -19,12 +19,16 @@
     border: none;
     color: #bebcc2;
     background-color: #00000000;
-    transition: 1s;
+    transition: 2s;
+    transition-delay: 3s;
+    border-radius: 5px;
+    outline: none;
 }
 
 #search--input:hover {
     width: 100px;
-    transition: 0.5s;
+    height: 25px;
+    transition: 1s;
 }
 
 .search--icon:hover ~ #search--input {
