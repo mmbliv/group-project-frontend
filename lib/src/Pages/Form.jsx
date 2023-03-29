@@ -1,8 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
 import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
+
 import { Link, useNavigate } from "react-router-dom";
+
+import { BsTruckFlatbed } from "react-icons/bs";
 
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
@@ -12,15 +16,33 @@ export default function Form() {
   const [bodyData, setBodyData] = useState({});
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
+  const [isOneMoreInstructionAdded, setIsOneMoreInstructionAdded] =
+    useState(false);
 
   // use this imgURL that get from cloudinary to preview the uploaded img
   const [imgURL, setImgURL] = useState();
-
   const [loadingImg, setLoadingImg] = useState();
-
   const imgInputRef = useRef();
-
   const navigate = useNavigate();
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.id !== "add") {
+      const reqOptions = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      };
+      fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
+        .then((res) => res.json())
+        .then((d) => {
+          // setData(d);
+          setBodyData(d);
+          setIntructionItemNumber(d.instruction.length);
+          setInstructionInput(d.instruction);
+          // setImgURL(d.img);
+        });
+    }
+  }, [params.id]);
 
   //This function is used to handle the input change
   function handleChange(e) {
@@ -43,11 +65,40 @@ export default function Form() {
     // cuz instruction data has a nested object (hard to explain).
     // I created a instructionInput state to store the instruction data first, and
     // then use handleAdd()  function to set it into bodyData
-    if (e.target.name === "instrunction") {
-      setInstructionInput({
-        position: e.target.id,
-        display_text: e.target.value,
+    if (e.target.name === "instruction") {
+      setBodyData((pre) => {
+        if (pre.instruction) {
+          let i = pre.instruction;
+          if (!isOneMoreInstructionAdded) {
+            i = pre.instruction.map((d) => {
+              if (d.position === +e.target.id) {
+                // console.log(e.target.id);
+                return { position: +e.target.id, display_text: e.target.value };
+              } else {
+                return d;
+              }
+            });
+          } else {
+            i.push({ position: +e.target.id, display_text: e.target.value });
+            setIsOneMoreInstructionAdded(false);
+          }
+          return { ...pre, instruction: i };
+        } else {
+          return {
+            ...pre,
+            instruction: [
+              {
+                position: +e.target.id,
+                display_text: e.target.value,
+              },
+            ],
+          };
+        }
       });
+      // setInstructionInput({
+      //   position: e.target.id,
+      //   display_text: e.target.value,
+      // });
     }
     if (e.target.name === "cook_time") {
       setBodyData((preData) => {
@@ -82,41 +133,9 @@ export default function Form() {
   // into bodyData
   function handleAdd() {
     setIntructionItemNumber(instructionItemNumber + 1);
-    setBodyData((preData) => {
-      if (preData.instruction) {
-        return {
-          ...preData,
-          instruction: [...preData.instruction, instructionInput],
-        };
-      } else {
-        return {
-          ...preData,
-          instruction: [instructionInput],
-        };
-      }
-    });
+    setIsOneMoreInstructionAdded(true);
   }
   // Handle submit
-  function handleSubmit(e) {
-    e.preventDefault();
-    const reqOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      // needed for multer package
-      enctype: "multipart/form-data",
-      body: JSON.stringify(bodyData),
-    };
-    fetch("http://localhost:4000/recipes/", reqOptions)
-      .then((res) => res.json())
-      .then((d) => {
-        fetch(`http://localhost:4000/recipes//${d._id}`)
-        .then(res => res.json())
-        .then((recipe) => {
-          navigate(`/recipe/${recipe._id}`)
-      console.log(d)
-    })
-  }) 
-}
 
   // const handleSubmitAndNavigate = async() =>{
   // fetch(`http://localhost:4000/recipes/redirect/${encodeURI(d.name)}`)
@@ -127,6 +146,40 @@ export default function Form() {
   //   })
   // }
 
+  function handleSubmit() {
+    if (params.id === "add") {
+      const reqOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // needed for multer package
+        enctype: "multipart/form-data",
+        body: JSON.stringify(bodyData),
+      };
+      fetch("http://localhost:4000/recipes/", reqOptions)
+        .then((res) => res.json())
+        .then((d) => console.log(d));
+    } else {
+      const reqOptions = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        // needed for multer package
+        enctype: "multipart/form-data",
+        body: JSON.stringify(bodyData),
+      };
+      fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
+        .then((res) => res.json())
+        .then((d) => console.log(d));
+    }
+  }
+
+  function handleDeleteImg(e) {
+    e.stopPropagation();
+    setImgURL("");
+    setBodyData((pre) => {
+      return { ...pre, img: "" };
+    });
+  }
+  // console.log(bodyData.instruction);
 
   // handleImgloading
   function handleImgLoading() {
@@ -143,6 +196,8 @@ export default function Form() {
             name="name"
             className="form--input"
             onChange={(e) => handleChange(e)}
+            defaultValue={bodyData && bodyData.name}
+            // value={bodyData.name}
           />
         </label>
 
@@ -154,6 +209,8 @@ export default function Form() {
             name="description"
             className="form--input"
             onChange={(e) => handleChange(e)}
+            defaultValue={bodyData && bodyData.description}
+            // value={bodyData.description}
           />
         </label>
 
@@ -165,6 +222,8 @@ export default function Form() {
             name="ingredients"
             className="form--input"
             onChange={(e) => handleChange(e)}
+            // value={bodyData.components}
+            defaultValue={bodyData && bodyData.components}
           />
         </label>
 
@@ -180,9 +239,13 @@ export default function Form() {
                     type="text"
                     key={i}
                     id={i + 1}
-                    name="instrunction"
+                    name="instruction"
                     className="form--input"
                     onChange={(e) => handleChange(e)}
+                    // value={bodyData.instruction[i].display_text}
+                    defaultValue={
+                      instructionInput[i] && instructionInput[i].display_text
+                    }
                   />
                 );
               })}
@@ -204,6 +267,8 @@ export default function Form() {
             name="cook_time"
             className="form--input"
             onChange={(e) => handleChange(e)}
+            defaultValue={bodyData && bodyData.cook_time_minutes}
+            // value={bodyData.cook_time_minutes}
           />
         </label>
 
@@ -221,11 +286,22 @@ export default function Form() {
           {/* </label>  */}
         </label>
 
-        <button onClick={handleImgLoading} className="form--btn__addImg">
-          {!loadingImg && !imgURL && <p>add img</p>}
+        <div onClick={handleImgLoading} className="form--btn__addImg">
+          {!loadingImg && !imgURL && !bodyData.img && <p>add img</p>}
           {loadingImg && <p>loading...</p>}
           {imgURL && <img src={imgURL} alt="img" className="form--img" />}
-        </button>
+          {bodyData.img && (
+            <img src={bodyData.img} alt="img" className="form--img"></img>
+          )}
+          {(bodyData.img || imgURL) && (
+            <button
+              className="form--img__delete"
+              onClick={(e) => handleDeleteImg(e)}
+            >
+              X
+            </button>
+          )}
+        </div>
         {/* Submit */}
         
         <button 
