@@ -4,5 +4,5 @@
     display: flex;
     align-items: center;
     color: #bebcc2;
-    background-image: linear-gradient(to bottom right, #000000, #464646);
+    background-image: linear-gradient(45deg, #000000, #1e2925, #5c5c5c);
 }

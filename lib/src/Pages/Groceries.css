@@ -1,12 +1,42 @@
 .groceriesItems--container {
-  width: 100%;
-  margin: 3rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+    width: 100%;
+    min-height: 700px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
 }
+
+.groceriesItem--title__container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    box-shadow: inset 0 0 15px #202020;
+    border-radius: 50px;
+    background: linear-gradient(120deg, #00000000, #1e2925c4, #616161bb, #1e2925c4, #00000000);
+}
+
+.groceriesItem--title {
+    font-family: 'Poiret One', cursive;
+    font-size: 30px;
+    font-weight: 800;
+    color: #fffbf3;
+}
+
 .groceriesItems--submit {
-  width: min-content;
+    width: min-content; 
+}
+
+@media screen and (max-width: 950px){
+
+  .groceriesItems--container {
+      width: 90%;
+      padding-top: 0px;
+  }
+
 }

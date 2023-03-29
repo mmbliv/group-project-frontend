@@ -8,6 +8,9 @@ export default function Groceries() {
 
   return (
     <div className="groceriesItems--container">
+      <div className="groceriesItem--title__container">
+        <p className="groceriesItem--title">Grocery List</p>
+      </div>
       {groceriesData.map((d) => {
         console.log(d.recipe.name);
         return <GroceriesItem key={d._id} data={d} />;

@@ -1,20 +1,88 @@
 .groceriesItem--container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  border: 1px green solid;
-  width: 70%;
-  margin: 0 auto;
+    margin: 0 auto;
+    width: 80%;
+    gap: 3rem;
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+    align-items:center;
+    border-radius: 10px;
+    border-bottom: 2px solid #8d8d8d;
+    border-right: 2px solid #8d8d8d;
+    box-shadow: 0 0 5px #8d8d8d;
+    background-image: linear-gradient(120deg, #000000, #1e2925, #5c5c5c);
+    font-family: 'Poiret One', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    color: #fffbf3;
+}
+
+.groceriesItem--checkBox {
+    cursor: pointer;
 }
 
 .groceriesItem--checkBox__checked {
-  color: red;
-  /* font-size: larger; */
+    color: #539263;
+}
+
+.groceriesItem--delete {
+    cursor: pointer;
+}
+
+.groceriesItem--createdAt {
+    margin-right: 2vw;
+    margin-right: 2vw;
 }
 
 .groceriesItem--btns {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-right: 2vw;
+    color: #8d8d8d;
+}
+
+.groceriesItem--recipe {
+    width: 50%;
+    color: #8d8d8d;
+    text-underline-offset: 4px;
+}
+
+.groceriesItem--name{
+    margin-left: 2vw;
+    width: 20%;
+}
+
+@media screen and (max-width: 950px){
+
+  .groceriesItem--container{
+    min-width: 60%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+    gap: 0;
+  }
+
+  .groceriesItem--name {
+    margin: 0;
+  }
+
+  .groceriesItem--delete {
+    margin: 0;
+  }
+
+  .groceriesItem--createdAt {
+    margin: 0;
+  }
+
+  .groceriesItem--btns {
+    margin: 0;
+    margin-top: 13px;
+  }
+
+  .groceriesItem--recipe {
+    margin: 0;
+  }
+
 }

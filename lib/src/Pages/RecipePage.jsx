@@ -75,17 +75,18 @@ export default function RecipePage() {
 
   recipeArr[0].components.map((elem) => {
     return componentArr.push(
-      <li className="RP--component--text" key={elem}>
+    <div className="RP--component__container">
+      <li className="RP--component--list" key={elem}>
+        <div className="RP--component--text">
         {elem}{" "}
-        <span>
-          <button
-            className="RP--component--btn"
-            onClick={() => handleSubmit(elem)}
-          >
-            add to groceries
+        </div>
+        <div className="RP--component--btn__container">
+          <button className="RP--component--btn" onClick={() => handleSubmit(elem)}>
+            + Groceries
           </button>
-        </span>
+        </div>
       </li>
+    </div>
     );
   });
 

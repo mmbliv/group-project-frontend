@@ -1,15 +1,19 @@
 import React from 'react';
 import './Thumbnail.css'
 
-export default function Thumbnail({img, name}) {
+
+
+export default function Thumbnail(props) {
     return ( 
-       <div className="thumbnail--container">
+    <>
+       <div className="thumbnail--container" >
         <div className="thubmnail--img__container">
-            <img src={img} alt={name} />
+            <img src={props.img} alt={props.name} className="thubmnail--img" />
         </div>
         <div className="thumbnail--content__container">
-            <p className="thumbnail--content--title">Lorem Ipsum</p>
+            <p className="thumbnail--content--title">{props.name}</p>
         </div>
        </div>
-     );
+    </>
+    )
 }
