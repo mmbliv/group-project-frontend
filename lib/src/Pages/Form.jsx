@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { GrAdd } from "react-icons/gr";
 import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
+import { Link, useNavigate } from "react-router-dom";
+
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
   // this state will be incresed by one, and one more line of instruction input will be added
@@ -17,6 +19,8 @@ export default function Form() {
   const [loadingImg, setLoadingImg] = useState();
 
   const imgInputRef = useRef();
+
+  const navigate = useNavigate();
 
   //This function is used to handle the input change
   function handleChange(e) {
@@ -93,7 +97,8 @@ export default function Form() {
     });
   }
   // Handle submit
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -103,8 +108,25 @@ export default function Form() {
     };
     fetch("http://localhost:4000/recipes/", reqOptions)
       .then((res) => res.json())
-      .then((d) => console.log(d));
-  }
+      .then((d) => {
+        fetch(`http://localhost:4000/recipes//${d._id}`)
+        .then(res => res.json())
+        .then((recipe) => {
+          navigate(`/recipe/${recipe._id}`)
+      console.log(d)
+    })
+  }) 
+}
+
+  // const handleSubmitAndNavigate = async() =>{
+  // fetch(`http://localhost:4000/recipes/redirect/${encodeURI(d.name)}`)
+  //     .then(res => res.json())
+  //     .then((recipe) => {
+  //       navigate(`recipe/${recipe._id}`)
+      
+  //   })
+  // }
+
 
   // handleImgloading
   function handleImgLoading() {
@@ -205,12 +227,13 @@ export default function Form() {
           {imgURL && <img src={imgURL} alt="img" className="form--img" />}
         </button>
         {/* Submit */}
-        <button
+        
+        <button 
           type="submit"
           className="form--btn form--btn__submit"
-          onClick={handleSubmit}
-        >
+          onClick={handleSubmit}>
           Submit
+
         </button>
       </form>
     </div>
