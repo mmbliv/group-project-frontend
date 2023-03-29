@@ -69,13 +69,10 @@ export default function Form() {
           let i = pre.instruction;
           if (!isOneMoreInstructionAdded) {
             i = pre.instruction.map((d) => {
-              console.log(typeof d.position);
-              console.log(typeof e.target.id);
               if (d.position === +e.target.id) {
                 // console.log(e.target.id);
                 return { position: +e.target.id, display_text: e.target.value };
               } else {
-                console.log("ll");
                 return d;
               }
             });
@@ -83,7 +80,6 @@ export default function Form() {
             i.push({ position: +e.target.id, display_text: e.target.value });
             setIsOneMoreInstructionAdded(false);
           }
-          console.log(i);
           return { ...pre, instruction: i };
         } else {
           return {
