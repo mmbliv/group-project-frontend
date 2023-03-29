@@ -3,7 +3,11 @@ import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
 import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
+
+import { useNavigate } from "react-router-dom";
+
 import { BsTruckFlatbed } from "react-icons/bs";
+
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
   // this state will be incresed by one, and one more line of instruction input will be added
@@ -17,11 +21,9 @@ export default function Form() {
 
   // use this imgURL that get from cloudinary to preview the uploaded img
   const [imgURL, setImgURL] = useState();
-
   const [loadingImg, setLoadingImg] = useState();
-
   const imgInputRef = useRef();
-
+  const navigate = useNavigate();
   const params = useParams();
 
   useEffect(() => {
@@ -138,6 +140,16 @@ export default function Form() {
     setIsOneMoreInstructionAdded(true);
   }
   // Handle submit
+
+  // const handleSubmitAndNavigate = async() =>{
+  // fetch(`http://localhost:4000/recipes/redirect/${encodeURI(d.name)}`)
+  //     .then(res => res.json())
+  //     .then((recipe) => {
+  //       navigate(`recipe/${recipe._id}`)
+      
+  //   })
+  // }
+
   function handleSubmit() {
     if (params.id === "add") {
       const reqOptions = {
@@ -149,7 +161,14 @@ export default function Form() {
       };
       fetch("http://localhost:4000/recipes/", reqOptions)
         .then((res) => res.json())
-        .then((d) => console.log(d));
+        .then((d) => {
+           fetch(`http://localhost:4000/recipes/${d._id}`)
+           .then(res => res.json())
+           .then((recipe) => {
+           navigate(`/recipe/${recipe._id}`)
+          console.log(d)
+        })
+      });
     } else {
       const reqOptions = {
         method: "PUT",
@@ -160,9 +179,15 @@ export default function Form() {
       };
       fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
         .then((res) => res.json())
-        .then((d) => console.log(d));
-    }
-  }
+        .then((d) => {
+             fetch(`http://localhost:4000/recipes/${d._id}`)
+           .then(res => res.json())
+           .then((recipe) => {
+           navigate(`/recipe/${recipe._id}`)
+                  // console.log(d)
+        })
+       });
+      }}
 
   function handleDeleteImg(e) {
     e.stopPropagation();
@@ -295,12 +320,13 @@ export default function Form() {
           )}
         </div>
         {/* Submit */}
-        <button
+        
+        <button 
           type="submit"
           className="form--btn form--btn__submit"
-          onClick={handleSubmit}
-        >
+          onClick={handleSubmit}>
           Submit
+
         </button>
       </form>
     </div>
