@@ -4,6 +4,7 @@
   margin-top: 80px;
   margin-bottom: 80px;
   width: 1200px;
+  min-height: 800px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -121,6 +122,11 @@
   color: #e6e6e6;
   font-weight: 800;
   /* box-shadow: inset 0px 10px 110px #000000; */
+}
+
+.RP--discription__contianer {
+    margin: 0px 40px 80px 40px;
+    font-size: 20px;
 }
 
 .RP--instructions__head {

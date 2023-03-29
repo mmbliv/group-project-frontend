@@ -9,6 +9,7 @@ export default function RecipePage() {
   const instructionArr = [];
   const componentArr = [];
   const navigate = useNavigate();
+  let cookTime = ""
 
   // console.log(recipeData)
   // console.log(recipeId)
@@ -48,7 +49,7 @@ export default function RecipePage() {
     // .then((d) => console.log(d));
   }
   recipeData.map(
-    ({ _id, name, img, components, cook_time_minutes, instruction }) => {
+    ({ _id, name, img, components, cook_time_minutes, instruction, description }) => {
       if (recipeId.id === _id) {
         return (
           recipeArr.push({
@@ -58,6 +59,7 @@ export default function RecipePage() {
             components,
             cook_time_minutes,
             instruction,
+            description
           }),
           console.log(recipeArr[0])
         );
@@ -90,6 +92,10 @@ export default function RecipePage() {
     );
   });
 
+  if(recipeArr[0].cook_time_minutes !== null){
+    cookTime = `Cook Time: ${recipeArr[0].cook_time_minutes} minutes.`
+    }
+
   return (
     <div className="RP--container">
       <div className="RP--btns">
@@ -117,12 +123,16 @@ export default function RecipePage() {
       </div>
       <div className="RP--content">
         <div className="RP--instructions__container">
+            <div className="RP--discription__contianer">
+                <div className="RP--discription">
+                    <p>{recipeArr[0].description}</p>
+                </div>
+            </div>
           <div className="RP--instructions__head">
             <p className="RP--instructions--title">Directions</p>
             <div className="RP--cookTime__container">
-              <p className="RP--cookTime__title">Cook Time:</p>
               <p className="RP--cookTime">
-                {recipeArr[0].cook_time_minutes} minutes.
+                {cookTime}
               </p>
             </div>
           </div>
