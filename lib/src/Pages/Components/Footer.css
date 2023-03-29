@@ -1,10 +1,12 @@
 .footer--container {
   padding: 1rem;
+  padding-left: 2rem;
   width: 100%;
+  color: #bebcc2;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: lightgray;
+  justify-content: flex-start;
+  background-image: linear-gradient( 120deg, #000000, #212121, #343434);
 }
 
 .footer--content__title {
@@ -23,7 +25,7 @@
 }
 
 .footer--content__link {
-  color: black;
+  color: #bebcc2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,5 +40,5 @@
 
 .footer--content__link:hover {
   cursor: pointer;
-  color: #080ed1;
+  color: #8284cc;
 }

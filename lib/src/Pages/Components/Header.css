@@ -1,15 +1,15 @@
 .header--container {
-    height: 100px;
+    height: 150px;
     display: flex;
     justify-content: space-between;
-    padding: 2.5rem 2rem 0rem 0rem;
+    text-shadow: 0 0 2px #000000;
     background-color: #1b191c;
     background-image: url('./img/HeaderBR.jpg');
     background-position: center;
     background-size: cover;
 }
 
-.header--logo__container {
+.header--logo__container { 
     margin-left: 40px;
     display: flex;
     justify-content: center;
@@ -21,6 +21,9 @@
     height: 80px;
     width: 80px;
     margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo--layer1 {
@@ -33,6 +36,7 @@
     border-right: 1px solid #bebcc2;
     border-bottom: 3px solid #bebcc2;
     border-left: 1px solid #bebcc2;
+    box-shadow: inset 0 0 10px #535353;
     transform: rotate(-45deg);
 }
 
@@ -43,6 +47,7 @@
     border-left: 1px solid #bebcc2;
     border-top: 1px solid #bebcc2;
     border-bottom: 1px solid #bebcc2;
+    box-shadow: inset 0 0 10px #535353;
 }
 
 .header--logo {
@@ -51,7 +56,7 @@
 }
 
 .header--logo--text {
-    font-size: 60px;
+    font-size: 90px;
     height: 100px;
     margin: 13px 0px 0px 0px;
     display: flex;
@@ -62,16 +67,19 @@
 }
 
 .header--content {
-    height: 50px;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     font-size: 25px;
+    background-image: linear-gradient(120deg, #00160b, #00000000);
+    box-shadow: inset 0 0 40px #000000;
 }
 
 .icon--container {
+    margin-right: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -94,6 +102,7 @@
     font-size: 0px;
     font-weight: 800;
     color: #bebcc2;
+    text-shadow: 0 0 2px #000000;
     font-family: 'Poiret One', cursive;
 }
 
@@ -110,6 +119,7 @@
     font-size: 0px;
     font-weight: 800;
     color: #bebcc2;
+    text-shadow: 0 0 2px #000000;
     font-family: 'Poiret One', cursive;
 }
 
@@ -121,4 +131,77 @@
 #show--text:hover #hidden--text-2 {
     font-size: 18px;
     transition: 0.5s;
+}
+
+@media screen and (max-width: 819px){
+
+    .header--container {
+        padding: 0;
+        padding-bottom: 20px;
+        height: 200px;
+
+    }
+
+    .header--content {
+        padding-bottom: 20px;
+        height: 100%;
+        margin: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+
+    .header--logo__container {
+        margin: 20px 0px 0px 20px;
+    }
+
+    .icon--container {
+        margin: 0;
+        width: 365px;
+    }
+
+}
+
+@media screen and (max-width: 375px){
+
+    .header--logo__container {
+        height: 80px;
+    }
+
+    .header--logo--icon {
+        margin: 0;
+    }
+
+    .logo--layer1{
+        height: 60%;
+        width: 60%;
+    }
+
+    .logo--layer2{
+        height: 50%;
+        width: 50%;
+    }
+
+    .icon--container {
+        height: 100px;
+        width: 95vw;
+        flex-direction: column;
+        align-items: flex-end;
+
+    }
+
+    .header--logo--text {
+        align-items: center;
+        font-size: 40px;
+    }
+
+    #show--text:hover #hidden--text-1 {
+        font-size: 13px;
+    }
+
+    #show--text:hover #hidden--text-2 {
+        font-size: 13px;
+    }
+    
+
 }
