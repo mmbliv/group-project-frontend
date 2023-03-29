@@ -36,6 +36,7 @@
     border-right: 1px solid #bebcc2;
     border-bottom: 3px solid #bebcc2;
     border-left: 1px solid #bebcc2;
+    box-shadow: inset 0 0 10px #535353;
     transform: rotate(-45deg);
 }
 
@@ -46,6 +47,7 @@
     border-left: 1px solid #bebcc2;
     border-top: 1px solid #bebcc2;
     border-bottom: 1px solid #bebcc2;
+    box-shadow: inset 0 0 10px #535353;
 }
 
 .header--logo {
