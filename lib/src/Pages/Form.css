@@ -33,10 +33,7 @@
   gap: 0.75rem;
   flex-direction: column;
 }
-.form--input {
-  /* padding-left: 1rem; */
-  /* margin-left: 1rem; */
-}
+
 .form--input__img {
   display: none;
 }
