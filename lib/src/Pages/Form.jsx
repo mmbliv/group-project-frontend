@@ -4,7 +4,7 @@ import { GrAdd } from "react-icons/gr";
 import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { BsTruckFlatbed } from "react-icons/bs";
 
@@ -157,7 +157,14 @@ export default function Form() {
       };
       fetch("http://localhost:4000/recipes/", reqOptions)
         .then((res) => res.json())
-        .then((d) => console.log(d));
+        .then((d) => {
+           fetch(`http://localhost:4000/recipes/${d._id}`)
+           .then(res => res.json())
+           .then((recipe) => {
+           navigate(`/recipe/${recipe._id}`)
+          console.log(d)
+        })
+      });
     } else {
       const reqOptions = {
         method: "PUT",
@@ -168,9 +175,15 @@ export default function Form() {
       };
       fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
         .then((res) => res.json())
-        .then((d) => console.log(d));
-    }
-  }
+        .then((d) => {
+             fetch(`http://localhost:4000/recipes/${d._id}`)
+           .then(res => res.json())
+           .then((recipe) => {
+           navigate(`/recipe/${recipe._id}`)
+                  // console.log(d)
+        })
+       });
+      }}
 
   function handleDeleteImg(e) {
     e.stopPropagation();
