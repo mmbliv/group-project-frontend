@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { GrAdd } from "react-icons/gr";
 import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
+import { BsTruckFlatbed } from "react-icons/bs";
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
   // this state will be incresed by one, and one more line of instruction input will be added
@@ -11,7 +12,8 @@ export default function Form() {
   const [bodyData, setBodyData] = useState({});
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
-  const [data, setData] = useState();
+  const [isOneMoreInstructionAdded, setIsOneMoreInstructionAdded] =
+    useState(false);
 
   // use this imgURL that get from cloudinary to preview the uploaded img
   const [imgURL, setImgURL] = useState();
@@ -34,10 +36,9 @@ export default function Form() {
           // setData(d);
           setBodyData(d);
           setIntructionItemNumber(d.instruction.length);
+          setInstructionInput(d.instruction);
           // setImgURL(d.img);
         });
-    } else {
-      setBodyData(null);
     }
   }, [params.id]);
 
@@ -62,11 +63,41 @@ export default function Form() {
     // cuz instruction data has a nested object (hard to explain).
     // I created a instructionInput state to store the instruction data first, and
     // then use handleAdd()  function to set it into bodyData
-    if (e.target.name === "instrunction") {
-      setInstructionInput({
-        position: e.target.id,
-        display_text: e.target.value,
+    if (e.target.name === "instruction") {
+      setBodyData((pre) => {
+        if (pre.instruction) {
+          let i = pre.instruction;
+          if (!isOneMoreInstructionAdded) {
+            i = pre.instruction.map((d) => {
+              if (d.position === +e.target.id) {
+                // console.log(e.target.id);
+                return { position: +e.target.id, display_text: e.target.value };
+              } else {
+                console.log("ll");
+                return d;
+              }
+            });
+          } else {
+            i.push({ position: e.target.id, display_text: e.target.value });
+            setIsOneMoreInstructionAdded(false);
+          }
+          return { ...pre, instruction: i };
+        } else {
+          return {
+            ...pre,
+            instruction: [
+              {
+                position: e.target.id,
+                display_text: e.target.value,
+              },
+            ],
+          };
+        }
       });
+      // setInstructionInput({
+      //   position: e.target.id,
+      //   display_text: e.target.value,
+      // });
     }
     if (e.target.name === "cook_time") {
       setBodyData((preData) => {
@@ -101,19 +132,7 @@ export default function Form() {
   // into bodyData
   function handleAdd() {
     setIntructionItemNumber(instructionItemNumber + 1);
-    setBodyData((preData) => {
-      if (preData.instruction) {
-        return {
-          ...preData,
-          instruction: [...preData.instruction, instructionInput],
-        };
-      } else {
-        return {
-          ...preData,
-          instruction: [instructionInput],
-        };
-      }
-    });
+    setIsOneMoreInstructionAdded(true);
   }
   // Handle submit
   function handleSubmit() {
@@ -144,6 +163,7 @@ export default function Form() {
 
   function handleDeleteImg(e) {
     e.stopPropagation();
+    setImgURL("");
     setBodyData((pre) => {
       return { ...pre, img: "" };
     });
@@ -208,11 +228,13 @@ export default function Form() {
                     type="text"
                     key={i}
                     id={i + 1}
-                    name="instrunction"
+                    name="instruction"
                     className="form--input"
                     onChange={(e) => handleChange(e)}
                     // value={bodyData.instruction[i].display_text}
-                    // defaultValue={data && data.instruction[i]}
+                    defaultValue={
+                      instructionInput[i] && instructionInput[i].display_text
+                    }
                   />
                 );
               })}
@@ -260,7 +282,7 @@ export default function Form() {
           {bodyData.img && (
             <img src={bodyData.img} alt="img" className="form--img"></img>
           )}
-          {bodyData && (
+          {(bodyData.img || imgURL) && (
             <button
               className="form--img__delete"
               onClick={(e) => handleDeleteImg(e)}
