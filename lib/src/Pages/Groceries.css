@@ -33,3 +33,12 @@
 .groceriesItems--submit {
     width: min-content; 
 }
+
+@media screen and (max-width: 950px){
+
+  .groceriesItems--container {
+      width: 90%;
+      padding-top: 0px;
+  }
+
+}
