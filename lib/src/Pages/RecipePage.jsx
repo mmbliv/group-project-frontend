@@ -99,8 +99,10 @@ export default function RecipePage() {
   return (
     <div className="RP--container">
       <div className="RP--btns">
-        <Link to={`/form/${recipeArr[0]._id}`}>edit</Link>
-        <button onClick={handleDelete}>delete</button>
+        <Link to={`/form/${recipeArr[0]._id}`} style={{ textDecoration: "none" }}>
+            <div className="RP--btns--edit">Edit</div>
+        </Link>
+        <button onClick={handleDelete} className="RP--btns--delete">Delete</button>
       </div>
       <div className="RP--img__container">
         <div className="RP--overlay"></div>
