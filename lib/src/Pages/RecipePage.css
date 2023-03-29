@@ -104,8 +104,15 @@
     width: 120%;
     border: none;
     color: #e6e6e6;
+    transition: 0.5s;
     border-radius: 10px;
     background-image: linear-gradient(120deg, #000000, #444444, #575757, #444444, #000000);
+}
+
+.RP--component--btn:hover {
+    transition: 0.5s;
+    color: #bbfce4;
+    font-size: 14px;
 }
 
 .RP--content {
