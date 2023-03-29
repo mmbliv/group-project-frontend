@@ -71,7 +71,10 @@ export default function Form() {
             i = pre.instruction.map((d) => {
               if (d.position === +e.target.id) {
                 // console.log(e.target.id);
-                return { position: +e.target.id, display_text: e.target.value };
+                return {
+                  position: +e.target.id,
+                  display_text: e.target.value,
+                };
               } else {
                 return d;
               }
@@ -93,6 +96,7 @@ export default function Form() {
           };
         }
       });
+
       // setInstructionInput({
       //   position: e.target.id,
       //   display_text: e.target.value,
