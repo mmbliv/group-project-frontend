@@ -1,7 +1,7 @@
 import React from "react";
 import "./RecipePage.css";
 import { useParams, useLoaderData, useNavigate, Link } from "react-router-dom";
-
+import { useEffect } from 'react'
 export default function RecipePage() {
   const recipeId = useParams();
   const recipeData = useLoaderData();
@@ -13,6 +13,10 @@ export default function RecipePage() {
 
   // console.log(recipeData)
   // console.log(recipeId)
+
+useEffect(() => {
+    window.scrollTo(0,0)
+  })
 
   function handleSubmit(elem) {
     // console.log(recipeArr[0]);
