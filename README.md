@@ -1,5 +1,5 @@
 
-![Alt text](#)
+![Alt text](/Images/Logo.png)
 
 # Welcome to Platefuls!
 
@@ -17,39 +17,39 @@
 
 ## Features:
 
-#### On the Platefuls Home Page you can start scrolling right away. Letting the user decide which new recipe they would like to checkout!
+#### On the Platefuls Home Page you can start scrolling right away. Letting you decide which new recipe you would like to checkout.
 
-![Alt text](#)
-
----
-
-#### Clicking on any post you want! This will bring you to a recipe card with the dish's ingredients and instructions for you to make it at home!
-
-![Alt text](#)
+![Alt text](/Images/SCR1.gif)
 
 ---
 
-#### From the recipe card you can add any ingredients youll need to pick up on your next trip to the Supermarket! Its as easy as clicking the "+ Groceries" button to the right of the ingredient!
+#### Click on any post you want! This will bring you to a recipe card with the dish's ingredients and instructions for you to make it at home.
 
-![Alt text](#)
-
----
-
-#### Once you have added to your grocery list its easy to look back on the recipe you needed it for, and remove ingredients you might not need!
-
-![Alt text](#)
+![Alt text](/Images/SCR2.gif)
 
 ---
 
-#### Want to contribute to Platefuls? You can! All you have to do is fill out a form with your Recipe name, Ingredients, and Instructions. Dont forget to add a picture of your masterpiece!
+#### From the recipe card, you can add any ingredients you'll need to pick up on your next trip to the Supermarket. Clicking the "+ Groceries" button will add that ingredient to the list.
 
-![Alt text](#)
+![Alt text](/Images/SCR3.gif)
 
 ---
 
-#### Once you upload your recipe you can see your new Plateful posted to the Home Page!
+#### From your grocery list, you can look back to the recipe you needed it for or remove it entirely.
 
-![Alt text](#)
+![Alt text](/Images/SCR4.gif)
+
+---
+
+#### Want to contribute to Platefuls? You can! All you have to do is fill out a form with your Recipe name, Ingredients, and Instructions. Dont forget to add a picture of your masterpiece.
+
+![Alt text](/Images/SCR5.gif)
+
+---
+
+#### Once you've uploaded your recipe, you can see your new Plateful posted to the Home Page.
+
+![Alt text](/Images/SCR6.gif)
 
 ---
 
@@ -76,13 +76,6 @@
 ![image](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![image](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
-- react js
-- react router
-- css
-- html
-- JS
-- axios
-- multer
 
 
 ## Contributions:
@@ -98,7 +91,7 @@
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
 
 
-- [Front End Repository](#)
+- [Front End Repository](https://github.com/evRook/Recipes-Instagram-Mock-FE)
 
 - To get started contributing.
     - Fork and Clone this Repository.
@@ -106,7 +99,7 @@
         - ```$ git checkout -b <your branch name here>```
     - Commit/Push your changes
     - Create a new Pull Request
-- [Issue Tracker](#)
+- [Issue Tracker](https://github.com/evRook/Recipes-Instagram-Mock-FE/issues)
 
 ### Backend: 
 
@@ -117,10 +110,11 @@
 ### Acknowledgements:
 
 #### Resources:
-- badges 4
+- [Badges 4](https://github.com/alexandresanlim/Badges4-README.md-Profile)
 
 #### Authors:
 
-- [Min](#)
-- [Loc](#)
-- [Eric](#)
+![image](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+- [mmbliv](https://github.com/mmbliv)
+- [locb65](https://github.com/locb65)
+- [evRook](https://github.com/evRook)
