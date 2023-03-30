@@ -41,6 +41,10 @@ export default function Form() {
           setInstructionInput(d.instruction);
           // setImgURL(d.img);
         });
+    } else {
+      setBodyData(null);
+      setInstructionInput(null);
+      setIntructionItemNumber(1);
     }
   }, [params.id]);
 
@@ -67,13 +71,16 @@ export default function Form() {
     // then use handleAdd()  function to set it into bodyData
     if (e.target.name === "instruction") {
       setBodyData((pre) => {
-        if (pre.instruction) {
+        if (pre && pre.instruction) {
           let i = pre.instruction;
           if (!isOneMoreInstructionAdded) {
             i = pre.instruction.map((d) => {
               if (d.position === +e.target.id) {
                 // console.log(e.target.id);
-                return { position: +e.target.id, display_text: e.target.value };
+                return {
+                  position: +e.target.id,
+                  display_text: e.target.value,
+                };
               } else {
                 return d;
               }
@@ -95,6 +102,7 @@ export default function Form() {
           };
         }
       });
+
       // setInstructionInput({
       //   position: e.target.id,
       //   display_text: e.target.value,
@@ -142,7 +150,7 @@ export default function Form() {
   //     .then(res => res.json())
   //     .then((recipe) => {
   //       navigate(`recipe/${recipe._id}`)
-      
+
   //   })
   // }
 
@@ -158,13 +166,13 @@ export default function Form() {
       fetch("http://localhost:4000/recipes/", reqOptions)
         .then((res) => res.json())
         .then((d) => {
-           fetch(`http://localhost:4000/recipes/${d._id}`)
-           .then(res => res.json())
-           .then((recipe) => {
-           navigate(`/recipe/${recipe._id}`)
-          console.log(d)
-        })
-      });
+          fetch(`http://localhost:4000/recipes/${d._id}`)
+            .then((res) => res.json())
+            .then((recipe) => {
+              navigate(`/recipe/${recipe._id}`);
+              console.log(d);
+            });
+        });
     } else {
       const reqOptions = {
         method: "PUT",
@@ -176,14 +184,15 @@ export default function Form() {
       fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
         .then((res) => res.json())
         .then((d) => {
-             fetch(`http://localhost:4000/recipes/${d._id}`)
-           .then(res => res.json())
-           .then((recipe) => {
-           navigate(`/recipe/${recipe._id}`)
-                  // console.log(d)
-        })
-       });
-      }}
+          fetch(`http://localhost:4000/recipes/${d._id}`)
+            .then((res) => res.json())
+            .then((recipe) => {
+              navigate(`/recipe/${recipe._id}`);
+              // console.log(d)
+            });
+        });
+    }
+  }
 
   function handleDeleteImg(e) {
     e.stopPropagation();
@@ -194,10 +203,20 @@ export default function Form() {
   }
   // console.log(bodyData.instruction);
 
+  // function helper(i) {
+  //   console.log(instructionInput);
+  //   if (instructionInput) {
+  //     if (instructionInput[i]) {
+  //       return instructionInput[i].display_text;
+  //     }
+  //   }
+  // }
+
   // handleImgloading
   function handleImgLoading() {
     imgInputRef.current.click();
   }
+  console.log(instructionInput);
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content">
@@ -247,6 +266,7 @@ export default function Form() {
             {Array(instructionItemNumber)
               .fill(null)
               .map((d, i) => {
+                // if (instructionInput && instructionInput[i])
                 return (
                   <input
                     type="text"
@@ -257,7 +277,10 @@ export default function Form() {
                     onChange={(e) => handleChange(e)}
                     // value={bodyData.instruction[i].display_text}
                     defaultValue={
-                      instructionInput[i] && instructionInput[i].display_text
+                      // helper(i)
+                      instructionInput &&
+                      instructionInput[i] &&
+                      instructionInput[i].display_text
                     }
                   />
                 );
@@ -300,13 +323,14 @@ export default function Form() {
         </label>
 
         <div onClick={handleImgLoading} className="form--btn__addImg">
-          {!loadingImg && !imgURL && !bodyData.img && <p>add img</p>}
+          {!loadingImg && !imgURL && <p>add img</p>}
+          {bodyData && bodyData.img && <p>add img</p>}
           {loadingImg && <p>loading...</p>}
           {imgURL && <img src={imgURL} alt="img" className="form--img" />}
-          {bodyData.img && (
+          {bodyData && bodyData.img && (
             <img src={bodyData.img} alt="img" className="form--img"></img>
           )}
-          {(bodyData.img || imgURL) && (
+          {((bodyData && bodyData.img) || imgURL) && (
             <button
               className="form--img__delete"
               onClick={(e) => handleDeleteImg(e)}
@@ -316,13 +340,13 @@ export default function Form() {
           )}
         </div>
         {/* Submit */}
-        
-        <button 
+
+        <button
           type="submit"
           className="form--btn form--btn__submit"
-          onClick={handleSubmit}>
+          onClick={handleSubmit}
+        >
           Submit
-
         </button>
       </form>
     </div>
