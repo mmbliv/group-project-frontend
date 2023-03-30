@@ -170,7 +170,7 @@ export default function Form() {
             .then((res) => res.json())
             .then((recipe) => {
               navigate(`/recipe/${recipe._id}`);
-              console.log(d);
+              // console.log(d);
             });
         });
     } else {
@@ -216,7 +216,17 @@ export default function Form() {
   function handleImgLoading() {
     imgInputRef.current.click();
   }
-  console.log(instructionInput);
+
+  function whenToShowAddImg() {
+    if (!loadingImg && !imgURL && !bodyData) {
+      return <p>Add Image</p>;
+    } else if (bodyData && !bodyData.img && !loadingImg) {
+      return <p>Add Image</p>;
+    } else {
+      return;
+    }
+  }
+  // console.log(instructionInput);
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content">
@@ -323,8 +333,9 @@ export default function Form() {
         </label>
 
         <div onClick={handleImgLoading} className="form--btn__addImg">
-          {!loadingImg && !imgURL && <p>add img</p>}
-          {bodyData && bodyData.img && <p>add img</p>}
+          {/* {!loadingImg && !imgURL && <p>add img</p>}
+          {bodyData && !bodyData.img && <p>add img</p>} */}
+          {whenToShowAddImg()}
           {loadingImg && <p>loading...</p>}
           {imgURL && <img src={imgURL} alt="img" className="form--img" />}
           {bodyData && bodyData.img && (

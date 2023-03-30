@@ -10,9 +10,7 @@ export default function Home() {
   const recipeData = useLoaderData();
   let recipeArr = [];
 
-  recipeData.map(({ name, img, _id }) => {
-    
-
+  recipeData.map(({ name, img, _id, like }) => {
     //commented out for css testing
     // if (!img) {
     //   img =
@@ -20,13 +18,12 @@ export default function Home() {
     // }
 
     //added back for css testing
-    if(img !== null){
+    if (img !== null) {
       return recipeArr.push(
-          <RecipeCard title={name} img={img} alt={name} id={_id} />
-      )
-    };
+        <RecipeCard title={name} img={img} alt={name} id={_id} like={like} />
+      );
+    }
   });
-
 
   return <div className="home--container">{recipeArr}</div>;
 }

@@ -1,11 +1,11 @@
-import React from 'react';
-import './RCFooter.css'
-import LikeButton from './LikeButton'
+import React from "react";
+import "./RCFooter.css";
+import LikeButton from "./LikeButton";
 
-export default function RCFooter() {
-    return ( 
-        <div className="RCF--container">
-            <LikeButton />
-        </div>
-     );
+export default function RCFooter(props) {
+  return (
+    <div className="RCF--container">
+      <LikeButton {...props} />
+    </div>
+  );
 }
