@@ -93,6 +93,7 @@
 [![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/evRook/Recipes-Instagram-Mock-FE)
 [![GitHub contributors](https://badgen.net/github/contributors/Naereen/Strapdown.js)](https://https://github.com/evRook/Recipes-Instagram-Mock-FE/graphs/contributors/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7ede29a1-2c4b-4219-ad44-70e113539bd8/deploy-status)](https://app.netlify.com/sites/platefuls/deploys)
 
 
 - [Front End Repository](https://github.com/evRook/Recipes-Instagram-Mock-FE)
