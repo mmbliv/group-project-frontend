@@ -108,10 +108,10 @@
 
 ### Backend: 
 
-// need to add links here VV
-- [Back End Repository](#)
+// need to add documentation link here VV
+- [Back End Repository](https://github.com/locb65/Recipes-Instagram-Mock)
     - [Documentation](#)
-- [Issue Tracker](#)
+- [Issue Tracker](https://github.com/locb65/Recipes-Instagram-Mock/issues)
 
 ### Acknowledgements:
 
