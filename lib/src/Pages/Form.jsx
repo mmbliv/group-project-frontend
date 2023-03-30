@@ -170,7 +170,7 @@ export default function Form() {
             .then((res) => res.json())
             .then((recipe) => {
               navigate(`/recipe/${recipe._id}`);
-              console.log(d);
+              // console.log(d);
             });
         });
     } else {
