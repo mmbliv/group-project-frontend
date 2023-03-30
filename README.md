@@ -11,6 +11,7 @@
 
 <br/>
 
+//need link here VV
 ### Visit [Platefuls](#) and start scrolling for fresh new dinner ideas!
 
 <br/>
@@ -53,6 +54,7 @@
 
 ---
 
+//Need link here VV
 ## Thanks for Checking out [Platefuls](#)!
 
 <br/>
@@ -62,6 +64,7 @@
 
 ### Later Additions:
 
+// anything else to add?
 - User Profiles
 - Login/out
 - Comment Sections for Recipes
@@ -74,6 +77,7 @@
 ![image](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![image](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+// not sure if were going to use netlify
 ![image](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
 
@@ -83,7 +87,7 @@
 
 ### Frontend:
 
-//need to upload our data
+//need to upload our data for these, default links for now
 
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](#)
 [![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/evRook/Recipes-Instagram-Mock-FE)
@@ -103,6 +107,7 @@
 
 ### Backend: 
 
+// need to add links here VV
 - [Back End Repository](#)
     - [Documentation](#)
 - [Issue Tracker](#)
