@@ -146,7 +146,7 @@ export default function Form() {
   //     .then(res => res.json())
   //     .then((recipe) => {
   //       navigate(`recipe/${recipe._id}`)
-      
+
   //   })
   // }
 
@@ -162,13 +162,13 @@ export default function Form() {
       fetch("http://localhost:4000/recipes/", reqOptions)
         .then((res) => res.json())
         .then((d) => {
-           fetch(`http://localhost:4000/recipes/${d._id}`)
-           .then(res => res.json())
-           .then((recipe) => {
-           navigate(`/recipe/${recipe._id}`)
-          console.log(d)
-        })
-      });
+          fetch(`http://localhost:4000/recipes/${d._id}`)
+            .then((res) => res.json())
+            .then((recipe) => {
+              navigate(`/recipe/${recipe._id}`);
+              console.log(d);
+            });
+        });
     } else {
       const reqOptions = {
         method: "PUT",
@@ -180,14 +180,15 @@ export default function Form() {
       fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
         .then((res) => res.json())
         .then((d) => {
-             fetch(`http://localhost:4000/recipes/${d._id}`)
-           .then(res => res.json())
-           .then((recipe) => {
-           navigate(`/recipe/${recipe._id}`)
-                  // console.log(d)
-        })
-       });
-      }}
+          fetch(`http://localhost:4000/recipes/${d._id}`)
+            .then((res) => res.json())
+            .then((recipe) => {
+              navigate(`/recipe/${recipe._id}`);
+              // console.log(d)
+            });
+        });
+    }
+  }
 
   function handleDeleteImg(e) {
     e.stopPropagation();
@@ -213,7 +214,7 @@ export default function Form() {
             name="name"
             className="form--input"
             onChange={(e) => handleChange(e)}
-            defaultValue={bodyData && bodyData.name}
+            defaultValue={bodyData.name && bodyData.name}
             // value={bodyData.name}
           />
         </label>
@@ -226,7 +227,7 @@ export default function Form() {
             name="description"
             className="form--input"
             onChange={(e) => handleChange(e)}
-            defaultValue={bodyData && bodyData.description}
+            defaultValue={bodyData.description && bodyData.description}
             // value={bodyData.description}
           />
         </label>
@@ -240,7 +241,7 @@ export default function Form() {
             className="form--input"
             onChange={(e) => handleChange(e)}
             // value={bodyData.components}
-            defaultValue={bodyData && bodyData.components}
+            defaultValue={bodyData.components && bodyData.components}
           />
         </label>
 
@@ -320,13 +321,13 @@ export default function Form() {
           )}
         </div>
         {/* Submit */}
-        
-        <button 
+
+        <button
           type="submit"
           className="form--btn form--btn__submit"
-          onClick={handleSubmit}>
+          onClick={handleSubmit}
+        >
           Submit
-
         </button>
       </form>
     </div>
