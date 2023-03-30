@@ -4,16 +4,13 @@ import { HiOutlineHeart, HiHeart } from "react-icons/hi2";
 
 export default function LikeButton(props) {
   const [liked, setLiked] = useState(props.like);
-
   const handleLikeButton = () => {
     setLiked(!liked);
     const reqOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(`http://localhost:4000/recipes/like/${props.id}`, reqOptions)
-      .then((res) => res.json())
-      .then((d) => console.log(d));
+    fetch(`http://localhost:4000/recipes/like/${props.id}`, reqOptions);
   };
 
   return (
@@ -25,7 +22,7 @@ export default function LikeButton(props) {
           : "linear-gradient(to bottom right, #000000, #464646)",
         color: liked ? "#ac1414" : "#727272",
       }}
-      onClick={handleLikeButton}
+      onClick={() => handleLikeButton()}
     >
       <HiOutlineHeart />
     </div>
