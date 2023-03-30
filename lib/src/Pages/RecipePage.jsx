@@ -18,6 +18,10 @@ export default function RecipePage() {
   // console.log(recipeData)
   // console.log(recipeId)
 
+useEffect(() => {
+    window.scrollTo(0,0)
+  })
+
   function handleSubmit(elem) {
     // console.log(recipeArr[0]);
     const body = {
