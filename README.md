@@ -19,37 +19,37 @@
 
 #### On the Platefuls Home Page you can start scrolling right away. Letting you decide which new recipe you would like to checkout.
 
-![Alt text](/Images/SCR1.gif)
+![Alt text](/Images/SCR1_1.gif)
 
 ---
 
 #### Click on any post you want! This will bring you to a recipe card with the dish's ingredients and instructions for you to make it at home.
 
-![Alt text](/Images/SCR2.gif)
+![Alt text](/Images/SCR2_6.gif)
 
 ---
 
 #### From the recipe card, you can add any ingredients you'll need to pick up on your next trip to the Supermarket. Clicking the "+ Groceries" button will add that ingredient to the list.
 
-![Alt text](/Images/SCR3.gif)
+![Alt text](/Images/SCR3_2.gif)
 
 ---
 
 #### From your grocery list, you can look back to the recipe you needed it for or remove it entirely.
 
-![Alt text](/Images/SCR4.gif)
+![Alt text](/Images/SCR4_4.gif)
 
 ---
 
 #### Want to contribute to Platefuls? You can! All you have to do is fill out a form with your Recipe name, Ingredients, and Instructions. Dont forget to add a picture of your masterpiece.
 
-![Alt text](/Images/SCR5.gif)
+![Alt text](/Images/SCR5_2.gif)
 
 ---
 
 #### Once you've uploaded your recipe, you can see your new Plateful posted to the Home Page.
 
-![Alt text](/Images/SCR6.gif)
+![Alt text](/Images/SCR6_1.gif)
 
 ---
 
