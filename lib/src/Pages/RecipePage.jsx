@@ -97,12 +97,19 @@ export default function RecipePage() {
       </div>
     );
   });
-  // console.log(message);
+
+  console.log(showReminder);
   return (
     <div className="RP--container">
       {showReminder && (
         <div className="RP--reminder">
           <p>{message}</p>
+          <button
+            className="RP--reminder__close"
+            onClick={(e) => setShowReminder(false)}
+          >
+            x
+          </button>
         </div>
       )}
 

@@ -178,10 +178,17 @@
 .RP--reminder {
   position: absolute;
   top: 30%;
-  z-index: 2;
+  z-index: 100;
   background-color: black;
   padding: 2rem;
   color: white;
   left: 30%;
   transform: translate(-50%, -50%);
+}
+.RP--reminder__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #575757;
+  /* z-index: 3; */
 }
