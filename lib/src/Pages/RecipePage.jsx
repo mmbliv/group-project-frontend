@@ -1,6 +1,8 @@
 import React from "react";
 import "./RecipePage.css";
 import { useParams, useLoaderData, useNavigate, Link } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function RecipePage() {
   const recipeId = useParams();
@@ -9,6 +11,8 @@ export default function RecipePage() {
   const instructionArr = [];
   const componentArr = [];
   const navigate = useNavigate();
+  const [showReminder, setShowReminder] = useState(false);
+  const [message, setMessage] = useState();
 
   // console.log(recipeData)
   // console.log(recipeId)
@@ -28,12 +32,15 @@ export default function RecipePage() {
       enctype: "multipart/form-data",
       body: JSON.stringify(body),
     };
-    fetch("http://localhost:4000/groceries", reqOptions);
-    // .then((res) => res.json())
-    // .then((d) => console.log(d));
+    fetch("http://localhost:4000/groceries", reqOptions)
+      .then((res) => {
+        if (res.status === 400) {
+          setShowReminder(true);
+        }
+        return res.json();
+      })
+      .then((d) => setMessage(d.message));
   }
-
-  function handleEdit() {}
 
   function handleDelete() {
     const reqOptions = {
@@ -90,9 +97,15 @@ export default function RecipePage() {
       </div>
     );
   });
-
+  // console.log(message);
   return (
     <div className="RP--container">
+      {showReminder && (
+        <div className="RP--reminder">
+          <p>{message}</p>
+        </div>
+      )}
+
       <div className="RP--btns">
         <Link to={`/form/${recipeArr[0]._id}`}>edit</Link>
         <button onClick={handleDelete}>delete</button>
