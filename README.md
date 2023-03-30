@@ -1,15 +1,40 @@
-## Platefuls
 
+![Alt text](Images/Logo.png)
 
+# Welcome to Platefuls!
 
-- home image
+#### Platefuls makes finding a new recipe to try "As Easy As Pie." 
 
+<br> 
 
-### About:
+#### You can do anything from adding ingredients to a grocery list for later, to sharing your own delicious recipies!  
 
-- about txt
+<br/>
 
-### Features:
+### Visit [Platefuls](#) and start scrolling for fresh new dinner ideas!
+
+<br/>
+
+## Features:
+
+#### On the Platefuls Home Page you can start scrolling right away. Letting the user decide which new recipe they would like to checkout!
+
+![Alt text](#)
+
+---
+
+#### Clicking on any post you want! This will bring you to a recipe card with the dish's ingredients and instructions for you to make it at home!
+
+![Alt text](#)
+
+---
+
+#### From the recipe card you can add any ingredients youll need to pick up on your next trip to the Supermarket! Its as easy as clicking the "+ Groceries" button to the right of the ingredient!
+
+---
+
+#### Once you have added to your grocery list its easy to look back on the recipe you needed it for, and remove ingredients you might not need!
+
 
 - home, search, groceries, + recipe
     - screen record groceries
