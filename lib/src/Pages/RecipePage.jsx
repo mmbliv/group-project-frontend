@@ -13,6 +13,7 @@ export default function RecipePage() {
   const navigate = useNavigate();
   const [showReminder, setShowReminder] = useState(false);
   const [message, setMessage] = useState();
+  let cookTime = "";
 
   // console.log(recipeData)
   // console.log(recipeId)
@@ -55,7 +56,15 @@ export default function RecipePage() {
     // .then((d) => console.log(d));
   }
   recipeData.map(
-    ({ _id, name, img, components, cook_time_minutes, instruction }) => {
+    ({
+      _id,
+      name,
+      img,
+      components,
+      cook_time_minutes,
+      instruction,
+      description,
+    }) => {
       if (recipeId.id === _id) {
         return (
           recipeArr.push({
@@ -65,6 +74,7 @@ export default function RecipePage() {
             components,
             cook_time_minutes,
             instruction,
+            description,
           }),
           console.log(recipeArr[0])
         );
@@ -98,7 +108,10 @@ export default function RecipePage() {
     );
   });
 
-  console.log(showReminder);
+  if (recipeArr[0].cook_time_minutes !== null) {
+    cookTime = `Cook Time: ${recipeArr[0].cook_time_minutes} minutes.`;
+  }
+
   return (
     <div className="RP--container">
       {showReminder && (
@@ -114,8 +127,15 @@ export default function RecipePage() {
       )}
 
       <div className="RP--btns">
-        <Link to={`/form/${recipeArr[0]._id}`}>edit</Link>
-        <button onClick={handleDelete}>delete</button>
+        <Link
+          to={`/form/${recipeArr[0]._id}`}
+          style={{ textDecoration: "none" }}
+        >
+          <div className="RP--btns--edit">Edit</div>
+        </Link>
+        <button onClick={handleDelete} className="RP--btns--delete">
+          Delete
+        </button>
       </div>
       <div className="RP--img__container">
         <div className="RP--overlay"></div>
@@ -138,13 +158,15 @@ export default function RecipePage() {
       </div>
       <div className="RP--content">
         <div className="RP--instructions__container">
+          <div className="RP--discription__contianer">
+            <div className="RP--discription">
+              <p>{recipeArr[0].description}</p>
+            </div>
+          </div>
           <div className="RP--instructions__head">
             <p className="RP--instructions--title">Directions</p>
             <div className="RP--cookTime__container">
-              <p className="RP--cookTime__title">Cook Time:</p>
-              <p className="RP--cookTime">
-                {recipeArr[0].cook_time_minutes} minutes.
-              </p>
+              <p className="RP--cookTime">{cookTime}</p>
             </div>
           </div>
           <ol className="RP--instructions--list">{instructionArr}</ol>

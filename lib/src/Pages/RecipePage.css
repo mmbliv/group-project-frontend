@@ -4,6 +4,7 @@
   margin-top: 80px;
   margin-bottom: 80px;
   width: 1200px;
+  min-height: 800px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -52,6 +53,47 @@
   font-size: 40px;
   margin: 25px 0px 15px 25px;
   color: #bebcc2;
+}
+
+.RP--btns {
+  width: 95%;
+  margin: 20px 20px 0px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.RP--btns--edit {
+  text-align: center;
+  color: #bebcc2;
+  width: 80px;
+  font-weight: 800;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    120deg,
+    #000000,
+    #444444,
+    #575757,
+    #444444,
+    #000000
+  );
+}
+
+.RP--btns--delete {
+  width: 80px;
+  color: #bebcc2;
+  border: none;
+  font-family: "Poiret One", cursive;
+  font-weight: 800;
+  font-size: 16px;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    120deg,
+    #000000,
+    #444444,
+    #575757,
+    #444444,
+    #000000
+  );
 }
 
 .RP--head--container {
@@ -107,6 +149,9 @@
   color: #e6e6e6;
   transition: 0.3s;
   border-radius: 10px;
+  font-family: "Poiret One", cursive;
+  font-weight: 800;
+  font-size: 15px;
   background-image: linear-gradient(
     120deg,
     #000000,
@@ -120,7 +165,7 @@
 .RP--component--btn:hover {
   transition: 0.3s;
   color: #bbfce4;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .RP--content {
@@ -129,6 +174,11 @@
   color: #e6e6e6;
   font-weight: 800;
   /* box-shadow: inset 0px 10px 110px #000000; */
+}
+
+.RP--discription__contianer {
+  margin: 0px 40px 80px 40px;
+  font-size: 20px;
 }
 
 .RP--instructions__head {

@@ -295,14 +295,14 @@ export default function Form() {
                   />
                 );
               })}
-            <button
+          </div>
+          <button
               onClick={() => handleAdd()}
               className="form--btn form--btn__add"
             >
               {/* <GrAdd style={{color: "#fffbf3"}}/> */}
               Add Instruction
             </button>
-          </div>
         </label>
 
         {/* Cook_time Input */}
