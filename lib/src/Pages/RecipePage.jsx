@@ -1,7 +1,9 @@
 import React from "react";
 import "./RecipePage.css";
 import { useParams, useLoaderData, useNavigate, Link } from "react-router-dom";
-import { useEffect } from 'react'
+import { useState } from "react";
+import { useEffect } from "react";
+
 export default function RecipePage() {
   const recipeId = useParams();
   const recipeData = useLoaderData();
@@ -9,7 +11,9 @@ export default function RecipePage() {
   const instructionArr = [];
   const componentArr = [];
   const navigate = useNavigate();
-  let cookTime = ""
+  const [showReminder, setShowReminder] = useState(false);
+  const [message, setMessage] = useState();
+  let cookTime = "";
 
   // console.log(recipeData)
   // console.log(recipeId)
@@ -33,12 +37,15 @@ useEffect(() => {
       enctype: "multipart/form-data",
       body: JSON.stringify(body),
     };
-    fetch("http://localhost:4000/groceries", reqOptions);
-    // .then((res) => res.json())
-    // .then((d) => console.log(d));
+    fetch("http://localhost:4000/groceries", reqOptions)
+      .then((res) => {
+        if (res.status === 400) {
+          setShowReminder(true);
+        }
+        return res.json();
+      })
+      .then((d) => setMessage(d.message));
   }
-
-  function handleEdit() {}
 
   function handleDelete() {
     const reqOptions = {
@@ -53,7 +60,15 @@ useEffect(() => {
     // .then((d) => console.log(d));
   }
   recipeData.map(
-    ({ _id, name, img, components, cook_time_minutes, instruction, description }) => {
+    ({
+      _id,
+      name,
+      img,
+      components,
+      cook_time_minutes,
+      instruction,
+      description,
+    }) => {
       if (recipeId.id === _id) {
         return (
           recipeArr.push({
@@ -63,7 +78,7 @@ useEffect(() => {
             components,
             cook_time_minutes,
             instruction,
-            description
+            description,
           }),
           console.log(recipeArr[0])
         );
@@ -97,17 +112,34 @@ useEffect(() => {
     );
   });
 
-  if(recipeArr[0].cook_time_minutes !== null){
-    cookTime = `Cook Time: ${recipeArr[0].cook_time_minutes} minutes.`
-    }
+  if (recipeArr[0].cook_time_minutes !== null) {
+    cookTime = `Cook Time: ${recipeArr[0].cook_time_minutes} minutes.`;
+  }
 
   return (
     <div className="RP--container">
+      {showReminder && (
+        <div className="RP--reminder">
+          <p>{message}</p>
+          <button
+            className="RP--reminder__close"
+            onClick={(e) => setShowReminder(false)}
+          >
+            x
+          </button>
+        </div>
+      )}
+
       <div className="RP--btns">
-        <Link to={`/form/${recipeArr[0]._id}`} style={{ textDecoration: "none" }}>
-            <div className="RP--btns--edit">Edit</div>
+        <Link
+          to={`/form/${recipeArr[0]._id}`}
+          style={{ textDecoration: "none" }}
+        >
+          <div className="RP--btns--edit">Edit</div>
         </Link>
-        <button onClick={handleDelete} className="RP--btns--delete">Delete</button>
+        <button onClick={handleDelete} className="RP--btns--delete">
+          Delete
+        </button>
       </div>
       <div className="RP--img__container">
         <div className="RP--overlay"></div>
@@ -130,17 +162,15 @@ useEffect(() => {
       </div>
       <div className="RP--content">
         <div className="RP--instructions__container">
-            <div className="RP--discription__contianer">
-                <div className="RP--discription">
-                    <p>{recipeArr[0].description}</p>
-                </div>
+          <div className="RP--discription__contianer">
+            <div className="RP--discription">
+              <p>{recipeArr[0].description}</p>
             </div>
+          </div>
           <div className="RP--instructions__head">
             <p className="RP--instructions--title">Directions</p>
             <div className="RP--cookTime__container">
-              <p className="RP--cookTime">
-                {cookTime}
-              </p>
+              <p className="RP--cookTime">{cookTime}</p>
             </div>
           </div>
           <ol className="RP--instructions--list">{instructionArr}</ol>
