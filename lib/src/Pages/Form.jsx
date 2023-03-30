@@ -41,6 +41,10 @@ export default function Form() {
           setInstructionInput(d.instruction);
           // setImgURL(d.img);
         });
+    } else {
+      setBodyData(null);
+      setInstructionInput(null);
+      setIntructionItemNumber(1);
     }
   }, [params.id]);
 
@@ -67,7 +71,7 @@ export default function Form() {
     // then use handleAdd()  function to set it into bodyData
     if (e.target.name === "instruction") {
       setBodyData((pre) => {
-        if (pre.instruction) {
+        if (pre && pre.instruction) {
           let i = pre.instruction;
           if (!isOneMoreInstructionAdded) {
             i = pre.instruction.map((d) => {
@@ -199,10 +203,20 @@ export default function Form() {
   }
   // console.log(bodyData.instruction);
 
+  // function helper(i) {
+  //   console.log(instructionInput);
+  //   if (instructionInput) {
+  //     if (instructionInput[i]) {
+  //       return instructionInput[i].display_text;
+  //     }
+  //   }
+  // }
+
   // handleImgloading
   function handleImgLoading() {
     imgInputRef.current.click();
   }
+  console.log(instructionInput);
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content">
@@ -214,7 +228,7 @@ export default function Form() {
             name="name"
             className="form--input"
             onChange={(e) => handleChange(e)}
-            defaultValue={bodyData.name && bodyData.name}
+            defaultValue={bodyData && bodyData.name}
             // value={bodyData.name}
           />
         </label>
@@ -227,7 +241,7 @@ export default function Form() {
             name="description"
             className="form--input"
             onChange={(e) => handleChange(e)}
-            defaultValue={bodyData.description && bodyData.description}
+            defaultValue={bodyData && bodyData.description}
             // value={bodyData.description}
           />
         </label>
@@ -241,7 +255,7 @@ export default function Form() {
             className="form--input"
             onChange={(e) => handleChange(e)}
             // value={bodyData.components}
-            defaultValue={bodyData.components && bodyData.components}
+            defaultValue={bodyData && bodyData.components}
           />
         </label>
 
@@ -252,6 +266,7 @@ export default function Form() {
             {Array(instructionItemNumber)
               .fill(null)
               .map((d, i) => {
+                // if (instructionInput && instructionInput[i])
                 return (
                   <input
                     type="text"
@@ -262,7 +277,10 @@ export default function Form() {
                     onChange={(e) => handleChange(e)}
                     // value={bodyData.instruction[i].display_text}
                     defaultValue={
-                      instructionInput[i] && instructionInput[i].display_text
+                      // helper(i)
+                      instructionInput &&
+                      instructionInput[i] &&
+                      instructionInput[i].display_text
                     }
                   />
                 );
@@ -305,13 +323,14 @@ export default function Form() {
         </label>
 
         <div onClick={handleImgLoading} className="form--btn__addImg">
-          {!loadingImg && !imgURL && !bodyData.img && <p>add img</p>}
+          {!loadingImg && !imgURL && <p>add img</p>}
+          {bodyData && bodyData.img && <p>add img</p>}
           {loadingImg && <p>loading...</p>}
           {imgURL && <img src={imgURL} alt="img" className="form--img" />}
-          {bodyData.img && (
+          {bodyData && bodyData.img && (
             <img src={bodyData.img} alt="img" className="form--img"></img>
           )}
-          {(bodyData.img || imgURL) && (
+          {((bodyData && bodyData.img) || imgURL) && (
             <button
               className="form--img__delete"
               onClick={(e) => handleDeleteImg(e)}
