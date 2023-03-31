@@ -1,7 +1,7 @@
 import React from "react";
 import "./RecipePage.css";
 import { useParams, useLoaderData, useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function RecipePage() {
   const recipeId = useParams();
@@ -13,6 +13,10 @@ export default function RecipePage() {
   const [showReminder, setShowReminder] = useState(false);
   const [message, setMessage] = useState();
   let cookTime = "";
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   function handleSubmit(elem) {
     const body = {
