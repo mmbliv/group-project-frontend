@@ -1,12 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { GrAdd } from "react-icons/gr";
-import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
 
 import { useNavigate } from "react-router-dom";
-
-import { BsTruckFlatbed } from "react-icons/bs";
 
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
@@ -16,16 +12,19 @@ export default function Form() {
   const [bodyData, setBodyData] = useState({});
   // This state is used to store the instruction input when the Add Instruciton button is hitted
   const [instructionInput, setInstructionInput] = useState({});
+  // This state is used to track whether the add instruction btn is clicked or not.
   const [isOneMoreInstructionAdded, setIsOneMoreInstructionAdded] =
     useState(false);
-
-  // use this imgURL that get from cloudinary to preview the uploaded img
+  // Use this imgURL that get from cloudinary to preview the uploaded img
   const [imgURL, setImgURL] = useState();
+  // This state is used to show the loading status if th img
   const [loadingImg, setLoadingImg] = useState();
   const imgInputRef = useRef();
   const navigate = useNavigate();
   const params = useParams();
 
+  // This side effect is used to set some initial states based on params
+  // If params is recipe id instead of 'add', we need to set some initial state to display the default value.
   useEffect(() => {
     if (params.id !== "add") {
       const reqOptions = {
@@ -35,11 +34,9 @@ export default function Form() {
       fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
         .then((res) => res.json())
         .then((d) => {
-          // setData(d);
           setBodyData(d);
           setIntructionItemNumber(d.instruction.length);
           setInstructionInput(d.instruction);
-          // setImgURL(d.img);
         });
     } else {
       setBodyData(null);
@@ -66,9 +63,7 @@ export default function Form() {
       });
     }
     // set the data of instruction is slightly different from other input data,
-    // cuz instruction data has a nested object (hard to explain).
-    // I created a instructionInput state to store the instruction data first, and
-    // then use handleAdd()  function to set it into bodyData
+    // cuz instruction data has a nested object (hard to explain)
     if (e.target.name === "instruction") {
       setBodyData((pre) => {
         if (pre && pre.instruction) {
@@ -76,7 +71,6 @@ export default function Form() {
           if (!isOneMoreInstructionAdded) {
             i = pre.instruction.map((d) => {
               if (d.position === +e.target.id) {
-                // console.log(e.target.id);
                 return {
                   position: +e.target.id,
                   display_text: e.target.value,
@@ -102,11 +96,6 @@ export default function Form() {
           };
         }
       });
-
-      // setInstructionInput({
-      //   position: e.target.id,
-      //   display_text: e.target.value,
-      // });
     }
     if (e.target.name === "cook_time") {
       setBodyData((preData) => {
@@ -114,7 +103,6 @@ export default function Form() {
       });
     }
     if (e.target.name === "img") {
-      // setImgData(e.target.files[0]);
       const formData = new FormData();
       formData.append("file", e.target.files[0]);
       formData.append("upload_preset", "ml_default");
@@ -137,29 +125,17 @@ export default function Form() {
   }
 
   // When the Add Instruction button is hitted, this function will be excuted.
-  //  This will add one more line of instruction input, and also set the instruction data
-  // into bodyData
+  //  This will add one more line of instruction input
   function handleAdd() {
     setIntructionItemNumber(instructionItemNumber + 1);
     setIsOneMoreInstructionAdded(true);
   }
-  // Handle submit
-
-  // const handleSubmitAndNavigate = async() =>{
-  // fetch(`http://localhost:4000/recipes/redirect/${encodeURI(d.name)}`)
-  //     .then(res => res.json())
-  //     .then((recipe) => {
-  //       navigate(`recipe/${recipe._id}`)
-
-  //   })
-  // }
 
   function handleSubmit() {
     if (params.id === "add") {
       const reqOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // needed for multer package
         enctype: "multipart/form-data",
         body: JSON.stringify(bodyData),
       };
@@ -170,7 +146,6 @@ export default function Form() {
             .then((res) => res.json())
             .then((recipe) => {
               navigate(`/recipe/${recipe._id}`);
-              // console.log(d);
             });
         });
     } else {
@@ -201,16 +176,6 @@ export default function Form() {
       return { ...pre, img: "" };
     });
   }
-  // console.log(bodyData.instruction);
-
-  // function helper(i) {
-  //   console.log(instructionInput);
-  //   if (instructionInput) {
-  //     if (instructionInput[i]) {
-  //       return instructionInput[i].display_text;
-  //     }
-  //   }
-  // }
 
   // handleImgloading
   function handleImgLoading() {
@@ -226,11 +191,10 @@ export default function Form() {
       return;
     }
   }
-  // console.log(instructionInput);
   return (
     <div className="form--container">
       <form onSubmit={(e) => e.preventDefault()} className="form--content">
-        {/* Recipe Name Input */}
+        {/* Name Input */}
         <label htmlFor="" className="form--label">
           Recipe Name:
           <input
@@ -239,7 +203,6 @@ export default function Form() {
             className="form--input"
             onChange={(e) => handleChange(e)}
             defaultValue={bodyData && bodyData.name}
-            // value={bodyData.name}
           />
         </label>
 
@@ -264,7 +227,6 @@ export default function Form() {
             name="ingredients"
             className="form--input"
             onChange={(e) => handleChange(e)}
-            // value={bodyData.components}
             defaultValue={bodyData && bodyData.components}
           />
         </label>
@@ -276,7 +238,6 @@ export default function Form() {
             {Array(instructionItemNumber)
               .fill(null)
               .map((d, i) => {
-                // if (instructionInput && instructionInput[i])
                 return (
                   <input
                     type="text"
@@ -285,9 +246,7 @@ export default function Form() {
                     name="instruction"
                     className="form--input"
                     onChange={(e) => handleChange(e)}
-                    // value={bodyData.instruction[i].display_text}
                     defaultValue={
-                      // helper(i)
                       instructionInput &&
                       instructionInput[i] &&
                       instructionInput[i].display_text
@@ -297,12 +256,12 @@ export default function Form() {
               })}
           </div>
           <button
-              onClick={() => handleAdd()}
-              className="form--btn form--btn__add"
-            >
-              {/* <GrAdd style={{color: "#fffbf3"}}/> */}
-              Add Instruction
-            </button>
+            onClick={() => handleAdd()}
+            className="form--btn form--btn__add"
+          >
+            {/* <GrAdd style={{color: "#fffbf3"}}/> */}
+            Add Instruction
+          </button>
         </label>
 
         {/* Cook_time Input */}
@@ -318,7 +277,6 @@ export default function Form() {
           />
         </label>
 
-        {/* Image Input
         {/* Image Input */}
         <label htmlFor="" className="form--label">
           Image:
@@ -329,7 +287,6 @@ export default function Form() {
             className="form--input form--input__img"
             onChange={(e) => handleChange(e)}
           />
-          {/* </label>  */}
         </label>
 
         <div onClick={handleImgLoading} className="form--btn__addImg">
@@ -350,8 +307,8 @@ export default function Form() {
             </button>
           )}
         </div>
-        {/* Submit */}
 
+        {/* Submit */}
         <button
           type="submit"
           className="form--btn form--btn__submit"
