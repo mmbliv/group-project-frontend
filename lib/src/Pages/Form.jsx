@@ -1,12 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
-import { GrAdd } from "react-icons/gr";
-import { IoMdAdd } from "react-icons/io";
 import "./Form.css";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
-
-import { BsTruckFlatbed } from "react-icons/bs";
 
 export default function Form() {
   // This state is used to add more instruction item, when click Add Instruction Button,
@@ -76,7 +71,6 @@ export default function Form() {
           if (!isOneMoreInstructionAdded) {
             i = pre.instruction.map((d) => {
               if (d.position === +e.target.id) {
-                // console.log(e.target.id);
                 return {
                   position: +e.target.id,
                   display_text: e.target.value,
@@ -300,7 +294,6 @@ export default function Form() {
               onClick={() => handleAdd()}
               className="form--btn form--btn__add"
             >
-              {/* <GrAdd style={{color: "#fffbf3"}}/> */}
               Add Instruction
             </button>
         </label>
