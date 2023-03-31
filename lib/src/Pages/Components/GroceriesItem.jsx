@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./GroceriesItem.css";
 import { GiCheckMark } from "react-icons/gi";
 import { RiDeleteBinFill } from "react-icons/ri";
