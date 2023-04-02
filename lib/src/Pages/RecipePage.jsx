@@ -31,7 +31,7 @@ export default function RecipePage() {
       enctype: "multipart/form-data",
       body: JSON.stringify(body),
     };
-    fetch("http://localhost:4000/groceries", reqOptions)
+    fetch("https://recipe.cleverapps.io/groceries", reqOptions)
       .then((res) => {
         if (res.status === 400) {
           setShowReminder(true);
@@ -47,9 +47,10 @@ export default function RecipePage() {
       headers: { "Content-Type": "application/json" },
       enctype: "multipart/form-data",
     };
-    fetch(`http://localhost:4000/recipes/${recipeArr[0]._id}`, reqOptions).then(
-      () => navigate("/")
-    );
+    fetch(
+      `https://recipe.cleverapps.io/recipes/${recipeArr[0]._id}`,
+      reqOptions
+    ).then(() => navigate("/"));
   }
   recipeData.map(
     ({
