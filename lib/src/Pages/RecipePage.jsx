@@ -1,8 +1,7 @@
 import React from "react";
 import "./RecipePage.css";
 import { useParams, useLoaderData, useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function RecipePage() {
   const recipeId = useParams();
@@ -15,15 +14,11 @@ export default function RecipePage() {
   const [message, setMessage] = useState();
   let cookTime = "";
 
-  // console.log(recipeData)
-  // console.log(recipeId)
-
-useEffect(() => {
-    window.scrollTo(0,0)
-  })
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   function handleSubmit(elem) {
-    // console.log(recipeArr[0]);
     const body = {
       name: elem,
       deleted: false,
@@ -33,7 +28,6 @@ useEffect(() => {
     const reqOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      // needed for multer package
       enctype: "multipart/form-data",
       body: JSON.stringify(body),
     };
@@ -51,13 +45,11 @@ useEffect(() => {
     const reqOptions = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
-      // needed for multer package
       enctype: "multipart/form-data",
     };
     fetch(`http://localhost:4000/recipes/${recipeArr[0]._id}`, reqOptions).then(
       () => navigate("/")
     );
-    // .then((d) => console.log(d));
   }
   recipeData.map(
     ({
