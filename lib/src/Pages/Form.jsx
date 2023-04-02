@@ -292,10 +292,12 @@ export default function Form() {
           {bodyData && !bodyData.img && <p>add img</p>} */}
           {whenToShowAddImg()}
           {loadingImg && <p>loading...</p>}
-          {imgURL && <img src={imgURL} alt="img" className="form--img" />}
-          {bodyData && bodyData.img && (
-            <img src={bodyData.img} alt="img" className="form--img"></img>
+          {(imgURL || (bodyData && bodyData.img)) && (
+            <img src={imgURL} alt="img" className="form--img" />
           )}
+          {/* {bodyData && bodyData.img && (
+            <img src={bodyData.img} alt="img" className="form--img"></img>
+          )} */}
           {((bodyData && bodyData.img) || imgURL) && (
             <button
               className="form--img__delete"
