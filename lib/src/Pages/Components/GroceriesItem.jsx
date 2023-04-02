@@ -56,7 +56,7 @@ export default function GroceriesItem(props) {
         </div>
         <div className="groceriesItem--createdAt">
           <p>
-            {date.getMonth() + "/" + date.getDay() + "/" + date.getFullYear()}
+            {(date.getMonth()+1) + "/" + date.getDate()+ "/" + date.getFullYear()}
           </p>
         </div>
         <div>
