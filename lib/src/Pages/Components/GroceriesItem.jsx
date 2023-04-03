@@ -19,7 +19,7 @@ export default function GroceriesItem(props) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(`http://localhost:5001/groceries/check/${_id}`, reqOptions);
+    fetch(`http://localhost:4000/groceries/check/${_id}`, reqOptions);
   }
 
   function handleDelete() {
@@ -28,12 +28,12 @@ export default function GroceriesItem(props) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(`http://localhost:5001/groceries/delete/${_id}`, reqOptions);
+    fetch(`http://localhost:4000/groceries/delete/${_id}`, reqOptions);
   }
   //fetch request to redirect back to recipes page from groceries page
   function handleRecipeNavigate() {
     //encodeURI removes %20 from url when sending the fetch request
-    fetch(`http://localhost:5001/recipes/redirect/${encodeURI(recipe)}`)
+    fetch(`http://localhost:4000/recipes/redirect/${encodeURI(recipe)}`)
       .then((res) => res.json())
       .then((d) =>
         //navigate function allows to navigate based on deired routes

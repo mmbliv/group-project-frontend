@@ -31,7 +31,7 @@ export default function RecipePage() {
       enctype: "multipart/form-data",
       body: JSON.stringify(body),
     };
-    fetch("http://localhost:5001/groceries", reqOptions)
+    fetch("http://localhost:4000/groceries", reqOptions)
       .then((res) => {
         if (res.status === 400) {
           setShowReminder(true);
@@ -47,7 +47,7 @@ export default function RecipePage() {
       headers: { "Content-Type": "application/json" },
       enctype: "multipart/form-data",
     };
-    fetch(`http://localhost:5001/recipes/${recipeArr[0]._id}`, reqOptions).then(
+    fetch(`http://localhost:4000/recipes/${recipeArr[0]._id}`, reqOptions).then(
       () => navigate("/")
     );
   }

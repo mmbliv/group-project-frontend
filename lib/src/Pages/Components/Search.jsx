@@ -15,7 +15,7 @@ const handleKeyPress = (e) => {
 }
 
 const handleSubmit = async(e) => {
-    const res = await axios.get(`http://localhost:5001/recipes/name/${search}`)
+    const res = await axios.get(`http://localhost:4000/recipes/name/${search}`)
     setSearch(res.data)
     console.log(res.data)
     console.log(search)

@@ -29,7 +29,7 @@ export default function Form() {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       };
-      fetch(`http://localhost:5001/recipes/${params.id}`, reqOptions)
+      fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
         .then((res) => res.json())
         .then((d) => {
           setBodyData(d);
@@ -137,10 +137,10 @@ export default function Form() {
         enctype: "multipart/form-data",
         body: JSON.stringify(bodyData),
       };
-      fetch("http://localhost:5001/recipes/", reqOptions)
+      fetch("http://localhost:4000/recipes/", reqOptions)
         .then((res) => res.json())
         .then((d) => {
-          fetch(`http://localhost:5001/recipes/${d._id}`)
+          fetch(`http://localhost:4000/recipes/${d._id}`)
             .then((res) => res.json())
             .then((recipe) => {
               navigate(`/recipe/${recipe._id}`);
@@ -154,10 +154,10 @@ export default function Form() {
         enctype: "multipart/form-data",
         body: JSON.stringify(bodyData),
       };
-      fetch(`http://localhost:5001/recipes/${params.id}`, reqOptions)
+      fetch(`http://localhost:4000/recipes/${params.id}`, reqOptions)
         .then((res) => res.json())
         .then((d) => {
-          fetch(`http://localhost:5001/recipes/${d._id}`)
+          fetch(`http://localhost:4000/recipes/${d._id}`)
             .then((res) => res.json())
             .then((recipe) => {
               navigate(`/recipe/${recipe._id}`);
