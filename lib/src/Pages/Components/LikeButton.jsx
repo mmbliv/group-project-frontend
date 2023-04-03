@@ -10,7 +10,7 @@ export default function LikeButton(props) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(`http://localhost:4000/recipes/like/${props.id}`, reqOptions);
+    fetch(`http://localhost:5001/recipes/like/${props.id}`, reqOptions);
   };
 
   return (
