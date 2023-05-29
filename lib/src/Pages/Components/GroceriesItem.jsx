@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import "./GroceriesItem.css";
 import { GiCheckMark } from "react-icons/gi";
@@ -19,7 +18,10 @@ export default function GroceriesItem(props) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(`https://recipe.cleverapps.io/groceries/check/${_id}`, reqOptions);
+    fetch(
+      `https://recipe-backend-8tg9.onrender.com/groceries/check/${_id}`,
+      reqOptions
+    );
   }
 
   function handleDelete() {
@@ -28,12 +30,19 @@ export default function GroceriesItem(props) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(`https://recipe.cleverapps.io/groceries/delete/${_id}`, reqOptions);
+    fetch(
+      `https://recipe-backend-8tg9.onrender.com/groceries/delete/${_id}`,
+      reqOptions
+    );
   }
   //fetch request to redirect back to recipes page from groceries page
   function handleRecipeNavigate() {
     //encodeURI removes %20 from url when sending the fetch request
-    fetch(`https://recipe.cleverapps.io/recipes/redirect/${encodeURI(recipe)}`)
+    fetch(
+      `https://recipe-backend-8tg9.onrender.com/recipes/redirect/${encodeURI(
+        recipe
+      )}`
+    )
       .then((res) => res.json())
       .then((d) =>
         //navigate function allows to navigate based on deired routes
@@ -63,7 +72,12 @@ export default function GroceriesItem(props) {
         </div>
         <div className="groceriesItem--createdAt">
           <p>
-            {(date.getMonth()+1) + "/" + date.getDate()+ "/" + date.getFullYear()}
+            {date.getMonth() +
+              1 +
+              "/" +
+              date.getDate() +
+              "/" +
+              date.getFullYear()}
           </p>
         </div>
         <div>

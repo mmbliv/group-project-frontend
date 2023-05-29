@@ -16,7 +16,7 @@ export default function Search({ setSearchResults }) {
 
   const handleSubmit = async (e) => {
     const res = await axios.get(
-      `https://recipe.cleverapps.io/recipes/name/${search}`
+      `https://recipe-backend-8tg9.onrender.com/recipes/name/${search}`
     );
     setSearch(res.data);
     console.log(res.data);

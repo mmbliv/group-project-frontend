@@ -10,7 +10,10 @@ export default function LikeButton(props) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
     };
-    fetch(`https://recipe.cleverapps.io/recipes/like/${props.id}`, reqOptions);
+    fetch(
+      `https://recipe-backend-8tg9.onrender.com/recipes/like/${props.id}`,
+      reqOptions
+    );
   };
 
   return (

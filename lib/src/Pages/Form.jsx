@@ -29,7 +29,7 @@ export default function Form() {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       };
-      fetch(`https://recipe.cleverapps.io/recipes/${params.id}`, reqOptions)
+      fetch(`https://recipe-backend-8tg9.onrender.com/${params.id}`, reqOptions)
         .then((res) => res.json())
         .then((d) => {
           setBodyData(d);
